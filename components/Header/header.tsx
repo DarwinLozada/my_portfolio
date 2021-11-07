@@ -7,13 +7,13 @@ import { FC } from 'react'
 
 const Header: FC = () => {
   return (
-    <header className="flex bg-brandBg shadow-md relative z-10 items-center justify-between py-4 pl-6 pr-10">
+    <header className="flex bg-brandBg shadow-md relative z-10 items-center justify-between py-2 px-6">
       <Link href={HOME_ROUTE}>
         <a className="flex w-10 ">
           <Image src={brandLogo} alt="brand-logo" />
         </a>
       </Link>
-      <div className="w-8 h-8">
+      <div className="flex">
         <HamburguerMenu />
       </div>
     </header>
