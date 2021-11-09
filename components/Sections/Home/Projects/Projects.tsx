@@ -5,6 +5,7 @@ import DogCatcherDevices from 'public/images/dogcatcher-devices.png'
 import Tag from 'components/Tag/Tag'
 import { Planet, Clip } from 'components/Icons'
 import Button from 'components/Button'
+import { DOGCATCHER_LINK } from 'constants/links'
 
 const Projects: FC = () => {
   return (
@@ -31,12 +32,13 @@ const Projects: FC = () => {
             that you saw, you can save it in your favorites and consult them whenever
             you want and on the device you want.
           </p>
-          <div className="flex flex-col items-center mt-12 gap-4">
+          <div className="flex flex-col items-center mt-12 gap-6">
             <Button size="medium" colorScheme="dogcatcher">
               More info
             </Button>
             <Button
               anchor
+              href={DOGCATCHER_LINK}
               colorScheme="dark"
               rightIcon={<Clip className="w-5 text-brandWhite" />}
             >
