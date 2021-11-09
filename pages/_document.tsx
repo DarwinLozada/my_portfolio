@@ -7,7 +7,7 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/EBGaramond/EBGaramond-Thin.ttf"
+            href="/fonts/poppins/Poppins-Thin.ttf"
             as="font"
             crossOrigin=""
           />
@@ -22,6 +22,13 @@ class MyDocument extends Document {
           <link
             rel="preload"
             href="/fonts/poppins/Poppins-Medium.ttf"
+            as="font"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="/fonts/poppins/Poppins-SemiBold.ttf"
             as="font"
             crossOrigin=""
           />
