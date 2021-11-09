@@ -12,7 +12,7 @@ const Projects: FC = () => {
     <section className="relative flex flex-col bg-transparent items-center mt-44">
       <h2 className="text-white font-bold text-4xl tracking-widest">MY PROJECTS</h2>
       <div
-        className="bg-[#E5D8D8] py-36 my-56"
+        className="bg-[#E5D8D8] pt-36 pb-56 my-56"
         style={{ clipPath: 'polygon(0 0, 100% 6%, 100% 93%, 0% 100%);' }}
       >
         <div className="flex flex-col items-center">
@@ -39,6 +39,7 @@ const Projects: FC = () => {
             <Button
               anchor
               href={DOGCATCHER_LINK}
+              openTab
               colorScheme="dark"
               rightIcon={<Clip className="w-5 text-brandWhite" />}
             >

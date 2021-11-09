@@ -15,7 +15,7 @@ const HeroSection: FC = () => {
           <div className="flex flex-col items-center">
             <span className="text-[3.3rem] leading-tight">
               LOZADA
-              <hr className="bg-gradient-to-r text-transparent from-brandPink to-brandViolet w-full h-2 rounded-xl" />
+              <hr className="bg-gradient-to-r text-transparent from-brandPink to-brandViolet w-full border-0 h-2 rounded-xl" />
             </span>
           </div>
         </h1>
