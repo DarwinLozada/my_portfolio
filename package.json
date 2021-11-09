@@ -9,26 +9,26 @@
     "pre-commit": "yarn lint"
   },
   "dependencies": {
-    "framer-motion": "^5.2.1",
-    "next": "12.0.2",
-    "next-translate": "1.1.1",
+    "framer-motion": "5.2.1",
+    "next": "12.0.3",
+    "next-translate": "1.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@types/node": "16.11.6",
+    "@types/node": "16.11.7",
     "@types/react": "17.0.34",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "10.4.0",
     "eslint": "7",
     "eslint-config-next": "12.0.2",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.1.1",
-    "husky": "^7.0.4",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-promise": "5.1.1",
+    "husky": "7.0.4",
     "postcss": "8.3.11",
-    "prettier": "^2.4.1",
+    "prettier": "2.4.1",
     "tailwindcss": "2.2.19",
     "typescript": "4.4.4"
   }
