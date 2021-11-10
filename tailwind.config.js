@@ -15,6 +15,7 @@ module.exports = {
         brandViolet: '#546EFB',
         dogcatcherRed: '#EA2A69',
         ouruniverseWhite: '#F6F8FF',
+        ouruniversePurple: '#170326',
       },
     },
   },

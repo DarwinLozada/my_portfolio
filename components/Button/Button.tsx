@@ -20,7 +20,7 @@ const COLORS = {
   secondary: 'bg-brandPink text-brandWhite',
   dark: 'bg-brandBg text-brandWhite ring-brandWhite',
   dogcatcher: 'bg-dogcatcherRed text-brandWhite ring-brandBg',
-  ouruniverse: 'bg-ouruniverseWhite text-brandWhite',
+  ouruniverse: 'bg-ouruniverseWhite text-brandBg font-medium',
 }
 const SIZES = {
   small: 'text-base px-6 py-2',

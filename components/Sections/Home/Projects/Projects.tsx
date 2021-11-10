@@ -1,23 +1,25 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import DogCatcherImage from 'public/images/DogCatcher.png'
+import DogCatcherLogo from 'public/images/DogCatcher.png'
 import DogCatcherDevices from 'public/images/dogcatcher-devices.png'
+import OurUniverseLogo from 'public/images/ouruniverse_logo.png'
+import OurUniverseDevices from 'public/images/ouruniverse-devices.png'
 import Tag from 'components/Tag/Tag'
 import { Planet, Clip } from 'components/Icons'
 import Button from 'components/Button'
-import { DOGCATCHER_LINK } from 'constants/links'
+import { DOGCATCHER_LINK, OURUNIVERSE_LINK } from 'constants/links'
 
 const Projects: FC = () => {
   return (
     <section className="relative flex flex-col bg-transparent items-center mt-44">
       <h2 className="text-white font-bold text-4xl tracking-widest">MY PROJECTS</h2>
       <div
-        className="bg-[#E5D8D8] pt-36 pb-56 my-56"
+        className="bg-[#E5D8D8] pt-36 pb-64 mt-56"
         style={{ clipPath: 'polygon(0 0, 100% 6%, 100% 93%, 0% 100%);' }}
       >
         <div className="flex flex-col items-center">
           <div className="w-64">
-            <Image src={DogCatcherImage} alt="dogcatcher-project-logo" />
+            <Image src={DogCatcherLogo} alt="dogcatcher-project-logo" />
           </div>
           <Image src={DogCatcherDevices} alt="dogcatcher-devices-example" />
           <Tag leftIcon={<Planet className="w-6" />}>WEB APP</Tag>
@@ -46,6 +48,40 @@ const Projects: FC = () => {
               Live site!
             </Button>
           </div>
+        </div>
+      </div>
+      <div
+        className="flex flex-col items-center justify-center gap-8 bg-[#9C85BE] pb-72 pt-44"
+        style={{ clipPath: 'polygon(0 7%, 100% 0, 100% 100%, 0 93%);' }}
+      >
+        <div className="w-64">
+          <Image src={OurUniverseLogo} alt="ouruniverse-logo" />
+        </div>
+        <Image src={OurUniverseDevices} alt="ouruniverse-devices" />
+        <Tag leftIcon={<Planet className="w-6" />}>WEB APP</Tag>
+        <div className="flex flex-col mx-8">
+          <h3 className="font-semibold text-center text-4xl mt-8 text-brandWhite">
+            Explore our beautiful universe
+          </h3>
+          <p className="text-center text-lg leading-8 text-ouruniversePurple font-medium mt-12">
+            OurUniverse uses the APOD (Astronomy Picture of the day) API of the NASA
+            to deliver the most interesting and beautiful images published and
+            commented by professional astronomers.
+          </p>
+        </div>
+        <div className="flex flex-col items-center mt-12 gap-6">
+          <Button size="medium" colorScheme="ouruniverse">
+            More info
+          </Button>
+          <Button
+            anchor
+            href={OURUNIVERSE_LINK}
+            openTab
+            colorScheme="dark"
+            rightIcon={<Clip className="w-5 text-ouruniversePurple" />}
+          >
+            Live site!
+          </Button>
         </div>
       </div>
     </section>
