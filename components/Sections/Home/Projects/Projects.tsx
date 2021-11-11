@@ -11,11 +11,11 @@ import { DOGCATCHER_LINK, OURUNIVERSE_LINK } from 'constants/links'
 
 const Projects: FC = () => {
   return (
-    <section className="relative flex flex-col bg-transparent items-center mt-44">
+    <section className="relative flex flex-col bg-transparent items-center mt-32">
       <h2 className="text-white font-bold text-4xl tracking-widest">MY PROJECTS</h2>
       <div
         className="bg-[#E5D8D8] pt-36 pb-64 mt-56"
-        style={{ clipPath: 'polygon(0 0, 100% 6%, 100% 93%, 0% 100%);' }}
+        style={{ clipPath: 'polygon(0 0, 100% 6%, 100% 93%, 0% 100%)' }}
       >
         <div className="flex flex-col items-center">
           <div className="w-64">
@@ -52,7 +52,7 @@ const Projects: FC = () => {
       </div>
       <div
         className="flex flex-col items-center justify-center gap-8 bg-[#9C85BE] pb-72 pt-44"
-        style={{ clipPath: 'polygon(0 7%, 100% 0, 100% 100%, 0 93%);' }}
+        style={{ clipPath: 'polygon(0 7%, 100% 0, 100% 100%, 0 93%)' }}
       >
         <div className="w-64">
           <Image src={OurUniverseLogo} alt="ouruniverse-logo" />
@@ -78,11 +78,15 @@ const Projects: FC = () => {
             href={OURUNIVERSE_LINK}
             openTab
             colorScheme="dark"
-            rightIcon={<Clip className="w-5 text-ouruniversePurple" />}
+            rightIcon={<Clip className="w-5" />}
           >
             Live site!
           </Button>
         </div>
+      </div>
+
+      <div className="flex items-center justify-center px-14 my-24">
+        <Button size="large">Wanna see more of what I’ve done?</Button>
       </div>
     </section>
   )
