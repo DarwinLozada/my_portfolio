@@ -1,4 +1,4 @@
-import { Monitor } from 'components/Devices'
+import { Monitor, Phone } from 'components/Devices'
 import { Bars, MorePeople, People, Tasks } from 'components/Icons'
 import { FC } from 'react'
 import Value from './Value'
@@ -12,7 +12,7 @@ const Values: FC = () => {
       <h2 className="text-brandWhite z-10 font-bold text-4xl px-12 text-center">
         What are my values?
       </h2>
-      <ul className="flex flex-col gap-12 mt-36 px-4">
+      <ul className="relative flex flex-col gap-12 mt-36 px-4 z-10">
         <Value
           icon={<Tasks className="w-20 stroke-0 text-brandPink" />}
           title="Problem solving"
@@ -38,8 +38,8 @@ const Values: FC = () => {
           No one wants to deal with some spaghetti code
         </Value>
       </ul>
-      <div className="absolute opacity-25 -top-36">
-        <Monitor className="w-[350px]" />
+      <div className="absolute opacity-25 -bottom-56 -right-16">
+        <Phone className="w-48" />
       </div>
     </section>
   )
