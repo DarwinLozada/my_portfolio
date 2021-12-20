@@ -2,6 +2,6 @@
  * @type {import('next').NextConfig}
  */
 
-const nextTranslate = require("next-translate");
+const nextTranslate = require('next-translate')
 
-module.exports = nextTranslate();
+module.exports = nextTranslate()

@@ -1,0 +1,19 @@
+query Projects {
+  projects {
+    id
+    description
+    name
+    additional_images {
+      width
+      size
+      height
+      url
+    }
+    tech_stack
+    main_image {
+      height
+      size
+      width
+    }
+  }
+}

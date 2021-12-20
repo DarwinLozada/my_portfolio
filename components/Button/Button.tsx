@@ -43,10 +43,11 @@ const Button: FC<Props> = ({
   }
 
   const buttonClassNames = `flex items-center justify-center rounded-[10px] gap-3 
-  duration-500 transition filter 
-  hover:brightness-125 active:ring-2 active:shadow-lg ${SIZES[size]} ${
-    COLORS[colorScheme]
-  } ${inline ? 'inline-flex' : 'flex'}`
+                            duration-500 transition filter 
+                            hover:brightness-125 active:ring-2 active:shadow-lg  
+                            ${SIZES[size]} 
+                            ${COLORS[colorScheme]} 
+                            ${inline ? 'inline-flex' : 'flex'}`
 
   return (
     <>
