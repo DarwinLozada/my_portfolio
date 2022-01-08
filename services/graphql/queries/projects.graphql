@@ -3,17 +3,44 @@ query Projects {
     id
     description
     name
-    additional_images {
+    additionalImages {
       width
       size
       height
       url
     }
-    tech_stack
-    main_image {
+    techs {
+      name
+      color {
+        hex
+      }
+      icon {
+        height
+        size
+        width
+        url
+      }
+    }
+    typeOfApp {
+      name
+      displayColor {
+        hex
+      }
+      textColor {
+        hex
+      }
+      icon {
+        height
+        size
+        width
+        url
+      }
+    }
+    mainImage {
       height
       size
       width
+      url
     }
   }
 }

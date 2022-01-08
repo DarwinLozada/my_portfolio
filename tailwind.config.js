@@ -15,6 +15,13 @@ module.exports = {
         ouruniverseWhite: '#F6F8FF',
         ouruniversePurple: '#170326',
       },
+      borderRadius: {
+        '2xl': '20px',
+        '3xl': '24px',
+      },
+      fontFamily: {
+        montserrat: ['Montserrat'],
+      },
     },
   },
   plugins: [],
