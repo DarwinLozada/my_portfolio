@@ -1,5 +1,5 @@
-query Projects {
-  projects {
+query Project($slug: String!) {
+  project(where: {slug: $slug}) {
     id
     slug
     description

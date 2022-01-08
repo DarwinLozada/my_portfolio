@@ -1668,6 +1668,7 @@ export type Project = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
+  slug: Scalars['String'];
   /** System stage field */
   stage: Stage;
   techs: Array<Tech>;
@@ -1799,6 +1800,7 @@ export type ProjectCreateInput = {
   localizations?: InputMaybe<ProjectCreateLocalizationsInput>;
   mainImage: AssetCreateOneInlineInput;
   name: Scalars['String'];
+  slug: Scalars['String'];
   techs?: InputMaybe<TechCreateManyInlineInput>;
   typeOfApp?: InputMaybe<TypeOfAppCreateOneInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -1931,6 +1933,25 @@ export type ProjectManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
   techs_every?: InputMaybe<TechWhereInput>;
   techs_none?: InputMaybe<TechWhereInput>;
   techs_some?: InputMaybe<TechWhereInput>;
@@ -1964,6 +1985,8 @@ export enum ProjectOrderByInput {
   NameDesc = 'name_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC'
 }
@@ -1976,6 +1999,7 @@ export type ProjectUpdateInput = {
   localizations?: InputMaybe<ProjectUpdateLocalizationsInput>;
   mainImage?: InputMaybe<AssetUpdateOneInlineInput>;
   name?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
   techs?: InputMaybe<TechUpdateManyInlineInput>;
   typeOfApp?: InputMaybe<TypeOfAppUpdateOneInlineInput>;
 };
@@ -2193,6 +2217,25 @@ export type ProjectWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
   techs_every?: InputMaybe<TechWhereInput>;
   techs_none?: InputMaybe<TechWhereInput>;
   techs_some?: InputMaybe<TechWhereInput>;
@@ -2218,6 +2261,7 @@ export type ProjectWhereInput = {
 /** References Project record uniquely */
 export type ProjectWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
+  slug?: InputMaybe<Scalars['String']>;
 };
 
 export type PublishLocaleInput = {
@@ -4872,16 +4916,106 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type ProjectQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', id: string, slug: string, description: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: string, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined };
+
 export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', id: string, description: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: string, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }> };
+export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', id: string, slug: string, description: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: string, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }> };
+
+export type ProjectsSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
+export type ProjectsSlugsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', slug: string }> };
+
+
+export const ProjectDocument = gql`
+    query Project($slug: String!) {
+  project(where: {slug: $slug}) {
+    id
+    slug
+    description
+    name
+    additionalImages {
+      width
+      size
+      height
+      url
+    }
+    techs {
+      name
+      color {
+        hex
+      }
+      icon {
+        height
+        size
+        width
+        url
+      }
+    }
+    typeOfApp {
+      name
+      displayColor {
+        hex
+      }
+      textColor {
+        hex
+      }
+      icon {
+        height
+        size
+        width
+        url
+      }
+    }
+    mainImage {
+      height
+      size
+      width
+      url
+    }
+  }
+}
+    `;
+
+/**
+ * __useProjectQuery__
+ *
+ * To run a query within a React component, call `useProjectQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useProjectQuery(baseOptions: Apollo.QueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, options);
+      }
+export function useProjectLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, options);
+        }
+export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
+export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
+export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectsDocument = gql`
     query Projects {
   projects {
     id
+    slug
     description
     name
     additionalImages {
@@ -4953,6 +5087,40 @@ export function useProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<P
 export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
 export type ProjectsQueryResult = Apollo.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export const ProjectsSlugsDocument = gql`
+    query ProjectsSlugs {
+  projects {
+    slug
+  }
+}
+    `;
+
+/**
+ * __useProjectsSlugsQuery__
+ *
+ * To run a query within a React component, call `useProjectsSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectsSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectsSlugsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useProjectsSlugsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectsSlugsQuery, ProjectsSlugsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProjectsSlugsQuery, ProjectsSlugsQueryVariables>(ProjectsSlugsDocument, options);
+      }
+export function useProjectsSlugsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectsSlugsQuery, ProjectsSlugsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProjectsSlugsQuery, ProjectsSlugsQueryVariables>(ProjectsSlugsDocument, options);
+        }
+export type ProjectsSlugsQueryHookResult = ReturnType<typeof useProjectsSlugsQuery>;
+export type ProjectsSlugsLazyQueryHookResult = ReturnType<typeof useProjectsSlugsLazyQuery>;
+export type ProjectsSlugsQueryResult = Apollo.QueryResult<ProjectsSlugsQuery, ProjectsSlugsQueryVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {
