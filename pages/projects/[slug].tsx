@@ -19,8 +19,6 @@ interface GetStaticPropsParams extends ParsedUrlQuery {
 }
 
 const ProjectPage: NextPage<Props> = ({ data }) => {
-  console.log(data)
-
   return (
     <MainLayout>
       <p className="text-white text-4xl mt-52">{data.name}</p>
