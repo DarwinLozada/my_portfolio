@@ -1,1 +1,3 @@
-export type NonNullProjectData = NonNullable<ProjectQuery['project']
+import { ProjectQuery } from 'generated'
+
+export type NonNullProjectData = NonNullable<ProjectQuery['project']>

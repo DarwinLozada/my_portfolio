@@ -1645,6 +1645,7 @@ export type PageInfo = {
 
 export type Project = Node & {
   __typename?: 'Project';
+  additionalDescription: Scalars['String'];
   additionalImages: Array<Asset>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -1792,6 +1793,7 @@ export type ProjectConnection = {
 };
 
 export type ProjectCreateInput = {
+  additionalDescription: Scalars['String'];
   additionalImages: AssetCreateManyInlineInput;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** description input for default locale (en) */
@@ -1856,6 +1858,25 @@ export type ProjectManyWhereInput = {
   OR?: InputMaybe<Array<ProjectWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  additionalDescription?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  additionalDescription_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  additionalDescription_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  additionalDescription_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  additionalDescription_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  additionalDescription_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  additionalDescription_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  additionalDescription_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  additionalDescription_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  additionalDescription_starts_with?: InputMaybe<Scalars['String']>;
   additionalImages_every?: InputMaybe<AssetWhereInput>;
   additionalImages_none?: InputMaybe<AssetWhereInput>;
   additionalImages_some?: InputMaybe<AssetWhereInput>;
@@ -1975,6 +1996,8 @@ export type ProjectManyWhereInput = {
 };
 
 export enum ProjectOrderByInput {
+  AdditionalDescriptionAsc = 'additionalDescription_ASC',
+  AdditionalDescriptionDesc = 'additionalDescription_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   DescriptionAsc = 'description_ASC',
@@ -1992,6 +2015,7 @@ export enum ProjectOrderByInput {
 }
 
 export type ProjectUpdateInput = {
+  additionalDescription?: InputMaybe<Scalars['String']>;
   additionalImages?: InputMaybe<AssetUpdateManyInlineInput>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
@@ -2041,6 +2065,7 @@ export type ProjectUpdateManyInlineInput = {
 };
 
 export type ProjectUpdateManyInput = {
+  additionalDescription?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
@@ -2121,6 +2146,25 @@ export type ProjectWhereInput = {
   OR?: InputMaybe<Array<ProjectWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  additionalDescription?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  additionalDescription_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  additionalDescription_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  additionalDescription_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  additionalDescription_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  additionalDescription_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  additionalDescription_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  additionalDescription_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  additionalDescription_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  additionalDescription_starts_with?: InputMaybe<Scalars['String']>;
   additionalImages_every?: InputMaybe<AssetWhereInput>;
   additionalImages_none?: InputMaybe<AssetWhereInput>;
   additionalImages_some?: InputMaybe<AssetWhereInput>;
@@ -4921,7 +4965,7 @@ export type ProjectQueryVariables = Exact<{
 }>;
 
 
-export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', id: string, slug: string, description: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: string, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined };
+export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', id: string, slug: string, description: string, additionalDescription: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: string, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined };
 
 export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4940,6 +4984,7 @@ export const ProjectDocument = gql`
     id
     slug
     description
+    additionalDescription
     name
     additionalImages {
       width
