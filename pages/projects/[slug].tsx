@@ -11,30 +11,21 @@ import client from 'services/client'
 import Image from 'next/image'
 import { NonNullProjectData } from 'types/services'
 import Badge from 'components/Badge'
-import { splitTextOnParagraphs } from 'utils/strings'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
+import imageSize from 'rehype-img-size'
 
 interface Props {
   data: NonNullProjectData
+  mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
 interface GetStaticPropsParams extends ParsedUrlQuery {
   slug: string
 }
 
-const ProjectPage: NextPage<Props> = ({ data }) => {
-  const {
-    name,
-    mainImage,
-    typeOfApp,
-    techs,
-    description,
-    additionalDescription,
-    additionalImages,
-  } = data
-
-  console.log(additionalImages)
-
-  const splitedTextOnParagraphs = splitTextOnParagraphs(additionalDescription)
+const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
+  const { name, mainImage, typeOfApp, techs, description } = data
 
   return (
     <MainLayout>
@@ -48,7 +39,7 @@ const ProjectPage: NextPage<Props> = ({ data }) => {
             alt={`${name} main_image`}
           />
         </div>
-        <div className="flex flex-col justify-between w-full items-start gap-4 mt-6">
+        <div className="flex flex-col justify-between w-full items-start gap-4 mt-12">
           <Badge
             text={typeOfApp?.name as string}
             bgColor={typeOfApp?.displayColor.hex}
@@ -62,7 +53,7 @@ const ProjectPage: NextPage<Props> = ({ data }) => {
               />
             }
           />
-          <div className="flex gap-3 mt-1">
+          <div className="flex gap-4 mt-1">
             {techs.map((tech) => (
               <div
                 key={tech.name}
@@ -82,26 +73,7 @@ const ProjectPage: NextPage<Props> = ({ data }) => {
             ))}
           </div>
           <p className="mt-4 leading-8 text-white text-lg">{description}</p>
-          <p className="flex flex-col gap-4 mt-4 leading-8 whitespace-pre-line">
-            {splitedTextOnParagraphs.map((paragraph, index) => (
-              <span key={`${index} text`} className="text-white text-lg ">
-                {paragraph}
-              </span>
-            ))}
-          </p>
-          <div className="flex flex-col w-full gap-12 mt-8 justify-center items-center">
-            {additionalImages.map((image) => (
-              <div key={image.url} className="overflow-hidden rounded-md">
-                <Image
-                  src={image.url}
-                  width={image.width as number}
-                  height={image.height as number}
-                  alt={`${name} additional image | ${image.width}`}
-                  objectFit="contain"
-                />
-              </div>
-            ))}
-          </div>
+          <MDXRemote {...mdxSource} />
         </div>
       </article>
     </MainLayout>
@@ -124,9 +96,12 @@ export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async
     variables: { slug: params.slug },
   })
 
+  const mdxSource = await serialize(data.project?.additionalDescription as string)
+
   return {
     props: {
       data: data.project as NonNullProjectData,
+      mdxSource,
     },
   }
 }
