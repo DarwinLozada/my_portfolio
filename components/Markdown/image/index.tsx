@@ -12,7 +12,7 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
   console.log(width, height)
 
   return (
-    <figure className="relative w-96">
+    <figure className="relative">
       <NextImage
         src={src}
         layout="intrinsic"
