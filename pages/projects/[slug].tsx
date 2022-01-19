@@ -13,7 +13,7 @@ import { NonNullProjectData } from 'types/services'
 import Badge from 'components/Badge'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
-import imageSize from 'rehype-img-size'
+import imageMetadata from 'markdown/plugins/image-metadata'
 
 interface Props {
   data: NonNullProjectData
@@ -96,7 +96,11 @@ export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async
     variables: { slug: params.slug },
   })
 
-  const mdxSource = await serialize(data.project?.additionalDescription as string)
+  const mdxSource = await serialize(data.project?.additionalDescription as string, {
+    mdxOptions: {
+      rehypePlugins: [imageMetadata],
+    },
+  })
 
   return {
     props: {

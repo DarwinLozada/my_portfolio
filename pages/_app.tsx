@@ -3,13 +3,12 @@ import type { AppProps } from 'next/app'
 import 'styles/reset.css'
 import 'styles/global.css'
 import 'tailwindcss/tailwind.css'
-import Paragraph from 'components/Markdown/paragraph'
 import { MDXProvider } from '@mdx-js/react'
-import Image from 'components/Markdown/image'
+import dynamic from 'next/dynamic'
 
 const markdownComponents = {
-  p: Paragraph,
-  img: Image,
+  p: dynamic(() => import('components/Markdown/paragraph')),
+  img: dynamic(() => import('components/Markdown/image')),
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
