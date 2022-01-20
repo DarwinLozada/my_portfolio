@@ -14,7 +14,7 @@ import Badge from 'components/Badge'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import imageMetadata from 'markdown/plugins/image-metadata'
-import Breadcrum from 'components/Breadcrum'
+import Breadcrum from 'components/Breadcrumb'
 
 interface Props {
   data: NonNullProjectData

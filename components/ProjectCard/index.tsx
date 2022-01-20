@@ -14,7 +14,7 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
 
   return (
     <Link href={`/projects/${slug}`}>
-      <a className="flex flex-col backdrop-blur bg-brandWhite bg-opacity-10 duration-500 hover:bg-opacity-20 tras rounded-lg px-4 pt-4 pb-8">
+      <a className="flex flex-col backdrop-blur bg-brandWhite bg-opacity-10 duration-200 hover:bg-opacity-20 tras rounded-lg px-4 pt-4 pb-8">
         <div className="flex justify-center items-center min-h-[240px] bg-slate-200 rounded-md px-8">
           <Image
             src={mainImage.url}
