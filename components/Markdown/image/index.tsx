@@ -9,8 +9,6 @@ interface Props {
 }
 
 const Image: FC<Props> = ({ src, alt, width, height }) => {
-  console.log(width, height)
-
   return (
     <figure className="relative">
       <NextImage
