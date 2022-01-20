@@ -14,6 +14,7 @@ import Badge from 'components/Badge'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import imageMetadata from 'markdown/plugins/image-metadata'
+import Breadcrum from 'components/Breadcrum'
 
 interface Props {
   data: NonNullProjectData
@@ -25,11 +26,20 @@ interface GetStaticPropsParams extends ParsedUrlQuery {
 }
 
 const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
-  const { name, mainImage, typeOfApp, techs, description } = data
+  const { name, mainImage, typeOfApp, techs, description, slug } = data
 
   return (
     <MainLayout>
       <article className="flex flex-col items-center justify-center mt-36 px-4 pb-20">
+        <Breadcrum
+          items={[
+            {
+              text: 'Projects',
+              url: '/projects',
+            },
+            { text: name, url: `/projects/${slug}` },
+          ]}
+        />
         <h1 className="text-white text-4xl font-medium">{name}</h1>
         <div className="grid place-items-center p-4 min-h-[240px] bg-slate-200 rounded-md mt-14 backdrop-blur-md">
           <Image
