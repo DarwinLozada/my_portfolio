@@ -1,11 +1,16 @@
 import { FC } from 'react'
-import { ApolloProvider } from '@apollo/client'
-import client from 'services/client'
+import { MDXProvider } from '@mdx-js/react'
+import dynamic from 'next/dynamic'
+
+const markdownComponents = {
+  p: dynamic(() => import('components/Markdown/paragraph')),
+  img: dynamic(() => import('components/Markdown/image')),
+}
 
 const AppLayout: FC = ({ children }) => {
   return (
     <>
-      <ApolloProvider client={client}>{children}</ApolloProvider>
+      <MDXProvider components={markdownComponents}> {children}</MDXProvider>
     </>
   )
 }
