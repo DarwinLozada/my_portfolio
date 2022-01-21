@@ -52,8 +52,6 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
                 <Image
                   src={tech.icon.url}
                   layout="fill"
-                  width={tech.icon.width as number}
-                  height={tech.icon.height as number}
                   alt={`${tech.name} icon`}
                   objectFit="contain"
                 />
