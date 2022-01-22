@@ -30,17 +30,19 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
 
   return (
     <MainLayout>
-      <article className="flex flex-col items-center justify-center mt-36 px-4 pb-20">
-        <Breadcrum
-          items={[
-            {
-              text: 'Projects',
-              url: '/projects',
-            },
-            { text: name, url: `/projects/${slug}` },
-          ]}
-        />
-        <h1 className="text-white text-4xl font-medium">{name}</h1>
+      <article className="flex flex-col items-center justify-center mt-32 px-4 pb-20">
+        <div className="flex w-full justify-start">
+          <Breadcrum
+            items={[
+              {
+                text: 'Projects',
+                url: '/projects',
+              },
+              { text: name, url: `/projects/${slug}` },
+            ]}
+          />
+        </div>
+        <h1 className="text-white text-4xl font-medium mt-12">{name}</h1>
         <div className="grid place-items-center p-4 min-h-[240px] bg-slate-200 rounded-md mt-14 backdrop-blur-md">
           <Image
             src={mainImage.url}
