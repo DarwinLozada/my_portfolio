@@ -7,7 +7,7 @@ const calcBreakpoint = (width: number) => {
     isSmall: width <= 576,
     isMedium: width >= 576 && width <= 768,
     isLarge: width >= 768 && width <= 992,
-    isExtraLarge: width >= 992 && width <= 1200,
+    isExtraLarge: width >= 992,
   }
 
   // Check if which breakpoint is the window now
