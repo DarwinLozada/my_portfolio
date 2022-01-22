@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+const isServer = typeof window === 'undefined'
+
 const calcBreakpoint = (width: number) => {
   const breakpoints = {
     isSmall: width <= 576,
@@ -17,7 +19,9 @@ const calcBreakpoint = (width: number) => {
 }
 
 export default function useScreenBreakpoint() {
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<string>()
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<string>(
+    !isServer ? calcBreakpoint(window.innerWidth) : ''
+  )
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {

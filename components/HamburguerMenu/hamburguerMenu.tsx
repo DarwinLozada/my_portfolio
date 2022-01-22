@@ -5,8 +5,8 @@ import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 const HamburguerMenu: FC = () => {
   const [isActive, setActive] = useState(false)
 
-  const { isSmall } = useScreenBreakpoint()
-  console.log(isSmall)
+  const si = useScreenBreakpoint()
+  console.log(si)
 
   return (
     <Root open={isActive} onOpenChange={(open) => setActive(open)}>
