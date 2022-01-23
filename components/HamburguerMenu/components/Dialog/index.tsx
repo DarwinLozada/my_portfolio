@@ -1,8 +1,9 @@
+/* eslint-disable react/display-name */
 import * as Dialog from '@radix-ui/react-dialog'
 import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import { AnimatePresence, m } from 'framer-motion'
 import Link from 'next/link'
-import { FC } from 'react'
+import { forwardRef, Ref } from 'react'
 
 const NavRoutes = [
   {
@@ -20,7 +21,7 @@ interface Props {
   active: boolean
 }
 
-const NavDialog: FC<Props> = ({ active }) => {
+const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
   return (
     <AnimatePresence>
       {active && (
@@ -49,7 +50,7 @@ const NavDialog: FC<Props> = ({ active }) => {
           }}
           className="overflow-y-auto grid place-items-center duration-300 z-50 bg-slate-900/90 fixed top-0 w-screen h-screen"
         >
-          <Dialog.Overlay asChild forceMount>
+          <Dialog.Overlay asChild forceMount ref={ref}>
             <Dialog.Content asChild forceMount>
               <m.nav
                 className="flex w-2/3 h-1/2 bg-slate-300 rounded-md bg-opacity-50 backdrop-blur"
@@ -98,6 +99,6 @@ const NavDialog: FC<Props> = ({ active }) => {
       )}
     </AnimatePresence>
   )
-}
+})
 
 export default NavDialog
