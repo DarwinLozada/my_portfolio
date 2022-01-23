@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import * as Dialog from '@radix-ui/react-dialog'
+import { CloseIcon } from 'components/Icons'
 import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import { AnimatePresence, m } from 'framer-motion'
 import Link from 'next/link'
@@ -37,7 +38,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
             animateTo: {
               opacity: 1,
               transition: {
-                duration: 0.5,
+                duration: 0.3,
               },
             },
 
@@ -45,31 +46,32 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
               opacity: 0,
               transition: {
                 duration: 0.5,
+                ease: 'easeOut',
               },
             },
           }}
-          className="overflow-y-auto grid place-items-center duration-300 z-50 bg-slate-900/90 fixed top-0 w-screen h-screen"
+          className="overflow-y-auto grid place-items-center duration-300 z-50 bg-slate-900/80 fixed top-0 w-screen h-screen"
         >
           <Dialog.Overlay asChild forceMount ref={ref}>
             <Dialog.Content asChild forceMount>
-              <m.nav
-                className="flex w-2/3 h-1/2 bg-slate-300 rounded-md bg-opacity-50 backdrop-blur"
+              <m.div
+                className="flex flex-col w-2/3 h-1/2  bg-gradient-to-b bg-opacity-50 from-[#6e6df3]/50 to-[#C367D6]/50 shadow-lg rounded-lg backdrop-blur-md will-change-transform"
                 transition={{
-                  duration: 1,
+                  duration: 0.4,
                 }}
                 variants={{
                   initial: {
                     opacity: 0.6,
-                    scaleY: 2,
-                    scaleX: 2.5,
+                    scaleY: 1.5,
+                    scaleX: 1.7,
                   },
 
                   exit: {
                     opacity: 0,
-                    scaleY: 1.6,
-                    scaleX: 2,
+                    scaleY: 1.2,
+                    scaleX: 1.4,
                     transition: {
-                      duration: 0.7,
+                      duration: 0.5,
                     },
                   },
 
@@ -80,7 +82,13 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                   },
                 }}
               >
-                <ul className="flex flex-col items-center justify-center w-full gap-4">
+                <div className="flex justify-end">
+                  <Dialog.Close className="p-4">
+                    <CloseIcon className="w-4 text-white/30 stroke-1" />
+                  </Dialog.Close>
+                </div>
+
+                <ul className="flex flex-col items-center justify-center w-full gap-4 flex-grow mb-20 ">
                   {NavRoutes.map((route) => (
                     <li
                       key={route.route}
@@ -92,7 +100,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                     </li>
                   ))}
                 </ul>
-              </m.nav>
+              </m.div>
             </Dialog.Content>
           </Dialog.Overlay>
         </m.div>
