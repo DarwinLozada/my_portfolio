@@ -4,6 +4,7 @@ import { CloseIcon } from 'components/Icons'
 import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import { AnimatePresence, m } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { forwardRef, Ref } from 'react'
 
 const NavRoutes = [
@@ -55,7 +56,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
           <Dialog.Overlay asChild forceMount ref={ref}>
             <Dialog.Content asChild forceMount>
               <m.div
-                className="flex flex-col w-2/3 h-1/2  bg-gradient-to-b bg-opacity-50 from-[#6e6df3]/50 to-[#C367D6]/50 shadow-lg rounded-lg backdrop-blur-md will-change-transform"
+                className="relative flex flex-col w-2/3 h-1/2 bg-gradient-to-b overflow-hidden from-[#6e6df3] to-[#042044]/90 shadow-lg rounded-lg will-change-transform"
                 transition={{
                   duration: 0.4,
                 }}
@@ -82,13 +83,70 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                   },
                 }}
               >
+                <m.div
+                  className="flex absolute bottom-[1rem] w-24 left-4 opacity-[0.40] drop-shadow-md"
+                  animate="move"
+                  variants={{
+                    move: {
+                      translateY: 10,
+                      translateX: -55,
+                      rotateY: -17,
+                      rotateZ: -30,
+                      transition: {
+                        duration: 7,
+                        repeat: Infinity,
+                        repeatType: 'mirror',
+                        repeatDelay: 0.2,
+                      },
+                    },
+                  }}
+                >
+                  <div className="relative flex z-[55] min-w-[120px]">
+                    <Image
+                      src="https://media.graphcms.com/vi3Uy2JTqqkEKZFdxd7b?_ga=2.178934500.1173955863.1642979355-430862818.1639815097"
+                      alt="processor image"
+                      layout="intrinsic"
+                      width={2380}
+                      height={1785}
+                    />
+                  </div>
+                </m.div>
+                <m.div
+                  className="flex absolute top-0 right-10 w-24 opacity-[0.25] drop-shadow-md"
+                  animate="move"
+                  variants={{
+                    move: {
+                      translateY: 20,
+                      translateX: 30,
+                      rotateY: -17,
+                      rotateZ: -15,
+                      transition: {
+                        duration: 9,
+                        repeat: Infinity,
+                        repeatType: 'mirror',
+                        repeatDelay: 0.2,
+                      },
+                    },
+                  }}
+                >
+                  <div className="relative flex z-[55] min-w-[90px]">
+                    <Image
+                      src="https://media.graphcms.com/yxhOxQzRN2kjInDz11Vq?_ga=2.106140995.1173955863.1642979355-430862818.1639815097"
+                      alt="processor image"
+                      layout="intrinsic"
+                      width={3400}
+                      height={2550}
+                    />
+                  </div>
+                </m.div>
+
                 <div className="flex justify-end">
                   <Dialog.Close className="p-4">
                     <CloseIcon className="w-4 text-white/30 stroke-1" />
                   </Dialog.Close>
                 </div>
 
-                <ul className="flex flex-col items-center justify-center w-full gap-4 flex-grow mb-20 ">
+                <ul className="flex flex-col items-center justify-center z-[60] w-full gap-4 flex-grow mb-20 ">
                   {NavRoutes.map((route) => (
                     <li
                       key={route.route}
