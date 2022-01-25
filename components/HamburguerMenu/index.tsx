@@ -19,10 +19,10 @@ const HamburguerMenu: FC = () => {
       >
         <Dialog.Trigger asChild>
           {isSmall && (
-            <button className="flex flex-col items-center justify-center gap-2 w-11 h-8">
-              <div className="bg-gradient-to-r from-brandPink rounded-md to-brandViolet w-full h-full"></div>
-              <div className="bg-gradient-to-r from-brandPink rounded-md to-brandViolet w-2/3 h-full"></div>
-              <div className="bg-gradient-to-r from-brandPink rounded-md to-brandViolet w-full h-full"></div>
+            <button className="flex h-8 w-11 flex-col items-center justify-center gap-2">
+              <div className="h-full w-full rounded-md bg-gradient-to-r from-brandPink to-brandViolet"></div>
+              <div className="h-full w-2/3 rounded-md bg-gradient-to-r from-brandPink to-brandViolet"></div>
+              <div className="h-full w-full rounded-md bg-gradient-to-r from-brandPink to-brandViolet"></div>
             </button>
           )}
         </Dialog.Trigger>
@@ -36,14 +36,14 @@ const HamburguerMenu: FC = () => {
       >
         <Dropdown.Trigger asChild>
           {!isSmall && (
-            <button className="flex flex-col items-center justify-center gap-2 w-11 h-8">
-              <div className="bg-gradient-to-r from-brandPink rounded-md to-brandViolet w-full h-full"></div>
-              <div className="bg-gradient-to-r from-brandPink rounded-md to-brandViolet w-2/3 h-full"></div>
-              <div className="bg-gradient-to-r from-brandPink rounded-md to-brandViolet w-full h-full"></div>
+            <button className="flex h-8 w-11 flex-col items-center justify-center gap-2">
+              <div className="h-full w-full rounded-md bg-gradient-to-r from-brandPink to-brandViolet"></div>
+              <div className="h-full w-2/3 rounded-md bg-gradient-to-r from-brandPink to-brandViolet"></div>
+              <div className="h-full w-full rounded-md bg-gradient-to-r from-brandPink to-brandViolet"></div>
             </button>
           )}
         </Dropdown.Trigger>
-        <Dropdown.Content className="flex w-24 h-24 bg-slate-300"></Dropdown.Content>
+        <Dropdown.Content className="flex h-24 w-24 bg-slate-300"></Dropdown.Content>
       </Dropdown.Root>
     </>
   )

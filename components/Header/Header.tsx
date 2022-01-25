@@ -7,7 +7,7 @@ import { FC } from 'react'
 
 const Header: FC = () => {
   return (
-    <header className="flex bg-opacity-25 backdrop-blur bg-brandBg transition-all z-50 fixed top-0 w-full shadow-md items-center justify-between py-2 px-6">
+    <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-brandBg bg-opacity-25 py-2 px-6 shadow-md backdrop-blur transition-all">
       <Link href={HOME_ROUTE}>
         <a className="flex w-10">
           <Image src={brandLogo} alt="brand-logo" />

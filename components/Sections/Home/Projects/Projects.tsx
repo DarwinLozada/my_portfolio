@@ -11,10 +11,10 @@ import { DOGCATCHER_LINK, OURUNIVERSE_LINK } from 'constants/links'
 
 const Projects: FC = () => {
   return (
-    <section className="relative flex flex-col bg-transparent items-center mt-32">
-      <h2 className="text-white font-bold text-4xl tracking-widest">MY PROJECTS</h2>
+    <section className="relative mt-32 flex flex-col items-center bg-transparent">
+      <h2 className="text-4xl font-bold tracking-widest text-white">MY PROJECTS</h2>
       <div
-        className="bg-[#E5D8D8] pt-36 pb-64 mt-56"
+        className="mt-56 bg-[#E5D8D8] pt-36 pb-64"
         style={{ clipPath: 'polygon(0 0, 100% 6%, 100% 93%, 0% 100%)' }}
       >
         <div className="flex flex-col items-center">
@@ -24,17 +24,17 @@ const Projects: FC = () => {
           <Image src={DogCatcherDevices} alt="dogcatcher-devices-example" />
           <Tag leftIcon={<Planet className="w-6" />}>WEB APP</Tag>
         </div>
-        <div className="flex flex-col mx-8">
-          <h3 className="font-semibold text-center text-4xl mt-16 text-dogcatcherRed">
+        <div className="mx-8 flex flex-col">
+          <h3 className="mt-16 text-center text-4xl font-semibold text-dogcatcherRed">
             All your favorite pets in one place
           </h3>
-          <p className="text-center text-lg leading-8 text-brandBg font-medium mt-12">
+          <p className="mt-12 text-center text-lg font-medium leading-8 text-brandBg">
             In DogCatcher you can find the most beautiful and friendly pets, search
             for them by breed and, also, if you liked that fluffy white-haired cat
             that you saw, you can save it in your favorites and consult them whenever
             you want and on the device you want.
           </p>
-          <div className="flex flex-col items-center mt-12 gap-6">
+          <div className="mt-12 flex flex-col items-center gap-6">
             <Button size="medium" colorScheme="dogcatcher">
               More info
             </Button>
@@ -59,17 +59,17 @@ const Projects: FC = () => {
         </div>
         <Image src={OurUniverseDevices} alt="ouruniverse-devices" />
         <Tag leftIcon={<Planet className="w-6" />}>WEB APP</Tag>
-        <div className="flex flex-col mx-8">
-          <h3 className="font-semibold text-center text-4xl mt-8 text-brandWhite">
+        <div className="mx-8 flex flex-col">
+          <h3 className="mt-8 text-center text-4xl font-semibold text-brandWhite">
             Explore our beautiful universe
           </h3>
-          <p className="text-center text-lg leading-8 text-ouruniversePurple font-medium mt-12">
+          <p className="mt-12 text-center text-lg font-medium leading-8 text-ouruniversePurple">
             OurUniverse uses the APOD (Astronomy Picture of the day) API of the NASA
             to deliver the most interesting and beautiful images published and
             commented by professional astronomers.
           </p>
         </div>
-        <div className="flex flex-col items-center mt-12 gap-6">
+        <div className="mt-12 flex flex-col items-center gap-6">
           <Button size="medium" colorScheme="ouruniverse">
             More info
           </Button>
@@ -85,7 +85,7 @@ const Projects: FC = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center px-14 my-24">
+      <div className="my-24 flex items-center justify-center px-14">
         <Button size="large">Wanna see more of what I’ve done?</Button>
       </div>
     </section>

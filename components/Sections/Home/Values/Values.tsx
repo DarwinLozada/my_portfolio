@@ -5,14 +5,14 @@ import Value from './Value'
 
 const Values: FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center px-4 mt-64 mb-28">
-      <div className="absolute opacity-25 -top-36">
+    <section className="relative mt-64 mb-28 flex flex-col items-center justify-center px-4">
+      <div className="absolute -top-36 opacity-25">
         <Monitor className=" w-[350px]" />
       </div>
-      <h2 className="text-brandWhite z-10 font-bold text-4xl px-12 text-center">
+      <h2 className="z-10 px-12 text-center text-4xl font-bold text-brandWhite">
         What are my values?
       </h2>
-      <ul className="relative flex flex-col gap-12 mt-36 px-4 z-10">
+      <ul className="relative z-10 mt-36 flex flex-col gap-12 px-4">
         <Value
           icon={<Tasks className="w-20 stroke-0 text-brandPink" />}
           title="Problem solving"
@@ -38,7 +38,7 @@ const Values: FC = () => {
           No one wants to deal with some spaghetti code
         </Value>
       </ul>
-      <div className="absolute opacity-25 -bottom-56 -right-16">
+      <div className="absolute -bottom-56 -right-16 opacity-25">
         <Phone className="w-48" />
       </div>
     </section>

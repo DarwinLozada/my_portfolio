@@ -14,8 +14,8 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
 
   return (
     <Link href={`/projects/${slug}`}>
-      <a className="flex flex-col backdrop-blur bg-slate-300 bg-opacity-10 duration-200 hover:bg-opacity-20 tras rounded-lg px-4 pt-4 pb-8">
-        <div className="flex justify-center items-center min-h-[240px] bg-slate-200 rounded-md px-8">
+      <a className="tras flex flex-col rounded-lg bg-slate-300 bg-opacity-10 px-4 pt-4 pb-8 backdrop-blur duration-200 hover:bg-opacity-20">
+        <div className="flex min-h-[240px] items-center justify-center rounded-md bg-slate-200 px-8">
           <Image
             src={mainImage.url}
             width={mainImage.width as number}
@@ -23,8 +23,8 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
             alt={`${name} main image`}
           />
         </div>
-        <div className="flex justify-between mt-6">
-          <h3 className="text-2xl font-semibold text-white font-montserrat">
+        <div className="mt-6 flex justify-between">
+          <h3 className="font-montserrat text-2xl font-semibold text-white">
             {name}
           </h3>
           <Badge
@@ -41,14 +41,14 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
             }
           />
         </div>
-        <div className="flex items-center gap-4 mt-4">
+        <div className="mt-4 flex items-center gap-4">
           {techs.map((tech) => (
             <div
               key={tech.name}
-              className="flex gap-1 items-center justify-center"
+              className="flex items-center justify-center gap-1"
               style={{ color: tech.color.hex }}
             >
-              <div className="flex relative items-center w-6 h-6">
+              <div className="relative flex h-6 w-6 items-center">
                 <Image
                   src={tech.icon.url}
                   layout="fill"
@@ -60,7 +60,7 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
             </div>
           ))}
         </div>
-        <p className="font-montserrat text-white text-md mt-4 leading-6">
+        <p className="text-md mt-4 font-montserrat leading-6 text-white">
           {description}
         </p>
       </a>

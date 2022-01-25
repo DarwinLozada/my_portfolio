@@ -30,7 +30,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
 
   return (
     <MainLayout>
-      <article className="flex flex-col items-center justify-center mt-32 px-4 pb-20">
+      <article className="mt-32 flex flex-col items-center justify-center px-4 pb-20">
         <div className="flex w-full justify-start">
           <Breadcrum
             items={[
@@ -42,8 +42,8 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
             ]}
           />
         </div>
-        <h1 className="text-white text-4xl font-medium mt-12">{name}</h1>
-        <div className="grid place-items-center p-4 min-h-[240px] bg-slate-200 rounded-md mt-14 backdrop-blur-md">
+        <h1 className="mt-12 text-4xl font-medium text-white">{name}</h1>
+        <div className="mt-14 grid min-h-[240px] place-items-center rounded-md bg-slate-200 p-4 backdrop-blur-md">
           <Image
             src={mainImage.url}
             width={mainImage.width as number}
@@ -51,7 +51,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
             alt={`${name} main_image`}
           />
         </div>
-        <div className="flex flex-col justify-between w-full items-start gap-4 mt-12">
+        <div className="mt-12 flex w-full flex-col items-start justify-between gap-4">
           <Badge
             text={typeOfApp?.name as string}
             bgColor={typeOfApp?.displayColor.hex}
@@ -65,14 +65,14 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
               />
             }
           />
-          <div className="flex gap-4 mt-1">
+          <div className="mt-1 flex gap-4">
             {techs.map((tech) => (
               <div
                 key={tech.name}
-                className="flex gap-1 items-center justify-center"
+                className="flex items-center justify-center gap-1"
                 style={{ color: tech.color.hex }}
               >
-                <div className="flex relative items-center w-6 h-6">
+                <div className="relative flex h-6 w-6 items-center">
                   <Image
                     src={tech.icon.url}
                     layout="fill"
@@ -84,7 +84,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
               </div>
             ))}
           </div>
-          <p className="mt-4 leading-8 text-white text-lg">{description}</p>
+          <p className="mt-4 text-lg leading-8 text-white">{description}</p>
           <MDXRemote {...mdxSource} />
         </div>
       </article>

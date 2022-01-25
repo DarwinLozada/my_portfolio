@@ -17,7 +17,7 @@ const colorsMap = {
 const StackedCubes: FC<Props> = ({ color, className, animate } = defaultProps) => {
   return (
     <motion.div
-      className={`relative min-w-[60px] min-h-[80px] ${className}`}
+      className={`relative min-h-[80px] min-w-[60px] ${className}`}
       variants={{
         static: {
           transition: {
@@ -38,7 +38,7 @@ const StackedCubes: FC<Props> = ({ color, className, animate } = defaultProps) =
               transform: `translate(0, -${bottomMargin}rem)`,
               zIndex: index * -1,
             }}
-            className="w-64 drop-shadow-2xl absolute transform"
+            className="absolute w-64 transform drop-shadow-2xl"
             initial="initial"
             animate="move"
             transition={{

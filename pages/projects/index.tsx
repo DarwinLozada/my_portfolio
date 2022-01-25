@@ -11,10 +11,10 @@ interface PageProps {
 const ProjectsPage: NextPage<PageProps> = ({ projects }) => {
   return (
     <MainLayout>
-      <h1 className="font-semibold font-montserrat text-4xl text-white text-center mt-32 mb-16">
+      <h1 className="mt-32 mb-16 text-center font-montserrat text-4xl font-semibold text-white">
         My Projects
       </h1>
-      <section className="grid grid-cols-1 px-4 gap-12 mb-12">
+      <section className="mb-12 grid grid-cols-1 gap-12 px-4">
         {projects.projects.map((projectData) => (
           <ProjectCard projectData={projectData} key={projectData.name} />
         ))}

@@ -51,12 +51,12 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
               },
             },
           }}
-          className="overflow-y-auto grid place-items-center duration-300 z-50 bg-slate-900/80 fixed top-0 w-screen h-screen"
+          className="fixed top-0 z-50 grid h-screen w-screen place-items-center overflow-y-auto bg-slate-900/80 duration-300"
         >
           <Dialog.Overlay asChild forceMount ref={ref}>
             <Dialog.Content asChild forceMount>
               <m.div
-                className="relative flex flex-col w-2/3 h-1/2 bg-gradient-to-b overflow-hidden from-[#6e6df3] to-[#042044]/90 shadow-lg rounded-lg will-change-transform"
+                className="relative flex h-1/2 w-2/3 flex-col overflow-hidden rounded-lg bg-gradient-to-b from-[#6e6df3] to-[#042044]/90 shadow-lg will-change-transform"
                 transition={{
                   duration: 0.4,
                 }}
@@ -84,7 +84,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                 }}
               >
                 <m.div
-                  className="flex absolute bottom-[1rem] w-24 left-4 opacity-[0.40] drop-shadow-md"
+                  className="absolute bottom-[1rem] left-4 flex w-24 opacity-[0.40] drop-shadow-md"
                   animate="move"
                   variants={{
                     move: {
@@ -101,7 +101,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                     },
                   }}
                 >
-                  <div className="relative flex z-[55] min-w-[120px]">
+                  <div className="relative z-[55] flex min-w-[120px]">
                     <Image
                       src="https://media.graphcms.com/vi3Uy2JTqqkEKZFdxd7b?_ga=2.178934500.1173955863.1642979355-430862818.1639815097"
                       alt="processor image"
@@ -112,7 +112,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                   </div>
                 </m.div>
                 <m.div
-                  className="flex absolute top-0 right-10 w-24 opacity-[0.25] drop-shadow-md"
+                  className="absolute top-0 right-10 flex w-24 opacity-[0.25] drop-shadow-md"
                   animate="move"
                   variants={{
                     move: {
@@ -129,7 +129,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                     },
                   }}
                 >
-                  <div className="relative flex z-[55] min-w-[90px]">
+                  <div className="relative z-[55] flex min-w-[90px]">
                     <Image
                       src="https://media.graphcms.com/yxhOxQzRN2kjInDz11Vq?_ga=2.106140995.1173955863.1642979355-430862818.1639815097"
                       alt="processor image"
@@ -142,15 +142,15 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
 
                 <div className="flex justify-end">
                   <Dialog.Close className="p-4">
-                    <CloseIcon className="w-4 text-white/30 stroke-1" />
+                    <CloseIcon className="w-4 stroke-1 text-white/30" />
                   </Dialog.Close>
                 </div>
 
-                <ul className="flex flex-col items-center justify-center z-[60] w-full gap-4 flex-grow mb-20 ">
+                <ul className="z-[60] mb-20 flex w-full flex-grow flex-col items-center justify-center gap-4 ">
                   {NavRoutes.map((route) => (
                     <li
                       key={route.route}
-                      className="text-white text-3xl font-montserrat font-medium"
+                      className="font-montserrat text-3xl font-medium text-white"
                     >
                       <Link href={route.route}>
                         <a>{route.name}</a>

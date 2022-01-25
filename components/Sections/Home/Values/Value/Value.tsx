@@ -10,7 +10,7 @@ const Value: FC<Props> = ({ icon: Icon, title: Title, children }) => {
     <li className="flex items-center justify-center gap-4">
       {Icon}
       <div>
-        <h3 className="text-brandWhite font-semibold text-xl mb-1">{Title}</h3>
+        <h3 className="mb-1 text-xl font-semibold text-brandWhite">{Title}</h3>
         <p className="text-brandWhite ">{children}</p>
       </div>
     </li>

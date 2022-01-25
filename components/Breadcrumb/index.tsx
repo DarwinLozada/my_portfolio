@@ -15,7 +15,7 @@ const Breadcrumb: FC<Props> = ({ items }) => {
         <span key={item.url} className="inline-flex gap-1 text-white">
           <span className="">/</span>
           <Link href={item.url}>
-            <a className="hover:text-brandViolet hover:drop-shadow transition-colors duration-200">
+            <a className="transition-colors duration-200 hover:text-brandViolet hover:drop-shadow">
               {item.text}
             </a>
           </Link>

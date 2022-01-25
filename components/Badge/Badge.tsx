@@ -17,7 +17,7 @@ const Badge: FC<Props> = ({ icon, bgColor, text, textColor, size = 'medium' }) =
   return (
     <div className="flex items-center justify-center">
       <div
-        className={`flex rounded-2xl h-auto justify-center items-center leading-none ${sizesClasses[size]}`}
+        className={`flex h-auto items-center justify-center rounded-2xl leading-none ${sizesClasses[size]}`}
         style={{ backgroundColor: bgColor }}
       >
         <div className="flex max-w-[1rem] leading-none">{icon}</div>
