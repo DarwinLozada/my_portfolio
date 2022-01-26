@@ -100,7 +100,7 @@ const NavDialog: FC<Props> = ({ active, setActive }) => {
             <Dialog.Content asChild>
               <div
                 ref={dialogRef}
-                className="relative flex h-1/2 w-2/3 flex-col overflow-hidden rounded-lg bg-gradient-to-b from-[#6e6df3] to-[#042044]/90 shadow-lg will-change-transform"
+                className="relative flex h-1/2 w-2/3 flex-col overflow-hidden rounded-lg bg-gradient-to-b from-[#6e6df3] to-[#042044]/90 shadow-lg"
               >
                 <m.div
                   className="absolute bottom-[1rem] left-4 flex w-24 opacity-[0.40] drop-shadow-md"
