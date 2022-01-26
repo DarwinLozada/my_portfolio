@@ -41,7 +41,7 @@ const NavDialog: FC<Props> = ({ active, setActive }) => {
         opacity: [0, 1],
         scaleY: [1.5, 1],
         scaleX: [1.7, 1],
-        easing: 'easeOutQuad',
+        easing: 'easeOutSine',
         duration: 400,
       })
     },
@@ -52,7 +52,8 @@ const NavDialog: FC<Props> = ({ active, setActive }) => {
         scaleY: [1, 1.2],
         scaleX: [1, 1.4],
         duration: 400,
-        easing: 'easeOutQuad',
+
+        easing: 'easeOutSine',
       })
     },
   })
@@ -63,7 +64,7 @@ const NavDialog: FC<Props> = ({ active, setActive }) => {
       anime({
         targets: ref.current,
         opacity: [0, 1],
-        easing: 'easeOutQuad',
+        easing: 'easeOutSine',
         duration: 550,
       })
     },
@@ -71,8 +72,9 @@ const NavDialog: FC<Props> = ({ active, setActive }) => {
       anime({
         targets: ref.current,
         opacity: [1, 0],
-        easing: 'easeOutQuad',
+        easing: 'easeOutSine',
         duration: 400,
+
         complete: () => {
           setActive(false)
         },

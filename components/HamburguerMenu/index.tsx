@@ -1,6 +1,6 @@
-import { FC, useState } from 'react'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
+import { FC, useState } from 'react'
 import NavDialog from './components/Dialog'
 
 export const getHamburguerMenu = () => (
