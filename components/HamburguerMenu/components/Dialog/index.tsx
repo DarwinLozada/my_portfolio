@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 import * as Dialog from '@radix-ui/react-dialog'
 import { CloseIcon } from 'components/Icons'
+import { EaseOutSine } from 'constants/animations'
 import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import { AnimatePresence, m } from 'framer-motion'
 import Image from 'next/image'
@@ -23,6 +24,8 @@ interface Props {
   active: boolean
 }
 
+const TRANSITION_DURATION = 0.4
+
 const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
   return (
     <AnimatePresence>
@@ -31,6 +34,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
           initial="initial"
           animate="animateTo"
           exit="exit"
+          transition={{ ease: EaseOutSine, duration: TRANSITION_DURATION }}
           variants={{
             initial: {
               opacity: 0,
@@ -38,17 +42,10 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
 
             animateTo: {
               opacity: 1,
-              transition: {
-                duration: 0.3,
-              },
             },
 
             exit: {
               opacity: 0,
-              transition: {
-                duration: 0.5,
-                ease: 'easeOut',
-              },
             },
           }}
           className="fixed top-0 z-50 grid h-screen w-screen place-items-center overflow-y-auto bg-slate-900/80 duration-300"
@@ -59,6 +56,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                 className="relative flex h-1/2 w-2/3 flex-col overflow-hidden rounded-lg bg-gradient-to-b from-[#6e6df3] to-[#042044]/90 shadow-lg"
                 transition={{
                   duration: 0.4,
+                  ease: EaseOutSine,
                 }}
                 variants={{
                   initial: {
@@ -71,9 +69,6 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
                     opacity: 0,
                     scaleY: 1.2,
                     scaleX: 1.4,
-                    transition: {
-                      duration: 0.5,
-                    },
                   },
 
                   animateTo: {
