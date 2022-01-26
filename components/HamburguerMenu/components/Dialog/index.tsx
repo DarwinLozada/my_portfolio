@@ -3,8 +3,8 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { CloseIcon } from 'components/Icons'
 import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import { AnimatePresence, m } from 'framer-motion'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import { forwardRef, Ref } from 'react'
 
 const NavRoutes = [
@@ -56,7 +56,7 @@ const NavDialog = forwardRef(({ active }: Props, ref: Ref<HTMLDivElement>) => {
           <Dialog.Overlay asChild forceMount ref={ref}>
             <Dialog.Content asChild forceMount>
               <m.div
-                className="relative flex h-1/2 w-2/3 flex-col overflow-hidden rounded-lg bg-gradient-to-b from-[#6e6df3] to-[#042044]/90 shadow-lg will-change-transform"
+                className="relative flex h-1/2 w-2/3 flex-col overflow-hidden rounded-lg bg-gradient-to-b from-[#6e6df3] to-[#042044]/90 shadow-lg"
                 transition={{
                   duration: 0.4,
                 }}
