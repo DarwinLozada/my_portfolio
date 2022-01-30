@@ -4,10 +4,10 @@ import 'styles/reset.css'
 import 'styles/global.css'
 import 'tailwindcss/tailwind.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <AppLayout>
-      <Component {...pageProps} />
+      <Component {...pageProps} key={router.route} />
     </AppLayout>
   )
 }
