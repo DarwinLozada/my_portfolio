@@ -27,7 +27,7 @@ const HamburguerMenu: FC = () => {
           )}
         </Dialog.Trigger>
         <Dialog.Portal forceMount>
-          <NavDialog active={isActive} />
+          <NavDialog active={isActive} setActive={setActive} />
         </Dialog.Portal>
       </Dialog.Root>
       <Dropdown.Root

@@ -1,7 +1,7 @@
 import HamburguerMenu from 'components/HamburguerMenu'
 import { HOME_ROUTE } from 'constants/routes'
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'components/Link'
 import brandLogo from 'public/images/logo_developer_cat.png'
 import { FC } from 'react'
 

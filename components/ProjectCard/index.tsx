@@ -3,7 +3,7 @@ import { ValuesType } from 'utility-types'
 import Image from 'next/image'
 import { FC } from 'react'
 import Badge from 'components/Badge'
-import Link from 'next/link'
+import Link from 'components/Link'
 
 interface Props {
   projectData: ValuesType<ProjectsQuery['projects']>

@@ -3,7 +3,7 @@ import { UrlObject } from 'url'
 
 import dynamic from 'next/dynamic'
 
-const LinkComponent = dynamic(() => import('next/link'))
+const LinkComponent = dynamic(() => import('components/Link'))
 
 interface Props {
   size?: 'small' | 'medium' | 'large'
