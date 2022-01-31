@@ -1,5 +1,5 @@
 import Header from 'components/Header'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { m } from 'framer-motion'
 
 interface Props {
@@ -7,12 +7,6 @@ interface Props {
 }
 
 const MainLayout: FC<Props> = ({ children, bluredBackground }) => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-    })
-  }, [])
-
   return (
     <m.div
       transition={{

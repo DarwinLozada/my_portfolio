@@ -24,7 +24,13 @@ const AppLayout: FC = ({ children }) => {
           <div className="absolute bottom-64 top-[28rem] right-8 flex w-28">
             <DynamicStackedCubes color="pinky" className="opacity-30" />
           </div>
-          <AnimatePresence initial={false} exitBeforeEnter>
+          <AnimatePresence
+            initial={false}
+            exitBeforeEnter
+            onExitComplete={() => {
+              window.scrollTo({ top: 0 })
+            }}
+          >
             {children}
           </AnimatePresence>
         </div>

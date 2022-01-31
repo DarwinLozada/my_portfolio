@@ -132,7 +132,7 @@ const NavDialog = forwardRef(
                   </m.div>
 
                   <div className="flex justify-end">
-                    <Dialog.Close className="p-4">
+                    <Dialog.Close className="p-4 duration-150 hover:opacity-50">
                       <CloseIcon className="w-4 stroke-1 text-white/30" />
                     </Dialog.Close>
                   </div>

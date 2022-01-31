@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 const Link: FC<LinkProps> = ({ children, ...linkProps }) => {
   return (
-    <NextLink {...linkProps} scroll={false}>
+    <NextLink passHref scroll={false} {...linkProps}>
       {children}
     </NextLink>
   )
