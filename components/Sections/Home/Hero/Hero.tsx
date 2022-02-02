@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import Button from 'components/Button/Button'
 import { Download, GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
-import Link from 'components/Link'
 
 const HeroSection: FC = () => {
   return (
