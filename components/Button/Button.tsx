@@ -13,6 +13,7 @@ interface Props {
   anchor?: boolean
   href?: string | UrlObject
   rightIcon?: ReactNode
+  className?: string
 }
 
 const COLORS = {
@@ -31,6 +32,7 @@ const SIZES = {
 const Button: FC<Props> = ({
   size = 'medium',
   colorScheme = 'primary',
+  className = '',
   inline = false,
   anchor = false,
   openTab = false,
@@ -42,12 +44,11 @@ const Button: FC<Props> = ({
     console.warn('You need to pass a href as prop in order to use an anchor')
   }
 
-  const buttonClassNames = `flex items-center justify-center rounded-[10px] gap-3 
-                            duration-500 transition filter 
-                            hover:brightness-125 active:ring-2 active:shadow-lg  
-                            ${SIZES[size]} 
-                            ${COLORS[colorScheme]} 
-                            ${inline ? 'inline-flex' : 'flex'}`
+  const buttonClassNames = `flex items-center justify-center rounded-[10px] gap-3 duration-500 transition filter hover:brightness-125 active:ring-2 active:shadow-lg ${
+    SIZES[size]
+  } ${COLORS[colorScheme]} ${inline ? 'inline-flex' : 'flex'}
+  ${className}
+  `
 
   return (
     <>

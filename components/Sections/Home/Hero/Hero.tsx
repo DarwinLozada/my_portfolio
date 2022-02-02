@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Button from 'components/Button/Button'
-import { Download } from 'components/Icons'
+import { Download, GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
+import Link from 'components/Link'
 
 const HeroSection: FC = () => {
   return (
@@ -28,6 +29,35 @@ const HeroSection: FC = () => {
             Check my resume
           </Button>
         </div>
+        <nav className="mt-8 flex w-full justify-center gap-4">
+          <Button
+            anchor
+            openTab
+            size="small"
+            className="px-2"
+            href="https://github.com/DarwinLozada"
+          >
+            <GitHubIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
+          </Button>
+          <Button
+            anchor
+            openTab
+            className="px-2"
+            size="small"
+            href="https://twitter.com/_DarwinLozada_"
+          >
+            <TwitterIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
+          </Button>
+          <Button
+            anchor
+            openTab
+            size="small"
+            className="px-2"
+            href="https://www.linkedin.com/in/darwin-lozada-41443b194/"
+          >
+            <LinkedinIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
+          </Button>
+        </nav>
       </section>
     </section>
   )
