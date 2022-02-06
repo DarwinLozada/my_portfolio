@@ -1,6 +1,4 @@
 import { FC } from 'react'
-import brandLogo from 'public/images/logo_developer_cat.png'
-import Image from 'next/image'
 import Link from 'components/Link'
 import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import Button from 'components/Button'
@@ -8,7 +6,7 @@ import { GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
 
 const Footer: FC = () => {
   return (
-    <footer className="flex flex-col items-center justify-between gap-2 bg-transparent px-4 pb-6 pt-8">
+    <footer className="z-10 flex flex-col items-center justify-between gap-1 justify-self-end bg-transparent px-4 pb-6 pt-8">
       <p className="text-semibold font-montserrat text-xl font-semibold text-white">
         Darwin Lozada
       </p>

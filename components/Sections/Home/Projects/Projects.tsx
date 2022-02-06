@@ -35,7 +35,12 @@ const Projects: FC = () => {
             you want and on the device you want.
           </p>
           <div className="mt-12 flex flex-col items-center gap-6">
-            <Button size="medium" colorScheme="dogcatcher">
+            <Button
+              size="medium"
+              colorScheme="dogcatcher"
+              anchor
+              href="/projects/dogcatcher"
+            >
               More info
             </Button>
             <Button
@@ -70,7 +75,12 @@ const Projects: FC = () => {
           </p>
         </div>
         <div className="mt-12 flex flex-col items-center gap-6">
-          <Button size="medium" colorScheme="ouruniverse">
+          <Button
+            size="medium"
+            colorScheme="ouruniverse"
+            anchor
+            href="/projects/our-universe"
+          >
             More info
           </Button>
           <Button
