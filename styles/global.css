@@ -65,7 +65,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('/fonts/montserrat/Montserrat-SemiBold.ttf');
-  font-style: bold;
+  font-style: semibold;
   font-weight: 600;
   font-display: swap;
 }

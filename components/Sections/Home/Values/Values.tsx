@@ -5,7 +5,7 @@ import Value from './Value'
 
 const Values: FC = () => {
   return (
-    <section className="relative mt-64 mb-28 flex flex-col items-center justify-center px-4">
+    <section className="relative mt-64 mb-60 flex flex-col items-center justify-center px-4">
       <div className="absolute -top-36 opacity-25">
         <Monitor className=" w-[350px]" />
       </div>

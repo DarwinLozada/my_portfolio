@@ -22,6 +22,10 @@ module.exports = {
       fontFamily: {
         montserrat: ['Montserrat'],
       },
+
+      screens: {
+        xs: '380px',
+      },
     },
   },
   plugins: [],

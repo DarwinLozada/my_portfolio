@@ -23,7 +23,7 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
             alt={`${name} main image`}
           />
         </div>
-        <div className="mt-6 flex justify-between">
+        <div className="mt-6 flex flex-col flex-wrap items-start justify-between gap-2 xs:flex-row xs:gap-0">
           <h3 className="font-montserrat text-2xl font-semibold text-white">
             {name}
           </h3>
@@ -41,7 +41,7 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
             }
           />
         </div>
-        <div className="mt-4 flex items-center gap-4">
+        <div className="mt-4 flex flex-wrap items-center gap-4">
           {techs.map((tech) => (
             <div
               key={tech.name}

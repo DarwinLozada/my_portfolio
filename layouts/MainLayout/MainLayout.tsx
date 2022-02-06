@@ -1,6 +1,7 @@
 import Header from 'components/Header'
 import { FC } from 'react'
 import { m } from 'framer-motion'
+import Footer from 'components/Footer'
 
 interface Props {
   bluredBackground?: boolean
@@ -39,7 +40,7 @@ const MainLayout: FC<Props> = ({ children, bluredBackground }) => {
       >
         {children}
       </main>
-      <footer></footer>
+      <Footer />
     </m.div>
   )
 }
