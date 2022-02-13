@@ -44,7 +44,7 @@ const Button: FC<Props> = ({
     console.warn('You need to pass a href as prop in order to use an anchor')
   }
 
-  const buttonClassNames = `flex items-center text-center justify-center rounded-[10px] gap-3 duration-500 transition filter hover:brightness-125 active:ring-2 active:shadow-lg ${
+  const buttonClassNames = `flex items-center text-center justify-center tracking-normal rounded-[10px] gap-3 duration-500 transition filter hover:brightness-125 active:ring-2 active:shadow-lg ${
     SIZES[size]
   } ${COLORS[colorScheme]} ${inline ? 'inline-flex' : 'flex'}
   ${className}
@@ -70,7 +70,9 @@ const Button: FC<Props> = ({
         <a
           className={buttonClassNames}
           download
+          target="_blank"
           href={typeof href === 'string' ? href : ''}
+          rel="noreferrer"
         >
           {children}
           {rightIcon || null}

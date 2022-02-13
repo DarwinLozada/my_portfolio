@@ -21,6 +21,8 @@ const HeroSection: FC = () => {
         <div className="mt-10 flex flex-col items-center justify-center gap-6">
           <Button size="medium">More about me</Button>
           <Button
+            type="download"
+            href="https://media.graphcms.com/konpOSdUTfG848diygTl?_ga=2.138435379.1699815425.1644727966-430862818.1639815097"
             size="medium"
             colorScheme="secondary"
             rightIcon={<Download className="w-6 stroke-2 text-brandWhite" />}
