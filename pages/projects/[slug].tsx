@@ -85,7 +85,9 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
             ))}
           </div>
           <p className="mt-4 text-lg leading-8 text-white">{description}</p>
-          <MDXRemote {...mdxSource} />
+          <article className="flex flex-col gap-8">
+            <MDXRemote {...mdxSource} />
+          </article>
         </div>
       </article>
     </MainLayout>

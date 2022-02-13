@@ -35,7 +35,7 @@ const Footer: FC = () => {
         </ul>
         <div className="mt-4 flex w-full justify-center gap-4">
           <Button
-            anchor
+            type="anchor"
             openTab
             size="small"
             className="px-2"
@@ -44,7 +44,7 @@ const Footer: FC = () => {
             <GitHubIcon className="w-5 fill-white stroke-white stroke-0 text-brandWhite" />
           </Button>
           <Button
-            anchor
+            type="anchor"
             openTab
             className="px-2"
             size="small"
@@ -53,7 +53,7 @@ const Footer: FC = () => {
             <TwitterIcon className="w-5 fill-white stroke-white stroke-0 text-brandWhite" />
           </Button>
           <Button
-            anchor
+            type="anchor"
             openTab
             size="small"
             className="px-2"

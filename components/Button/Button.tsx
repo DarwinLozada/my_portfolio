@@ -7,10 +7,10 @@ const LinkComponent = dynamic(() => import('components/Link'))
 
 interface Props {
   size?: 'small' | 'medium' | 'large'
+  type?: 'button' | 'anchor' | 'download'
   colorScheme?: 'primary' | 'secondary' | 'dark' | 'dogcatcher' | 'ouruniverse'
   inline?: boolean
   openTab?: boolean
-  anchor?: boolean
   href?: string | UrlObject
   rightIcon?: ReactNode
   className?: string
@@ -34,39 +34,57 @@ const Button: FC<Props> = ({
   colorScheme = 'primary',
   className = '',
   inline = false,
-  anchor = false,
+  type = 'button',
   openTab = false,
   href = null,
   rightIcon,
   children,
 }) => {
-  if (anchor && !href) {
+  if ((type === 'anchor' || type === 'download') && !href) {
     console.warn('You need to pass a href as prop in order to use an anchor')
   }
 
-  const buttonClassNames = `flex items-center justify-center rounded-[10px] gap-3 duration-500 transition filter hover:brightness-125 active:ring-2 active:shadow-lg ${
+  const buttonClassNames = `flex items-center text-center justify-center rounded-[10px] gap-3 duration-500 transition filter hover:brightness-125 active:ring-2 active:shadow-lg ${
     SIZES[size]
   } ${COLORS[colorScheme]} ${inline ? 'inline-flex' : 'flex'}
   ${className}
   `
 
-  return (
-    <>
-      {anchor ? (
+  switch (type) {
+    case 'anchor':
+      return (
         <LinkComponent href={href || '#'}>
           <a className={buttonClassNames} target={openTab ? '_blank' : '_self'}>
             {children}
             {rightIcon || null}
           </a>
         </LinkComponent>
-      ) : (
+      )
+
+    case 'download':
+      if (typeof href !== 'string') {
+        console.warn('The href prop must be a string')
+      }
+
+      return (
+        <a
+          className={buttonClassNames}
+          download
+          href={typeof href === 'string' ? href : ''}
+        >
+          {children}
+          {rightIcon || null}
+        </a>
+      )
+
+    default:
+      return (
         <button className={buttonClassNames}>
           {children}
           {rightIcon || null}
         </button>
-      )}
-    </>
-  )
+      )
+  }
 }
 
 export default Button

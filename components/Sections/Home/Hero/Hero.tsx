@@ -23,14 +23,14 @@ const HeroSection: FC = () => {
           <Button
             size="medium"
             colorScheme="secondary"
-            rightIcon={<Download className="w-6 text-brandWhite" />}
+            rightIcon={<Download className="w-6 stroke-2 text-brandWhite" />}
           >
             Check my resume
           </Button>
         </div>
         <nav className="mt-8 flex w-full justify-center gap-4">
           <Button
-            anchor
+            type="anchor"
             openTab
             size="small"
             className="px-2"
@@ -39,7 +39,7 @@ const HeroSection: FC = () => {
             <GitHubIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
           </Button>
           <Button
-            anchor
+            type="anchor"
             openTab
             className="px-2"
             size="small"
@@ -48,7 +48,7 @@ const HeroSection: FC = () => {
             <TwitterIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
           </Button>
           <Button
-            anchor
+            type="anchor"
             openTab
             size="small"
             className="px-2"

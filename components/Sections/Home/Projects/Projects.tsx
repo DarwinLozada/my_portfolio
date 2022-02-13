@@ -8,6 +8,7 @@ import Tag from 'components/Tag'
 import { Planet, Clip } from 'components/Icons'
 import Button from 'components/Button'
 import { DOGCATCHER_LINK, OURUNIVERSE_LINK } from 'constants/links'
+import { PROJECTS_ROUTE } from 'constants/routes'
 
 const Projects: FC = () => {
   return (
@@ -38,13 +39,13 @@ const Projects: FC = () => {
             <Button
               size="medium"
               colorScheme="dogcatcher"
-              anchor
+              type="anchor"
               href="/projects/dogcatcher"
             >
               More info
             </Button>
             <Button
-              anchor
+              type="anchor"
               href={DOGCATCHER_LINK}
               openTab
               colorScheme="dark"
@@ -78,13 +79,13 @@ const Projects: FC = () => {
           <Button
             size="medium"
             colorScheme="ouruniverse"
-            anchor
+            type="anchor"
             href="/projects/our-universe"
           >
             More info
           </Button>
           <Button
-            anchor
+            type="anchor"
             href={OURUNIVERSE_LINK}
             openTab
             colorScheme="dark"
@@ -96,7 +97,9 @@ const Projects: FC = () => {
       </div>
 
       <div className="my-24 flex items-center justify-center px-14">
-        <Button size="large">Wanna see more of what I’ve done?</Button>
+        <Button size="large" anchor href={PROJECTS_ROUTE}>
+          Wanna see more of what I’ve done?
+        </Button>
       </div>
     </section>
   )
