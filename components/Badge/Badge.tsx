@@ -21,7 +21,7 @@ const Badge: FC<Props> = ({ icon, bgColor, text, textColor, size = 'medium' }) =
         style={{ backgroundColor: bgColor }}
       >
         <div className="flex max-w-[1rem] leading-none">{icon}</div>
-        <span style={{ color: textColor }}>{text}</span>
+        <span style={{ color: textColor }}>{text.replace('_', ' ')}</span>
       </div>
     </div>
   )

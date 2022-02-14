@@ -4,6 +4,7 @@ query Project($slug: String!) {
     slug
     description
     additionalDescription
+    resource
     name
     additionalImages {
       width

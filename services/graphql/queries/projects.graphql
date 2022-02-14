@@ -3,6 +3,7 @@ query Projects {
     id
     slug
     description
+    resource
     name
     additionalImages {
       width

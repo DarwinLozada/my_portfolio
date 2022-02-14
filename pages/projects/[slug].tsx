@@ -15,6 +15,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import imageMetadata from 'markdown/plugins/image-metadata'
 import Breadcrum from 'components/Breadcrumb'
+import Button from 'components/Button'
 
 interface Props {
   data: NonNullProjectData
@@ -26,7 +27,7 @@ interface GetStaticPropsParams extends ParsedUrlQuery {
 }
 
 const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
-  const { name, mainImage, typeOfApp, techs, description, slug } = data
+  const { name, mainImage, typeOfApp, techs, description, slug, resource } = data
 
   return (
     <MainLayout>
@@ -52,19 +53,31 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
           />
         </div>
         <div className="mt-12 flex w-full flex-col items-start justify-between gap-4">
-          <Badge
-            text={typeOfApp?.name as string}
-            bgColor={typeOfApp?.displayColor.hex}
-            textColor={typeOfApp?.textColor.hex}
-            icon={
-              <Image
-                src={typeOfApp?.icon.url as string}
-                width={typeOfApp?.icon.width as number}
-                height={typeOfApp?.icon.height as number}
-                alt={`${typeOfApp?.name} icon`}
-              />
-            }
-          />
+          <div className="mb-2 flex w-full items-center justify-between">
+            <Badge
+              text={typeOfApp?.name as string}
+              bgColor={typeOfApp?.displayColor.hex}
+              textColor={typeOfApp?.textColor.hex}
+              icon={
+                <Image
+                  src={typeOfApp?.icon.url as string}
+                  width={typeOfApp?.icon.width as number}
+                  height={typeOfApp?.icon.height as number}
+                  alt={`${typeOfApp?.name} icon`}
+                />
+              }
+            />
+
+            <Button
+              size="small"
+              colorScheme="primary"
+              type="anchor"
+              href={resource}
+              openTab
+            >
+              👀 Want to check it out?
+            </Button>
+          </div>
           <div className="mt-1 flex gap-4">
             {techs.map((tech) => (
               <div

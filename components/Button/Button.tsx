@@ -24,7 +24,7 @@ const COLORS = {
   ouruniverse: 'bg-ouruniverseWhite text-brandBg font-medium',
 }
 const SIZES = {
-  small: 'text-base px-6 py-2',
+  small: 'text-base px-5 py-2',
   medium: 'text-lg px-8 py-3',
   large: 'text-xl px-12 py-4',
 }

@@ -1668,6 +1668,7 @@ export type Project = Node & {
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
+  resource: Scalars['String'];
   scheduledIn: Array<ScheduledOperation>;
   slug: Scalars['String'];
   /** System stage field */
@@ -1802,6 +1803,7 @@ export type ProjectCreateInput = {
   localizations?: InputMaybe<ProjectCreateLocalizationsInput>;
   mainImage: AssetCreateOneInlineInput;
   name: Scalars['String'];
+  resource: Scalars['String'];
   slug: Scalars['String'];
   techs?: InputMaybe<TechCreateManyInlineInput>;
   typeOfApp?: InputMaybe<TypeOfAppCreateOneInlineInput>;
@@ -1951,6 +1953,25 @@ export type ProjectManyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  resource?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  resource_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  resource_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  resource_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  resource_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  resource_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  resource_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  resource_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  resource_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  resource_starts_with?: InputMaybe<Scalars['String']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -2008,6 +2029,8 @@ export enum ProjectOrderByInput {
   NameDesc = 'name_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  ResourceAsc = 'resource_ASC',
+  ResourceDesc = 'resource_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -2023,6 +2046,7 @@ export type ProjectUpdateInput = {
   localizations?: InputMaybe<ProjectUpdateLocalizationsInput>;
   mainImage?: InputMaybe<AssetUpdateOneInlineInput>;
   name?: InputMaybe<Scalars['String']>;
+  resource?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   techs?: InputMaybe<TechUpdateManyInlineInput>;
   typeOfApp?: InputMaybe<TypeOfAppUpdateOneInlineInput>;
@@ -2071,6 +2095,7 @@ export type ProjectUpdateManyInput = {
   /** Optional updates to localizations */
   localizations?: InputMaybe<ProjectUpdateManyLocalizationsInput>;
   name?: InputMaybe<Scalars['String']>;
+  resource?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectUpdateManyLocalizationDataInput = {
@@ -2258,6 +2283,25 @@ export type ProjectWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  resource?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  resource_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  resource_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  resource_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  resource_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  resource_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  resource_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  resource_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  resource_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  resource_starts_with?: InputMaybe<Scalars['String']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -4091,7 +4135,7 @@ export type TypeOfApp = Node & {
   icon: Asset;
   /** The unique identifier */
   id: Scalars['ID'];
-  name: Scalars['String'];
+  name: TypesOfApp;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -4173,7 +4217,7 @@ export type TypeOfAppCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   displayColor: ColorInput;
   icon: AssetCreateOneInlineInput;
-  name: Scalars['String'];
+  name: TypesOfApp;
   textColor: ColorInput;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -4247,25 +4291,13 @@ export type TypeOfAppManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<TypesOfApp>;
   /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<Scalars['String']>>;
+  name_in?: InputMaybe<Array<TypesOfApp>>;
   /** All values that are not equal to given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  name_not?: InputMaybe<TypesOfApp>;
   /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<TypesOfApp>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -4320,7 +4352,7 @@ export type TypeOfAppUpdateInput = {
   ckxq5bto101eg01z15vlv81kw?: InputMaybe<ProjectUpdateManyInlineInput>;
   displayColor?: InputMaybe<ColorInput>;
   icon?: InputMaybe<AssetUpdateOneInlineInput>;
-  name?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<TypesOfApp>;
   textColor?: InputMaybe<ColorInput>;
 };
 
@@ -4343,7 +4375,7 @@ export type TypeOfAppUpdateManyInlineInput = {
 
 export type TypeOfAppUpdateManyInput = {
   displayColor?: InputMaybe<ColorInput>;
-  name?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<TypesOfApp>;
   textColor?: InputMaybe<ColorInput>;
 };
 
@@ -4436,25 +4468,13 @@ export type TypeOfAppWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<TypesOfApp>;
   /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<Scalars['String']>>;
+  name_in?: InputMaybe<Array<TypesOfApp>>;
   /** All values that are not equal to given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  name_not?: InputMaybe<TypesOfApp>;
   /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<TypesOfApp>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -4496,6 +4516,11 @@ export type TypeOfAppWhereInput = {
 export type TypeOfAppWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
+export enum TypesOfApp {
+  DesktopApp = 'DESKTOP_APP',
+  WebApp = 'WEB_APP'
+}
 
 export type UnpublishLocaleInput = {
   /** Locales to unpublish */
@@ -4965,12 +4990,12 @@ export type ProjectQueryVariables = Exact<{
 }>;
 
 
-export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', id: string, slug: string, description: string, additionalDescription: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: string, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined };
+export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', id: string, slug: string, description: string, additionalDescription: string, resource: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: TypesOfApp, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined };
 
 export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', id: string, slug: string, description: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: string, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }> };
+export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', id: string, slug: string, description: string, resource: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: TypesOfApp, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }> };
 
 export type ProjectsSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4985,6 +5010,7 @@ export const ProjectDocument = gql`
     slug
     description
     additionalDescription
+    resource
     name
     additionalImages {
       width
@@ -5062,6 +5088,7 @@ export const ProjectsDocument = gql`
     id
     slug
     description
+    resource
     name
     additionalImages {
       width
