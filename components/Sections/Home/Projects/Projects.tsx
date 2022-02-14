@@ -97,7 +97,7 @@ const Projects: FC = () => {
       </div>
 
       <div className="my-24 flex items-center justify-center px-14">
-        <Button size="large" href={PROJECTS_ROUTE}>
+        <Button size="large" href={PROJECTS_ROUTE} type="anchor">
           Wanna see more of what I’ve done?
         </Button>
       </div>

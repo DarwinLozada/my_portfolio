@@ -8,7 +8,13 @@ const LinkComponent = dynamic(() => import('components/Link'))
 interface Props {
   size?: 'small' | 'medium' | 'large'
   type?: 'button' | 'anchor' | 'download'
-  colorScheme?: 'primary' | 'secondary' | 'dark' | 'dogcatcher' | 'ouruniverse'
+  colorScheme?:
+    | 'primary'
+    | 'secondary'
+    | 'dark'
+    | 'dogcatcher'
+    | 'ouruniverse'
+    | 'ghost'
   inline?: boolean
   openTab?: boolean
   href?: string | UrlObject
@@ -22,6 +28,7 @@ const COLORS = {
   dark: 'bg-brandBg text-brandWhite ring-brandWhite',
   dogcatcher: 'bg-dogcatcherRed text-brandWhite ring-brandBg',
   ouruniverse: 'bg-ouruniverseWhite text-brandBg font-medium',
+  ghost: 'text-white ring-white bg-brandPink/50',
 }
 const SIZES = {
   small: 'text-base px-5 py-2',

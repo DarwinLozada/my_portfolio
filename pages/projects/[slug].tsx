@@ -31,7 +31,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
 
   return (
     <MainLayout>
-      <article className="mt-32 flex flex-col items-center justify-center px-4 pb-20">
+      <article className="mt-28 flex flex-col items-center justify-center px-4 pb-20">
         <div className="flex w-full justify-start">
           <Breadcrum
             items={[
@@ -52,8 +52,8 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
             alt={`${name} main_image`}
           />
         </div>
-        <div className="mt-12 flex w-full flex-col items-start justify-between gap-4">
-          <div className="mb-2 flex w-full flex-col items-start gap-y-5 xs:flex-row xs:items-center xs:justify-between">
+        <div className="mt-10 flex w-full flex-col items-start justify-between gap-4">
+          <div className="mb-4 flex w-full flex-col gap-y-5 xss:flex-row xss:items-center xss:justify-between">
             <Badge
               text={typeOfApp?.name as string}
               bgColor={typeOfApp?.displayColor.hex}
@@ -70,7 +70,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
 
             <Button
               size="small"
-              colorScheme="primary"
+              colorScheme="ghost"
               type="anchor"
               href={resource}
               openTab
