@@ -53,7 +53,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
           />
         </div>
         <div className="mt-10 flex w-full flex-col items-start justify-between gap-4">
-          <div className="mb-4 flex w-full flex-col gap-y-5 xss:flex-row xss:items-center xss:justify-between">
+          <div className="mb-4 flex w-full flex-col items-center gap-y-5 xss:flex-row xss:justify-between">
             <Badge
               text={typeOfApp?.name as string}
               bgColor={typeOfApp?.displayColor.hex}
@@ -68,15 +68,18 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
               }
             />
 
-            <Button
-              size="small"
-              colorScheme="ghost"
-              type="anchor"
-              href={resource}
-              openTab
-            >
-              👀 Want to check it out?
-            </Button>
+            <div className="max-w-[16rem]">
+              <Button
+                size="small"
+                inline
+                colorScheme="ghost"
+                type="anchor"
+                href={resource}
+                openTab
+              >
+                👀 Want to check it out?
+              </Button>
+            </div>
           </div>
           <div className="mt-1 flex gap-4">
             {techs.map((tech) => (
