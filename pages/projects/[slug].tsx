@@ -53,7 +53,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
           />
         </div>
         <div className="mt-12 flex w-full flex-col items-start justify-between gap-4">
-          <div className="mb-2 flex w-full items-center justify-between">
+          <div className="mb-2 flex w-full flex-col items-start gap-y-5 xs:flex-row xs:items-center xs:justify-between">
             <Badge
               text={typeOfApp?.name as string}
               bgColor={typeOfApp?.displayColor.hex}
