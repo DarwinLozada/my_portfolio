@@ -14,15 +14,15 @@ const NotFoundPage: NextPage = () => {
           Ups... <span className="text-2xl">I could not find this page </span>
         </h1>
         <m.figure
-          className="mt-6 w-64 opacity-60 drop-shadow-lg hue-rotate-30"
+          className="mt-6 w-96 opacity-60 drop-shadow-lg hue-rotate-30"
           transition={{ duration: 7, repeat: Infinity, repeatType: 'mirror' }}
           animate={{ translateX: [10, -5, 13], translateY: [10, -8] }}
         >
           <Image
-            width={800}
-            height={600}
+            width={2500}
+            height={1778}
             alt="folder image"
-            src="https://media.graphcms.com/PRg11EHoRCGDs44ayxGv?_ga=2.33424311.880043180.1644136938-430862818.1639815097"
+            src="https://media.graphcms.com/qUwkrqrQWiGoUaWkSRng?_ga=2.218135121.953258469.1647082152-430862818.1639815097"
           />
         </m.figure>
       </div>
