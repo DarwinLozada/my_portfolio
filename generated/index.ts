@@ -55,6 +55,7 @@ export type Asset = Node & {
   iconTypeOfApp: Array<TypeOfApp>;
   /** The unique identifier */
   id: Scalars['ID'];
+  imageHobbie: Array<Hobbie>;
   /** System Locale field */
   locale: Locale;
   /** Get the other localizations for this document */
@@ -150,6 +151,19 @@ export type AssetIconTypeOfAppArgs = {
 
 
 /** Asset system model */
+export type AssetImageHobbieArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<HobbieOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<HobbieWhereInput>;
+};
+
+
+/** Asset system model */
 export type AssetLocalizationsArgs = {
   includeCurrent?: Scalars['Boolean'];
   locales?: Array<Locale>;
@@ -235,6 +249,7 @@ export type AssetCreateInput = {
   height?: InputMaybe<Scalars['Float']>;
   iconTech?: InputMaybe<TechCreateManyInlineInput>;
   iconTypeOfApp?: InputMaybe<TypeOfAppCreateManyInlineInput>;
+  imageHobbie?: InputMaybe<HobbieCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
   main_imageProject?: InputMaybe<ProjectCreateManyInlineInput>;
@@ -343,6 +358,9 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  imageHobbie_every?: InputMaybe<HobbieWhereInput>;
+  imageHobbie_none?: InputMaybe<HobbieWhereInput>;
+  imageHobbie_some?: InputMaybe<HobbieWhereInput>;
   main_imageProject_every?: InputMaybe<ProjectWhereInput>;
   main_imageProject_none?: InputMaybe<ProjectWhereInput>;
   main_imageProject_some?: InputMaybe<ProjectWhereInput>;
@@ -421,6 +439,7 @@ export type AssetUpdateInput = {
   height?: InputMaybe<Scalars['Float']>;
   iconTech?: InputMaybe<TechUpdateManyInlineInput>;
   iconTypeOfApp?: InputMaybe<TypeOfAppUpdateManyInlineInput>;
+  imageHobbie?: InputMaybe<HobbieUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
   main_imageProject?: InputMaybe<ProjectUpdateManyInlineInput>;
@@ -654,6 +673,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  imageHobbie_every?: InputMaybe<HobbieWhereInput>;
+  imageHobbie_none?: InputMaybe<HobbieWhereInput>;
+  imageHobbie_some?: InputMaybe<HobbieWhereInput>;
   main_imageProject_every?: InputMaybe<ProjectWhereInput>;
   main_imageProject_none?: InputMaybe<ProjectWhereInput>;
   main_imageProject_some?: InputMaybe<ProjectWhereInput>;
@@ -843,6 +865,575 @@ export type DocumentVersion = {
   stage: Stage;
 };
 
+export type Hobbie = Node & {
+  __typename?: 'Hobbie';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  description?: Maybe<Scalars['String']>;
+  /** Get the document in other stages */
+  documentInStages: Array<Hobbie>;
+  /** List of Hobbie versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  image: Asset;
+  imageAlt: Scalars['String'];
+  /** System Locale field */
+  locale: Locale;
+  /** Get the other localizations for this document */
+  localizations: Array<Hobbie>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  resource_link?: Maybe<Scalars['String']>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type HobbieCreatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+export type HobbieCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type HobbieDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type HobbieHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type HobbieImageArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type HobbieLocalizationsArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  locales?: Array<Locale>;
+};
+
+
+export type HobbiePublishedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+export type HobbiePublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type HobbieScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type HobbieUpdatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+export type HobbieUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type HobbieConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: HobbieWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type HobbieConnection = {
+  __typename?: 'HobbieConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<HobbieEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type HobbieCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** description input for default locale (en) */
+  description?: InputMaybe<Scalars['String']>;
+  image: AssetCreateOneInlineInput;
+  imageAlt: Scalars['String'];
+  /** Inline mutations for managing document localizations excluding the default locale */
+  localizations?: InputMaybe<HobbieCreateLocalizationsInput>;
+  resource_link?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type HobbieCreateLocalizationDataInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type HobbieCreateLocalizationInput = {
+  /** Localization input */
+  data: HobbieCreateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type HobbieCreateLocalizationsInput = {
+  /** Create localizations for the newly-created document */
+  create?: InputMaybe<Array<HobbieCreateLocalizationInput>>;
+};
+
+export type HobbieCreateManyInlineInput = {
+  /** Connect multiple existing Hobbie documents */
+  connect?: InputMaybe<Array<HobbieWhereUniqueInput>>;
+  /** Create and connect multiple existing Hobbie documents */
+  create?: InputMaybe<Array<HobbieCreateInput>>;
+};
+
+export type HobbieCreateOneInlineInput = {
+  /** Connect one existing Hobbie document */
+  connect?: InputMaybe<HobbieWhereUniqueInput>;
+  /** Create and connect one Hobbie document */
+  create?: InputMaybe<HobbieCreateInput>;
+};
+
+/** An edge in a connection. */
+export type HobbieEdge = {
+  __typename?: 'HobbieEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Hobbie;
+};
+
+/** Identifies documents */
+export type HobbieManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<HobbieWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<HobbieWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<HobbieWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+  imageAlt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  imageAlt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  imageAlt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  imageAlt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  imageAlt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  imageAlt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  imageAlt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  imageAlt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  imageAlt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  imageAlt_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  resource_link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  resource_link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  resource_link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  resource_link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  resource_link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  resource_link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  resource_link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  resource_link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  resource_link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  resource_link_starts_with?: InputMaybe<Scalars['String']>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum HobbieOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  ImageAltAsc = 'imageAlt_ASC',
+  ImageAltDesc = 'imageAlt_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  ResourceLinkAsc = 'resource_link_ASC',
+  ResourceLinkDesc = 'resource_link_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type HobbieUpdateInput = {
+  /** description input for default locale (en) */
+  description?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<AssetUpdateOneInlineInput>;
+  imageAlt?: InputMaybe<Scalars['String']>;
+  /** Manage document localizations */
+  localizations?: InputMaybe<HobbieUpdateLocalizationsInput>;
+  resource_link?: InputMaybe<Scalars['String']>;
+};
+
+export type HobbieUpdateLocalizationDataInput = {
+  description?: InputMaybe<Scalars['String']>;
+};
+
+export type HobbieUpdateLocalizationInput = {
+  data: HobbieUpdateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type HobbieUpdateLocalizationsInput = {
+  /** Localizations to create */
+  create?: InputMaybe<Array<HobbieCreateLocalizationInput>>;
+  /** Localizations to delete */
+  delete?: InputMaybe<Array<Locale>>;
+  /** Localizations to update */
+  update?: InputMaybe<Array<HobbieUpdateLocalizationInput>>;
+  upsert?: InputMaybe<Array<HobbieUpsertLocalizationInput>>;
+};
+
+export type HobbieUpdateManyInlineInput = {
+  /** Connect multiple existing Hobbie documents */
+  connect?: InputMaybe<Array<HobbieConnectInput>>;
+  /** Create and connect multiple Hobbie documents */
+  create?: InputMaybe<Array<HobbieCreateInput>>;
+  /** Delete multiple Hobbie documents */
+  delete?: InputMaybe<Array<HobbieWhereUniqueInput>>;
+  /** Disconnect multiple Hobbie documents */
+  disconnect?: InputMaybe<Array<HobbieWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Hobbie documents */
+  set?: InputMaybe<Array<HobbieWhereUniqueInput>>;
+  /** Update multiple Hobbie documents */
+  update?: InputMaybe<Array<HobbieUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Hobbie documents */
+  upsert?: InputMaybe<Array<HobbieUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type HobbieUpdateManyInput = {
+  /** description input for default locale (en) */
+  description?: InputMaybe<Scalars['String']>;
+  imageAlt?: InputMaybe<Scalars['String']>;
+  /** Optional updates to localizations */
+  localizations?: InputMaybe<HobbieUpdateManyLocalizationsInput>;
+  resource_link?: InputMaybe<Scalars['String']>;
+};
+
+export type HobbieUpdateManyLocalizationDataInput = {
+  description?: InputMaybe<Scalars['String']>;
+};
+
+export type HobbieUpdateManyLocalizationInput = {
+  data: HobbieUpdateManyLocalizationDataInput;
+  locale: Locale;
+};
+
+export type HobbieUpdateManyLocalizationsInput = {
+  /** Localizations to update */
+  update?: InputMaybe<Array<HobbieUpdateManyLocalizationInput>>;
+};
+
+export type HobbieUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: HobbieUpdateManyInput;
+  /** Document search */
+  where: HobbieWhereInput;
+};
+
+export type HobbieUpdateOneInlineInput = {
+  /** Connect existing Hobbie document */
+  connect?: InputMaybe<HobbieWhereUniqueInput>;
+  /** Create and connect one Hobbie document */
+  create?: InputMaybe<HobbieCreateInput>;
+  /** Delete currently connected Hobbie document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Hobbie document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Hobbie document */
+  update?: InputMaybe<HobbieUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Hobbie document */
+  upsert?: InputMaybe<HobbieUpsertWithNestedWhereUniqueInput>;
+};
+
+export type HobbieUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: HobbieUpdateInput;
+  /** Unique document search */
+  where: HobbieWhereUniqueInput;
+};
+
+export type HobbieUpsertInput = {
+  /** Create document if it didn't exist */
+  create: HobbieCreateInput;
+  /** Update document if it exists */
+  update: HobbieUpdateInput;
+};
+
+export type HobbieUpsertLocalizationInput = {
+  create: HobbieCreateLocalizationDataInput;
+  locale: Locale;
+  update: HobbieUpdateLocalizationDataInput;
+};
+
+export type HobbieUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: HobbieUpsertInput;
+  /** Unique document search */
+  where: HobbieWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type HobbieWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<HobbieWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<HobbieWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<HobbieWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+  imageAlt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  imageAlt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  imageAlt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  imageAlt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  imageAlt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  imageAlt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  imageAlt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  imageAlt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  imageAlt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  imageAlt_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  resource_link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  resource_link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  resource_link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  resource_link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  resource_link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  resource_link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  resource_link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  resource_link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  resource_link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  resource_link_starts_with?: InputMaybe<Scalars['String']>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References Hobbie record uniquely */
+export type HobbieWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export enum ImageFit {
   /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
   Clip = 'clip',
@@ -903,6 +1494,8 @@ export type Mutation = {
    * @deprecated Asset mutations will be overhauled soon
    */
   createAsset?: Maybe<Asset>;
+  /** Create one hobbie */
+  createHobbie?: Maybe<Hobbie>;
   /** Create one project */
   createProject?: Maybe<Project>;
   /** Create one scheduledRelease */
@@ -913,6 +1506,8 @@ export type Mutation = {
   createTypeOfApp?: Maybe<TypeOfApp>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
+  /** Delete one hobbie from _all_ existing stages. Returns deleted document. */
+  deleteHobbie?: Maybe<Hobbie>;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -920,6 +1515,13 @@ export type Mutation = {
   deleteManyAssets: BatchPayload;
   /** Delete many Asset documents, return deleted documents */
   deleteManyAssetsConnection: AssetConnection;
+  /**
+   * Delete many Hobbie documents
+   * @deprecated Please use the new paginated many mutation (deleteManyHobbiesConnection)
+   */
+  deleteManyHobbies: BatchPayload;
+  /** Delete many Hobbie documents, return deleted documents */
+  deleteManyHobbiesConnection: HobbieConnection;
   /**
    * Delete many Project documents
    * @deprecated Please use the new paginated many mutation (deleteManyProjectsConnection)
@@ -953,6 +1555,8 @@ export type Mutation = {
   deleteTypeOfApp?: Maybe<TypeOfApp>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
+  /** Publish one hobbie */
+  publishHobbie?: Maybe<Hobbie>;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -960,6 +1564,13 @@ export type Mutation = {
   publishManyAssets: BatchPayload;
   /** Publish many Asset documents */
   publishManyAssetsConnection: AssetConnection;
+  /**
+   * Publish many Hobbie documents
+   * @deprecated Please use the new paginated many mutation (publishManyHobbiesConnection)
+   */
+  publishManyHobbies: BatchPayload;
+  /** Publish many Hobbie documents */
+  publishManyHobbiesConnection: HobbieConnection;
   /**
    * Publish many Project documents
    * @deprecated Please use the new paginated many mutation (publishManyProjectsConnection)
@@ -989,6 +1600,8 @@ export type Mutation = {
   publishTypeOfApp?: Maybe<TypeOfApp>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
+  /** Schedule to publish one hobbie */
+  schedulePublishHobbie?: Maybe<Hobbie>;
   /** Schedule to publish one project */
   schedulePublishProject?: Maybe<Project>;
   /** Schedule to publish one tech */
@@ -997,6 +1610,8 @@ export type Mutation = {
   schedulePublishTypeOfApp?: Maybe<TypeOfApp>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
+  /** Unpublish one hobbie from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishHobbie?: Maybe<Hobbie>;
   /** Unpublish one project from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishProject?: Maybe<Project>;
   /** Unpublish one tech from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -1005,6 +1620,8 @@ export type Mutation = {
   scheduleUnpublishTypeOfApp?: Maybe<TypeOfApp>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
+  /** Unpublish one hobbie from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishHobbie?: Maybe<Hobbie>;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -1012,6 +1629,13 @@ export type Mutation = {
   unpublishManyAssets: BatchPayload;
   /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyAssetsConnection: AssetConnection;
+  /**
+   * Unpublish many Hobbie documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyHobbiesConnection)
+   */
+  unpublishManyHobbies: BatchPayload;
+  /** Find many Hobbie documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyHobbiesConnection: HobbieConnection;
   /**
    * Unpublish many Project documents
    * @deprecated Please use the new paginated many mutation (unpublishManyProjectsConnection)
@@ -1041,6 +1665,8 @@ export type Mutation = {
   unpublishTypeOfApp?: Maybe<TypeOfApp>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
+  /** Update one hobbie */
+  updateHobbie?: Maybe<Hobbie>;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -1048,6 +1674,13 @@ export type Mutation = {
   updateManyAssets: BatchPayload;
   /** Update many Asset documents */
   updateManyAssetsConnection: AssetConnection;
+  /**
+   * Update many hobbies
+   * @deprecated Please use the new paginated many mutation (updateManyHobbiesConnection)
+   */
+  updateManyHobbies: BatchPayload;
+  /** Update many Hobbie documents */
+  updateManyHobbiesConnection: HobbieConnection;
   /**
    * Update many projects
    * @deprecated Please use the new paginated many mutation (updateManyProjectsConnection)
@@ -1079,6 +1712,8 @@ export type Mutation = {
   updateTypeOfApp?: Maybe<TypeOfApp>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
+  /** Upsert one hobbie */
+  upsertHobbie?: Maybe<Hobbie>;
   /** Upsert one project */
   upsertProject?: Maybe<Project>;
   /** Upsert one tech */
@@ -1090,6 +1725,11 @@ export type Mutation = {
 
 export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
+};
+
+
+export type MutationCreateHobbieArgs = {
+  data: HobbieCreateInput;
 };
 
 
@@ -1118,6 +1758,11 @@ export type MutationDeleteAssetArgs = {
 };
 
 
+export type MutationDeleteHobbieArgs = {
+  where: HobbieWhereUniqueInput;
+};
+
+
 export type MutationDeleteManyAssetsArgs = {
   where?: InputMaybe<AssetManyWhereInput>;
 };
@@ -1130,6 +1775,21 @@ export type MutationDeleteManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationDeleteManyHobbiesArgs = {
+  where?: InputMaybe<HobbieManyWhereInput>;
+};
+
+
+export type MutationDeleteManyHobbiesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<HobbieManyWhereInput>;
 };
 
 
@@ -1212,6 +1872,15 @@ export type MutationPublishAssetArgs = {
 };
 
 
+export type MutationPublishHobbieArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  to?: Array<Stage>;
+  where: HobbieWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
 export type MutationPublishManyAssetsArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -1232,6 +1901,30 @@ export type MutationPublishManyAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
   where?: InputMaybe<AssetManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyHobbiesArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<HobbieManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyHobbiesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<HobbieManyWhereInput>;
   withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
 };
 
@@ -1328,6 +2021,17 @@ export type MutationSchedulePublishAssetArgs = {
 };
 
 
+export type MutationSchedulePublishHobbieArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: HobbieWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
 export type MutationSchedulePublishProjectArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -1365,6 +2069,16 @@ export type MutationScheduleUnpublishAssetArgs = {
 };
 
 
+export type MutationScheduleUnpublishHobbieArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where: HobbieWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishProjectArgs = {
   from?: Array<Stage>;
   locales?: InputMaybe<Array<Locale>>;
@@ -1399,6 +2113,14 @@ export type MutationUnpublishAssetArgs = {
 };
 
 
+export type MutationUnpublishHobbieArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where: HobbieWhereUniqueInput;
+};
+
+
 export type MutationUnpublishManyAssetsArgs = {
   from?: Array<Stage>;
   locales?: InputMaybe<Array<Locale>>;
@@ -1418,6 +2140,28 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
   stage?: InputMaybe<Stage>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyHobbiesArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<HobbieManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyHobbiesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<HobbieManyWhereInput>;
 };
 
 
@@ -1505,6 +2249,12 @@ export type MutationUpdateAssetArgs = {
 };
 
 
+export type MutationUpdateHobbieArgs = {
+  data: HobbieUpdateInput;
+  where: HobbieWhereUniqueInput;
+};
+
+
 export type MutationUpdateManyAssetsArgs = {
   data: AssetUpdateManyInput;
   where?: InputMaybe<AssetManyWhereInput>;
@@ -1519,6 +2269,23 @@ export type MutationUpdateManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUpdateManyHobbiesArgs = {
+  data: HobbieUpdateManyInput;
+  where?: InputMaybe<HobbieManyWhereInput>;
+};
+
+
+export type MutationUpdateManyHobbiesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: HobbieUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<HobbieManyWhereInput>;
 };
 
 
@@ -1600,6 +2367,12 @@ export type MutationUpdateTypeOfAppArgs = {
 export type MutationUpsertAssetArgs = {
   upsert: AssetUpsertInput;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationUpsertHobbieArgs = {
+  upsert: HobbieUpsertInput;
+  where: HobbieWhereUniqueInput;
 };
 
 
@@ -2369,6 +3142,14 @@ export type Query = {
   assets: Array<Asset>;
   /** Retrieve multiple assets using the Relay connection interface */
   assetsConnection: AssetConnection;
+  /** Retrieve a single hobbie */
+  hobbie?: Maybe<Hobbie>;
+  /** Retrieve document version */
+  hobbieVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple hobbies */
+  hobbies: Array<Hobbie>;
+  /** Retrieve multiple hobbies using the Relay connection interface */
+  hobbiesConnection: HobbieConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
   /** Retrieve a single project */
@@ -2451,6 +3232,44 @@ export type QueryAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type QueryHobbieArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: HobbieWhereUniqueInput;
+};
+
+
+export type QueryHobbieVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryHobbiesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<HobbieOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<HobbieWhereInput>;
+};
+
+
+export type QueryHobbiesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<HobbieOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<HobbieWhereInput>;
 };
 
 
@@ -2780,7 +3599,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Project | Tech | TypeOfApp;
+export type ScheduledOperationAffectedDocument = Asset | Hobbie | Project | Tech | TypeOfApp;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -4952,6 +5771,8 @@ export enum _MutationKind {
   DeleteMany = 'deleteMany',
   Publish = 'publish',
   PublishMany = 'publishMany',
+  SchedulePublish = 'schedulePublish',
+  ScheduleUnpublish = 'scheduleUnpublish',
   Unpublish = 'unpublish',
   UnpublishMany = 'unpublishMany',
   Update = 'update',
@@ -4985,6 +5806,11 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type HobbiesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HobbiesQuery = { __typename?: 'Query', hobbies: Array<{ __typename?: 'Hobbie', description?: string | null | undefined, resource_link?: string | null | undefined, id: string, imageAlt: string, image: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }> };
+
 export type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -5003,6 +5829,49 @@ export type ProjectsSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 export type ProjectsSlugsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', slug: string }> };
 
 
+export const HobbiesDocument = gql`
+    query Hobbies {
+  hobbies {
+    image {
+      height
+      size
+      width
+      url
+    }
+    description
+    resource_link
+    id
+    imageAlt
+  }
+}
+    `;
+
+/**
+ * __useHobbiesQuery__
+ *
+ * To run a query within a React component, call `useHobbiesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHobbiesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHobbiesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useHobbiesQuery(baseOptions?: Apollo.QueryHookOptions<HobbiesQuery, HobbiesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<HobbiesQuery, HobbiesQueryVariables>(HobbiesDocument, options);
+      }
+export function useHobbiesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HobbiesQuery, HobbiesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<HobbiesQuery, HobbiesQueryVariables>(HobbiesDocument, options);
+        }
+export type HobbiesQueryHookResult = ReturnType<typeof useHobbiesQuery>;
+export type HobbiesLazyQueryHookResult = ReturnType<typeof useHobbiesLazyQuery>;
+export type HobbiesQueryResult = Apollo.QueryResult<HobbiesQuery, HobbiesQueryVariables>;
 export const ProjectDocument = gql`
     query Project($slug: String!) {
   project(where: {slug: $slug}) {
@@ -5203,6 +6072,7 @@ export type ProjectsSlugsQueryResult = Apollo.QueryResult<ProjectsSlugsQuery, Pr
   "possibleTypes": {
     "Node": [
       "Asset",
+      "Hobbie",
       "Project",
       "ScheduledOperation",
       "ScheduledRelease",
@@ -5212,6 +6082,7 @@ export type ProjectsSlugsQueryResult = Apollo.QueryResult<ProjectsSlugsQuery, Pr
     ],
     "ScheduledOperationAffectedDocument": [
       "Asset",
+      "Hobbie",
       "Project",
       "Tech",
       "TypeOfApp"

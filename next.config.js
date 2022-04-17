@@ -9,11 +9,9 @@ const nextTranslate = require('next-translate')
 module.exports = withBundleAnalyzer(
   nextTranslate({
     images: {
-      domains: ['media.graphcms.com'],
+      domains: ['media.graphcms.com', 'media.graphassets.com'],
     },
     webpack(config, { dev, isServer }) {
-      // ${previousConfig...}
-
       // Replace React with Preact only in client production build
       if (!dev && !isServer) {
         Object.assign(config.resolve.alias, {

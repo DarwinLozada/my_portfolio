@@ -10,7 +10,7 @@ const calcBreakpoint = (width: number) => {
     isExtraLarge: width >= 992,
   }
 
-  // Check if which breakpoint is the window now
+  // Check which breakpoint is being meet
   const meetBreakpoint = Object.entries(breakpoints).find(
     (breakpoint) => breakpoint[1]
   ) as [string, boolean]

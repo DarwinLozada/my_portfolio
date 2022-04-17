@@ -1,0 +1,14 @@
+query Hobbies {
+  hobbies {
+    image {
+      height
+      size
+      width
+      url
+    }
+    description
+    resource_link
+    id
+    imageAlt
+  }
+}
