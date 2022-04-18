@@ -4,6 +4,7 @@ const isServer = typeof window === 'undefined'
 
 const calcBreakpoint = (width: number) => {
   const breakpoints = {
+    isMini: width <= 400,
     isSmall: width <= 576,
     isMedium: width >= 576 && width <= 768,
     isLarge: width >= 768 && width <= 992,
@@ -40,6 +41,7 @@ export default function useScreenBreakpoint() {
   }, [currentBreakpoint])
 
   return {
+    isMini: currentBreakpoint === 'isMini',
     isSmall: currentBreakpoint === 'isSmall',
     isMedium: currentBreakpoint === 'isMedium',
     isLarge: currentBreakpoint === 'isLarge',
