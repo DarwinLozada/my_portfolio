@@ -1,13 +1,20 @@
-import { m } from 'framer-motion'
-import { FC, useRef } from 'react'
+import { AnimationControls, m } from 'framer-motion'
+import { FC, useEffect, useRef } from 'react'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
+import { HobbieBubbleAnimation } from '../../constants'
 
 interface Props {
   midOfHobbiesArray: number
+  animationControl: AnimationControls
   index: number
 }
 
-const HobbieBubble: FC<Props> = ({ children, index, midOfHobbiesArray }) => {
+const HobbieBubble: FC<Props> = ({
+  children,
+  index,
+  midOfHobbiesArray,
+  animationControl,
+}) => {
   const { isMini } = useScreenBreakpoint()
 
   const goesUp = index <= midOfHobbiesArray
@@ -35,6 +42,10 @@ const HobbieBubble: FC<Props> = ({ children, index, midOfHobbiesArray }) => {
   const randomDuration = useRef((Math.random() + 0.5) * 15)
   const randomDelay = useRef(Math.random() * 0.6)
 
+  useEffect(() => {
+    animationControl.start(HobbieBubbleAnimation.moveAround)
+  }, [animationControl])
+
   return (
     <m.div
       className="absolute"
@@ -42,26 +53,32 @@ const HobbieBubble: FC<Props> = ({ children, index, midOfHobbiesArray }) => {
         initial: {
           translateY: initialYPosition.current,
           translateX: initialXPosition.current,
+
+          transition: {
+            duration: 3.5,
+            type: 'tween',
+          },
         },
 
-        moveAround: {
+        [HobbieBubbleAnimation.moveAround]: {
           translateY: [
             initialYPosition.current,
             randomYMovement.current,
             initialYPosition.current,
           ],
           translateX: randomXMovement.current,
+
+          transition: {
+            type: 'spring',
+            repeat: Infinity,
+            duration: randomDuration.current,
+            delayChildren: randomDelay.current,
+            repeatType: 'mirror',
+          },
         },
       }}
       initial="inital"
-      animate="moveAround"
-      transition={{
-        type: 'spring',
-        repeat: Infinity,
-        duration: randomDuration.current,
-        delayChildren: randomDelay.current,
-        repeatType: 'mirror',
-      }}
+      animate={animationControl}
     >
       <div className="h-14 w-14 overflow-hidden rounded-full shadow-md shadow-brandBg">
         {children}

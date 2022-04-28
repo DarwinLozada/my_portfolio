@@ -1,11 +1,12 @@
 import { useHobbiesQuery } from 'generated'
-import { FC, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import HobbieBubble from './components/Bubble/Bubble'
 import Image from 'next/image'
 import { AnimatePresence, m, useAnimation } from 'framer-motion'
 
 import catBody from 'public/images/cat_body.png'
 import catEars from 'public/images/cat_ears.png'
+import { HobbieBubbleAnimation } from './constants'
 
 const DEFAULT_HOBBIE_SIZE = 50
 
@@ -17,6 +18,39 @@ const AboutMeSection: FC = () => {
   const midOfArray = Math.floor((data?.hobbies.length || 0) / 2)
 
   const catEarsControl = useAnimation()
+  const hobbieBubblesControl = useAnimation()
+
+  const handleEars = () => {
+    setAreEarsOpen(!areEarsOpen)
+  }
+
+  const handleAnimationChange = useCallback(async () => {
+    catEarsControl.start(areEarsOpen ? 'open' : 'close')
+
+    await hobbieBubblesControl.start(
+      areEarsOpen
+        ? {
+            translateY: 180,
+            translateX: -10,
+            transition: {
+              duration: 2,
+              type: 'tween',
+            },
+          }
+        : HobbieBubbleAnimation.moveAround
+    )
+
+    await catEarsControl.start('close')
+    await catEarsControl.start('open')
+    await hobbieBubblesControl.start('initial')
+    await catEarsControl.start('close')
+
+    hobbieBubblesControl.start(HobbieBubbleAnimation.moveAround)
+  }, [areEarsOpen, catEarsControl, hobbieBubblesControl])
+
+  useEffect(() => {
+    handleAnimationChange()
+  }, [areEarsOpen, handleAnimationChange])
 
   return (
     <div className="mt-80 flex min-h-[6rem] flex-col items-center">
@@ -34,6 +68,7 @@ const AboutMeSection: FC = () => {
                   midOfHobbiesArray={midOfArray}
                   index={index}
                   key={hobbie.id}
+                  animationControl={hobbieBubblesControl}
                 >
                   {hobbie.image ? (
                     <Image
@@ -52,10 +87,7 @@ const AboutMeSection: FC = () => {
       </AnimatePresence>
       <div
         className="mt-32 flex w-56 flex-col items-center drop-shadow-md"
-        onClick={() => {
-          catEarsControl.start(areEarsOpen ? 'close' : 'open')
-          setAreEarsOpen(!areEarsOpen)
-        }}
+        onClick={handleEars}
       >
         <m.div
           variants={{
