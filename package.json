@@ -8,7 +8,6 @@
     "lint": "next lint",
     "pre-commit": "yarn lint",
     "codegen": "graphql-codegen --config codegen.yml",
-    "prebuild": "yarn install"
   },
   "dependencies": {
     "@apollo/client": "3.5.6",
