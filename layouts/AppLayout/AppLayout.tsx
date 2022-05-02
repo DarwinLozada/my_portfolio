@@ -4,10 +4,12 @@ import dynamic from 'next/dynamic'
 import { AnimatePresence, LazyMotion } from 'framer-motion'
 import { ApolloProvider } from '@apollo/client'
 import client from 'services/client'
+import AboutMe from 'components/Sections/AboutMe'
 
 const markdownComponents = {
   p: dynamic(() => import('components/Markdown/paragraph')),
   img: dynamic(() => import('components/Markdown/image')),
+  AboutMe,
 }
 
 const DynamicStackedCubes = dynamic(() => import('../../components/StackedCubes'))

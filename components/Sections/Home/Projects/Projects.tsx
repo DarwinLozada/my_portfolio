@@ -12,7 +12,7 @@ import { PROJECTS_ROUTE } from 'constants/routes'
 
 const Projects: FC = () => {
   return (
-    <section className="relative mt-32 flex flex-col items-center bg-transparent">
+    <section className="relative mt-48 flex flex-col items-center bg-transparent">
       <h2 className="text-4xl font-bold tracking-widest text-white">MY PROJECTS</h2>
       <div
         className="mt-56 bg-[#E5D8D8] pt-36 pb-64"
