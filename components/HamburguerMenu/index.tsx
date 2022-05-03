@@ -19,9 +19,7 @@ const HamburguerMenu: FC = () => {
           <div className="h-full w-full rounded-md bg-gradient-to-r from-brandPink to-brandViolet"></div>
         </button>
       </Dialog.Trigger>
-      <Dialog.Portal forceMount>
-        <NavDialog active={isActive} setActive={setActive} />
-      </Dialog.Portal>
+      <NavDialog active={isActive} setActive={setActive} />
     </Dialog.Root>
   )
 }
