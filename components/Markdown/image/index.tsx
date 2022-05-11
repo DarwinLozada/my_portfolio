@@ -13,10 +13,6 @@ interface Props {
 const Image: FC<Props> = ({ src, alt, width, height }) => {
   const [openImage, setOpenImage] = useState(false)
 
-  const handleImage = () => {
-    setOpenImage((current) => !current)
-  }
-
   return (
     <Dialog.Root
       open={openImage}
@@ -25,7 +21,7 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
       }}
     >
       <Dialog.Trigger>
-        <figure className="relative" onClick={handleImage}>
+        <figure className="relative">
           <NextImage
             src={src}
             layout="intrinsic"
@@ -36,23 +32,17 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
         </figure>
       </Dialog.Trigger>
 
-      <Dialog.Portal forceMount>
-        <DialogAnimationWrapper active={openImage}>
-          <Dialog.Overlay className="fixed top-0 z-50 grid h-screen w-screen place-items-center overflow-y-auto bg-slate-900/80 duration-300">
-            <Dialog.Content className="mx-4">
-              <figure className="relative" onClick={handleImage}>
-                <NextImage
-                  src={src}
-                  layout="intrinsic"
-                  alt={alt}
-                  width={width}
-                  height={height}
-                />
-              </figure>
-            </Dialog.Content>
-          </Dialog.Overlay>
-        </DialogAnimationWrapper>
-      </Dialog.Portal>
+      <DialogAnimationWrapper active={openImage}>
+        <figure className="relative">
+          <NextImage
+            src={src}
+            layout="intrinsic"
+            alt={alt}
+            width={width}
+            height={height}
+          />
+        </figure>
+      </DialogAnimationWrapper>
     </Dialog.Root>
   )
 }
