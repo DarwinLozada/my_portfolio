@@ -1,0 +1,49 @@
+{
+  "hero": {
+		"subtitle": "Resuelvo problemas usando tecnología.",
+		"CTAs": {
+			"about-me": "Acerca de mí",
+			"resume": "Mi currículum"
+		}
+	},
+	"projects": {
+		"title": "MIS PROYECTOS",
+		"my-projects": {
+			"dogcatcher": {
+				"title": "Todas tus mascotas preferidas en un lugar",
+				"description": "En DogCatcher puedes encontrar las mascotas más lindas y simpáticas, buscarlas por raza, y además, si te gustó ese gato peludo de pelo blanco que viste, puedes guardarlo en tus favoritos para verlos cuando quieras y en donde quieras."
+			}, 
+			"our-universe": {
+				"title": "Explora nuestro hermoso Universo",
+				"description": "OurUniverse utiliza la API APOD (Astronomy Picture of the day) de la NASA para entregar las imágenes más interesantes y hermosas publicadas y comentadas por astrónomos profesionales."
+			}
+		},
+		"shared": {
+			"CTAs": {
+				"more-info": "Más info",
+				"live-site": "¡Visitalo!"
+			}
+		}
+	},
+	"my-values": {
+		"title": "¿En qué me baso?",
+		"values": {
+			"problem-solving": {
+				"title": "Solución de problemas",
+				"description": "Mi enfoque principal es dar resultados y mantener las cosas simples."
+			},
+			"team-work": {
+				"title": "Trabajo en equipo",
+				"description": "La diversidad es algo que valoro cuando trabajo en nuevos proyectos."
+			},
+			"ux-dev": {
+				"title": "Desarrollo basado en UX",
+				"description": "El objetivo es la experiencia final del usuario."
+			},
+			"scalabilty": {
+				"title": "Escalabilidad / Mantenibilidad",
+				"description": "Nadie quiere lidiar con código de espagueti"
+			}
+		}
+	}
+}

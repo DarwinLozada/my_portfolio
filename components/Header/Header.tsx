@@ -1,9 +1,11 @@
-import HamburguerMenu from 'components/HamburguerMenu'
+import HamburguerMenu from 'components/Header/Components/HamburguerMenu'
 import { HOME_ROUTE } from 'constants/routes'
 import Image from 'next/image'
 import Link from 'components/Link'
 import brandLogo from 'public/images/logo_developer_cat.png'
 import { FC } from 'react'
+import Button from 'components/Button'
+import LanguageSelector from './Components/LanguageSelector'
 
 const Header: FC = () => {
   return (
@@ -13,7 +15,8 @@ const Header: FC = () => {
           <Image src={brandLogo} alt="brand-logo" />
         </a>
       </Link>
-      <div className="flex">
+      <div className="flex gap-8 ring-2">
+        <LanguageSelector />
         <HamburguerMenu />
       </div>
     </header>

@@ -9,7 +9,7 @@ interface Props {
   children: ReactNode
 }
 
-const TRANSITION_DURATION = 0.4
+const TRANSITION_DURATION = 0.2
 
 const DialogAnimationWrapper = forwardRef<HTMLDivElement, Props>(
   ({ active, children }, forwardRef) => {

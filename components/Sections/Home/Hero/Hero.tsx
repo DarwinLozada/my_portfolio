@@ -1,8 +1,12 @@
 import { FC } from 'react'
 import Button from 'components/Button/Button'
 import { Download, GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
+import { ABOUT_ROUTE } from 'constants/routes'
+import useTranslation from 'next-translate/useTranslation'
 
 const HeroSection: FC = () => {
+  const { t } = useTranslation()
+
   return (
     <section className="relative flex min-h-screen justify-center overflow-hidden tracking-[0.3em]">
       <section>
@@ -16,10 +20,12 @@ const HeroSection: FC = () => {
           </div>
         </h1>
         <p className="mt-4 px-10 text-center text-base font-medium tracking-normal text-brandWhite">
-          I like to solve problems using technology.
+          {t('home:hero.subtitle')}
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-6">
-          <Button size="medium">More about me</Button>
+          <Button size="medium" type="anchor" href={ABOUT_ROUTE}>
+            {t('home:hero.CTAs.about-me')}
+          </Button>
           <Button
             type="download"
             href="https://media.graphcms.com/konpOSdUTfG848diygTl?_ga=2.138435379.1699815425.1644727966-430862818.1639815097"
@@ -27,7 +33,7 @@ const HeroSection: FC = () => {
             colorScheme="secondary"
             rightIcon={<Download className="w-6 stroke-2 text-brandWhite" />}
           >
-            Check my resume
+            {t('home:hero.CTAs.resume')}
           </Button>
         </div>
         <nav className="mt-8 flex w-full justify-center gap-4">

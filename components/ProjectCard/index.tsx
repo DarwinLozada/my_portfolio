@@ -23,7 +23,7 @@ const ProjectCard: FC<Props> = ({ projectData }) => {
             alt={`${name} main image`}
           />
         </div>
-        <div className="mt-6 flex flex-col flex-wrap items-start justify-between gap-2 xs:flex-row xs:gap-0">
+        <div className="mt-6 flex flex-col flex-wrap items-start justify-between gap-2 xs:flex-row">
           <h3 className="font-montserrat text-2xl font-semibold text-white">
             {name}
           </h3>

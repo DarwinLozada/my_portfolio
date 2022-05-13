@@ -1,0 +1,49 @@
+{
+  "hero": {
+		"subtitle": "I solve problems using technology.",
+		"CTAs": {
+			"about-me": "More about me",
+			"resume": "Check my resume"
+		}
+	},
+	"projects": {
+		"title": "MY PROJECTS",
+		"my-projects": {
+			"dogcatcher": {
+				"title": "All your favorite pets in one place",
+				"description": "In DogCatcher you can find the most beautiful and friendly pets, search for them by breed, and also, if you liked that fluffy white-haired cat you saw, you can save it in your favorites and consult them whenever you want and on the device you want."
+			}, 
+			"our-universe": {
+				"title": "Explore our beautiful universe",
+				"description": "OurUniverse uses the APOD (Astronomy Picture of the day) API of the NASA to deliver the most interesting and beautiful images published and commented by professional astronomers."
+			}
+		},
+		"shared": {
+			"CTAs": {
+				"more-info": "More info",
+				"live-site": "Live site!"
+			}
+		}
+	},
+	"my-values": {
+		"title": "What are my values?",
+		"values": {
+			"problem-solving": {
+				"title": "Problem Solving",
+				"description": "My main focus is to give results and keep things simple"
+			},
+			"team-work": {
+				"title": "Team work",
+				"description": "Diversity is something I embrace when I work in new projects"
+			},
+			"ux-dev": {
+				"title": "UX driven development",
+				"description": "The guideline is the experience of the end user"
+			},
+			"scalabilty": {
+				"title": "Scalability / Maintainability",
+				"description": "No one wants to deal with some spaghetti code"
+			}
+		}
+	}
+}

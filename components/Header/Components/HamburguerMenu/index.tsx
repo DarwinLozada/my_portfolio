@@ -7,6 +7,7 @@ import { m } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FC, useState } from 'react'
+import Button from 'components/Button'
 
 const HamburguerMenu: FC = () => {
   const [isActive, setActive] = useState(false)
@@ -46,6 +47,26 @@ const HamburguerMenu: FC = () => {
             },
           }}
         >
+          <div className="flex justify-end">
+            <Dialog.Close className="p-4 duration-150 hover:opacity-50">
+              <CloseIcon className="w-4 stroke-1 text-white/30" />
+            </Dialog.Close>
+          </div>
+
+          <ul className="z-[60] mb-20 flex w-full flex-grow flex-col items-center justify-center gap-4 ">
+            {NavRoutes.map((route) => (
+              <m.li
+                key={route.route}
+                onClick={() => setActive(false)}
+                className="font-montserrat text-3xl font-medium text-white duration-300 hover:scale-110 active:scale-95"
+              >
+                <Link href={route.route}>
+                  <a>{route.name}</a>
+                </Link>
+              </m.li>
+            ))}
+          </ul>
+
           <m.div
             className="absolute bottom-[1rem] left-4 flex w-24 opacity-[0.40] drop-shadow-md"
             animate="move"
@@ -102,26 +123,6 @@ const HamburguerMenu: FC = () => {
               />
             </div>
           </m.div>
-
-          <div className="flex justify-end">
-            <Dialog.Close className="p-4 duration-150 hover:opacity-50">
-              <CloseIcon className="w-4 stroke-1 text-white/30" />
-            </Dialog.Close>
-          </div>
-
-          <ul className="z-[60] mb-20 flex w-full flex-grow flex-col items-center justify-center gap-4 ">
-            {NavRoutes.map((route) => (
-              <m.li
-                key={route.route}
-                onClick={() => setActive(false)}
-                className="font-montserrat text-3xl font-medium text-white duration-300 hover:scale-110 active:scale-95"
-              >
-                <Link href={route.route}>
-                  <a>{route.name}</a>
-                </Link>
-              </m.li>
-            ))}
-          </ul>
         </m.div>
       </DialogAnimationWrapper>
     </Dialog.Root>

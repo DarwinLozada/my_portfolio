@@ -9,11 +9,16 @@ import { Planet, Clip } from 'components/Icons'
 import Button from 'components/Button'
 import { DOGCATCHER_LINK, OURUNIVERSE_LINK } from 'constants/links'
 import { PROJECTS_ROUTE } from 'constants/routes'
+import useTranslation from 'next-translate/useTranslation'
 
 const Projects: FC = () => {
+  const { t } = useTranslation()
+
   return (
     <section className="relative mt-48 flex flex-col items-center bg-transparent">
-      <h2 className="text-4xl font-bold tracking-widest text-white">MY PROJECTS</h2>
+      <h2 className="text-4xl font-bold tracking-widest text-white">
+        {t('home:projects.title')}
+      </h2>
       <div
         className="mt-56 bg-[#E5D8D8] pt-36 pb-64"
         style={{ clipPath: 'polygon(0 0, 100% 6%, 100% 93%, 0% 100%)' }}
