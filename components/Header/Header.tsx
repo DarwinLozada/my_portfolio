@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'components/Link'
 import brandLogo from 'public/images/logo_developer_cat.png'
 import { FC } from 'react'
-import Button from 'components/Button'
 import LanguageSelector from './Components/LanguageSelector'
 
 const Header: FC = () => {
@@ -15,7 +14,7 @@ const Header: FC = () => {
           <Image src={brandLogo} alt="brand-logo" />
         </a>
       </Link>
-      <div className="flex gap-8 ring-2">
+      <div className="flex items-center gap-8">
         <LanguageSelector />
         <HamburguerMenu />
       </div>

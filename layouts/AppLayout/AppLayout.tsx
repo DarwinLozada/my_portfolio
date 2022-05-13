@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { AnimatePresence, LazyMotion } from 'framer-motion'
 import { ApolloProvider } from '@apollo/client'
 import client from 'services/client'
+import useLocaleCookie from 'hooks/useLocaleCookie'
 
 const markdownComponents = {
   p: dynamic(() => import('components/Markdown/paragraph')),
@@ -17,6 +18,8 @@ const animationFeatures = () =>
   import('../../animation/features').then((features) => features.default)
 
 const AppLayout: FC = ({ children }) => {
+  useLocaleCookie()
+
   return (
     <LazyMotion features={animationFeatures}>
       <ApolloProvider client={client}>

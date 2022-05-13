@@ -16,7 +16,7 @@ const Projects: FC = () => {
 
   return (
     <section className="relative mt-48 flex flex-col items-center bg-transparent">
-      <h2 className="text-4xl font-bold tracking-widest text-white">
+      <h2 className="text-center text-4xl font-bold tracking-widest text-white">
         {t('home:projects.title')}
       </h2>
       <div
@@ -32,13 +32,10 @@ const Projects: FC = () => {
         </div>
         <div className="mx-8 flex flex-col">
           <h3 className="mt-16 text-center text-4xl font-semibold text-dogcatcherRed">
-            All your favorite pets in one place
+            {t('home:projects.my-projects.dogcatcher.title')}
           </h3>
           <p className="mt-12 text-center text-lg font-medium leading-8 text-brandBg">
-            In DogCatcher you can find the most beautiful and friendly pets, search
-            for them by breed and, also, if you liked that fluffy white-haired cat
-            that you saw, you can save it in your favorites and consult them whenever
-            you want and on the device you want.
+            {t('home:projects.my-projects.dogcatcher.description')}
           </p>
           <div className="mt-12 flex flex-col items-center gap-6">
             <Button
@@ -47,7 +44,7 @@ const Projects: FC = () => {
               type="anchor"
               href="/projects/dogcatcher"
             >
-              More info
+              {t('home:projects.shared.CTAs.more-info')}
             </Button>
             <Button
               type="anchor"
@@ -56,7 +53,7 @@ const Projects: FC = () => {
               colorScheme="dark"
               rightIcon={<Clip className="w-5 text-brandWhite" />}
             >
-              Live site!
+              {t('home:projects.shared.CTAs.live-site')}
             </Button>
           </div>
         </div>
@@ -72,12 +69,10 @@ const Projects: FC = () => {
         <Tag leftIcon={<Planet className="w-6" />}>WEB APP</Tag>
         <div className="mx-8 flex flex-col">
           <h3 className="mt-8 text-center text-4xl font-semibold text-brandWhite">
-            Explore our beautiful universe
+            {t('home:projects.my-projects.our-universe.title')}
           </h3>
           <p className="mt-12 text-center text-lg font-medium leading-8 text-ouruniversePurple">
-            OurUniverse uses the APOD (Astronomy Picture of the day) API of the NASA
-            to deliver the most interesting and beautiful images published and
-            commented by professional astronomers.
+            {t('home:projects.my-projects.our-universe.description')}
           </p>
         </div>
         <div className="mt-12 flex flex-col items-center gap-6">
@@ -87,7 +82,7 @@ const Projects: FC = () => {
             type="anchor"
             href="/projects/our-universe"
           >
-            More info
+            {t('home:projects.shared.CTAs.more-info')}
           </Button>
           <Button
             type="anchor"
@@ -96,14 +91,14 @@ const Projects: FC = () => {
             colorScheme="dark"
             rightIcon={<Clip className="w-5" />}
           >
-            Live site!
+            {t('home:projects.shared.CTAs.live-site')}
           </Button>
         </div>
       </div>
 
       <div className="my-24 flex items-center justify-center px-14">
         <Button size="large" href={PROJECTS_ROUTE} type="anchor">
-          Wanna see more of what I’ve done?
+          {t('home:projects.see-more')}
         </Button>
       </div>
     </section>
