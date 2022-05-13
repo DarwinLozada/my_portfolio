@@ -10,12 +10,12 @@
 		"title": "MIS PROYECTOS",
 		"my-projects": {
 			"dogcatcher": {
-				"title": "Todas tus mascotas preferidas en un lugar",
-				"description": "En DogCatcher puedes encontrar las mascotas más lindas y simpáticas, buscarlas por raza, y además, si te gustó ese gato peludo de pelo blanco que viste, puedes guardarlo en tus favoritos para verlos cuando quieras y en donde quieras."
+				"title": "Todas tus mascotas preferidas en un solo lugar",
+				"description": "En DogCatcher puedes encontrar las mascotas más lindas y simpáticas, buscarlas por raza, y además, si te gustó ese gato de pelo blanco que viste, puedes guardarlo en tus favoritos para verlos cuando quieras y en donde quieras."
 			}, 
 			"our-universe": {
 				"title": "Explora nuestro hermoso Universo",
-				"description": "OurUniverse utiliza la API APOD (Astronomy Picture of the day) de la NASA para entregar las imágenes más interesantes y hermosas publicadas y comentadas por astrónomos profesionales."
+				"description": "OurUniverse utiliza la API APOD (Astronomy Picture of the day) de la NASA para mostrarte las más interesantes y hermosas imágenes publicadas y comentadas por astrónomos profesionales."
 			}
 		},
 		"shared": {
@@ -24,7 +24,7 @@
 				"live-site": "¡Visitalo!"
 			}
 		},
-		"see-more": "¿Quiéres saber ver más de lo que he hecho?"
+		"see-more": "¿Quiéres ver más de lo que he hecho?"
 	},
 	"my-values": {
 		"title": "¿En qué me baso?",
@@ -43,7 +43,7 @@
 			},
 			"scalabilty": {
 				"title": "Escalabilidad / Mantenibilidad",
-				"description": "Nadie quiere lidiar con código de espagueti"
+				"description": "Nadie quiere lidiar con código de espagueti."
 			}
 		}
 	}
