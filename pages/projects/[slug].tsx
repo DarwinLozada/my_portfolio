@@ -16,6 +16,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import imageMetadata from 'markdown/plugins/image-metadata'
 import Breadcrum from 'components/Breadcrumb'
 import Button from 'components/Button'
+import useTranslation from 'next-translate/useTranslation'
 
 interface Props {
   data: NonNullProjectData
@@ -29,6 +30,8 @@ interface GetStaticPropsParams extends ParsedUrlQuery {
 const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
   const { name, mainImage, typeOfApp, techs, description, slug, resource } = data
 
+  const { t } = useTranslation()
+
   return (
     <MainLayout>
       <article className="mt-28 flex flex-col items-center justify-center px-4 pb-20">
@@ -36,7 +39,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
           <Breadcrum
             items={[
               {
-                text: 'Projects',
+                text: t('project:breadcrum.projects-page'),
                 url: '/projects',
               },
               { text: name, url: `/projects/${slug}` },
@@ -77,7 +80,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
                 href={resource}
                 openTab
               >
-                👀 Want to check it out?
+                {t('project:CTAs.check-it-out')}
               </Button>
             </div>
           </div>

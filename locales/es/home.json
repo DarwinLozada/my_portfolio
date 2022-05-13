@@ -43,7 +43,7 @@
 			},
 			"scalabilty": {
 				"title": "Escalabilidad / Mantenibilidad",
-				"description": "Nadie quiere lidiar con código de espagueti."
+				"description": "Nadie quiere lidiar con código espagueti."
 			}
 		}
 	}

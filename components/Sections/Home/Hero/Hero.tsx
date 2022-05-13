@@ -3,9 +3,12 @@ import Button from 'components/Button/Button'
 import { Download, GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
 import { ABOUT_ROUTE } from 'constants/routes'
 import useTranslation from 'next-translate/useTranslation'
+import { RESUME_LINK } from 'constants/links'
 
 const HeroSection: FC = () => {
   const { t } = useTranslation()
+
+  const textAboutMe = t('home:hero.CTAs.about-me')
 
   return (
     <section className="relative flex min-h-screen justify-center overflow-hidden tracking-[0.3em]">
@@ -24,11 +27,11 @@ const HeroSection: FC = () => {
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-6">
           <Button size="medium" type="anchor" href={ABOUT_ROUTE}>
-            {t('home:hero.CTAs.about-me')}
+            {textAboutMe}
           </Button>
           <Button
             type="download"
-            href="https://media.graphcms.com/konpOSdUTfG848diygTl?_ga=2.138435379.1699815425.1644727966-430862818.1639815097"
+            href={RESUME_LINK}
             size="medium"
             colorScheme="secondary"
             rightIcon={<Download className="w-6 stroke-2 text-brandWhite" />}

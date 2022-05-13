@@ -2,6 +2,9 @@
   "locales": ["en", "es"],
   "defaultLocale": "en",
   "pages": {
-    "/": ["home"]
+    "*": ["common"],
+    "/": ["home"],
+    "/projects": ["projects"],
+    "/projects/[slug]": ["project"]
   }
 }

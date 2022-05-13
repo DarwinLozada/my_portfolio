@@ -1,1 +1,10 @@
-{}
+{
+  "footer": {
+		"links": {
+			"home": "Home",
+			"resume": "Resume",
+			"projects": "Projects",
+			"about-me": "About Me"
+		}
+	}
+}

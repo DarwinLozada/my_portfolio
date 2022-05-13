@@ -3,8 +3,12 @@ import Link from 'components/Link'
 import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import Button from 'components/Button'
 import { GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
+import useTranslation from 'next-translate/useTranslation'
+import { RESUME_LINK } from 'constants/links'
 
 const Footer: FC = () => {
+  const { t } = useTranslation()
+
   return (
     <footer className="z-10 flex flex-col items-center justify-between gap-1 justify-self-end bg-transparent px-4 pb-6 pt-8">
       <p className="text-semibold font-montserrat text-xl font-semibold text-white">
@@ -14,22 +18,22 @@ const Footer: FC = () => {
         <ul className="mt-1 flex gap-3 text-center text-sm text-stone-300/80">
           <li>
             <Link href={HOME_ROUTE}>
-              <a>Home</a>
+              <a>{t('common:footer.links.home')}</a>
             </Link>
           </li>
           <li>
-            <Link href={HOME_ROUTE}>
-              <a>Resume</a>
-            </Link>
+            <a download href={RESUME_LINK} target="_blank" rel="noreferrer">
+              {t('common:footer.links.resume')}
+            </a>
           </li>
           <li>
             <Link href={PROJECTS_ROUTE}>
-              <a>Projects</a>
+              <a>{t('common:footer.links.projects')}</a>
             </Link>
           </li>
           <li>
             <Link href={ABOUT_ROUTE}>
-              <a>About Me</a>
+              <a>{t('common:footer.links.about-me')}</a>
             </Link>
           </li>
         </ul>
