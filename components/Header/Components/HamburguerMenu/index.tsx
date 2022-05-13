@@ -7,7 +7,6 @@ import { m } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FC, useState } from 'react'
-import Button from 'components/Button'
 
 const HamburguerMenu: FC = () => {
   const [isActive, setActive] = useState(false)
