@@ -118,6 +118,7 @@ export default ProjectPage
 
 export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async ({
   params,
+  locale,
 }) => {
   // Redirect to 404 page if there are not Params
   if (!params)
@@ -127,10 +128,10 @@ export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async
 
   const { data } = await client.query<ProjectQuery>({
     query: ProjectDocument,
-    variables: { slug: params.slug },
+    variables: { slug: params.slug, locale: [locale] },
   })
 
-  const mdxSource = await serialize(data.project?.additionalDescription as string, {
+  const mdxSource = await serialize(data.project?.fullDescription as string, {
     mdxOptions: {
       rehypePlugins: [imageMetadata],
     },

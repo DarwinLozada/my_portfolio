@@ -1,5 +1,5 @@
-query Projects {
-  projects {
+query Projects($locale: [Locale!]!) {
+  projects(locales: $locale) {
     id
     slug
     description

@@ -26,8 +26,13 @@ const ProjectsPage: NextPage<PageProps> = ({ projects }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const projectsData = await client.query({ query: ProjectsDocument })
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const projectsData = await client.query({
+    query: ProjectsDocument,
+    variables: {
+      locale: [locale],
+    },
+  })
 
   return {
     props: {

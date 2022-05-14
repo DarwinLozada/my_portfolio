@@ -3079,7 +3079,6 @@ export enum Pages {
 
 export type Project = Node & {
   __typename?: 'Project';
-  additionalDescription: Scalars['String'];
   additionalImages: Array<Asset>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -3088,6 +3087,7 @@ export type Project = Node & {
   description: Scalars['String'];
   /** Get the document in other stages */
   documentInStages: Array<Project>;
+  fullDescription: Scalars['String'];
   /** List of Project versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -3228,11 +3228,12 @@ export type ProjectConnection = {
 };
 
 export type ProjectCreateInput = {
-  additionalDescription: Scalars['String'];
   additionalImages: AssetCreateManyInlineInput;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** description input for default locale (en) */
   description: Scalars['String'];
+  /** fullDescription input for default locale (en) */
+  fullDescription: Scalars['String'];
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<ProjectCreateLocalizationsInput>;
   mainImage: AssetCreateOneInlineInput;
@@ -3247,6 +3248,7 @@ export type ProjectCreateInput = {
 export type ProjectCreateLocalizationDataInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
+  fullDescription: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -3294,25 +3296,6 @@ export type ProjectManyWhereInput = {
   OR?: InputMaybe<Array<ProjectWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  additionalDescription?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  additionalDescription_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  additionalDescription_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  additionalDescription_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  additionalDescription_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  additionalDescription_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  additionalDescription_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  additionalDescription_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  additionalDescription_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  additionalDescription_starts_with?: InputMaybe<Scalars['String']>;
   additionalImages_every?: InputMaybe<AssetWhereInput>;
   additionalImages_none?: InputMaybe<AssetWhereInput>;
   additionalImages_some?: InputMaybe<AssetWhereInput>;
@@ -3451,12 +3434,12 @@ export type ProjectManyWhereInput = {
 };
 
 export enum ProjectOrderByInput {
-  AdditionalDescriptionAsc = 'additionalDescription_ASC',
-  AdditionalDescriptionDesc = 'additionalDescription_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
+  FullDescriptionAsc = 'fullDescription_ASC',
+  FullDescriptionDesc = 'fullDescription_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   NameAsc = 'name_ASC',
@@ -3472,10 +3455,11 @@ export enum ProjectOrderByInput {
 }
 
 export type ProjectUpdateInput = {
-  additionalDescription?: InputMaybe<Scalars['String']>;
   additionalImages?: InputMaybe<AssetUpdateManyInlineInput>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
+  /** fullDescription input for default locale (en) */
+  fullDescription?: InputMaybe<Scalars['String']>;
   /** Manage document localizations */
   localizations?: InputMaybe<ProjectUpdateLocalizationsInput>;
   mainImage?: InputMaybe<AssetUpdateOneInlineInput>;
@@ -3488,6 +3472,7 @@ export type ProjectUpdateInput = {
 
 export type ProjectUpdateLocalizationDataInput = {
   description?: InputMaybe<Scalars['String']>;
+  fullDescription?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectUpdateLocalizationInput = {
@@ -3523,9 +3508,10 @@ export type ProjectUpdateManyInlineInput = {
 };
 
 export type ProjectUpdateManyInput = {
-  additionalDescription?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
+  /** fullDescription input for default locale (en) */
+  fullDescription?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<ProjectUpdateManyLocalizationsInput>;
   name?: InputMaybe<Scalars['String']>;
@@ -3534,6 +3520,7 @@ export type ProjectUpdateManyInput = {
 
 export type ProjectUpdateManyLocalizationDataInput = {
   description?: InputMaybe<Scalars['String']>;
+  fullDescription?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectUpdateManyLocalizationInput = {
@@ -3605,25 +3592,6 @@ export type ProjectWhereInput = {
   OR?: InputMaybe<Array<ProjectWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  additionalDescription?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  additionalDescription_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  additionalDescription_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  additionalDescription_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  additionalDescription_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  additionalDescription_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  additionalDescription_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  additionalDescription_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  additionalDescription_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  additionalDescription_starts_with?: InputMaybe<Scalars['String']>;
   additionalImages_every?: InputMaybe<AssetWhereInput>;
   additionalImages_none?: InputMaybe<AssetWhereInput>;
   additionalImages_some?: InputMaybe<AssetWhereInput>;
@@ -3662,6 +3630,25 @@ export type ProjectWhereInput = {
   description_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   description_starts_with?: InputMaybe<Scalars['String']>;
+  fullDescription?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  fullDescription_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  fullDescription_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  fullDescription_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  fullDescription_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  fullDescription_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  fullDescription_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  fullDescription_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  fullDescription_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  fullDescription_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -6527,12 +6514,15 @@ export type PageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', co
 
 export type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
+  locale: Array<Locale> | Locale;
 }>;
 
 
-export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', id: string, slug: string, description: string, additionalDescription: string, resource: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: TypesOfApp, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined };
+export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', id: string, slug: string, description: string, fullDescription: string, resource: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: TypesOfApp, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined };
 
-export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
+export type ProjectsQueryVariables = Exact<{
+  locale: Array<Locale> | Locale;
+}>;
 
 
 export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', id: string, slug: string, description: string, resource: string, name: string, additionalImages: Array<{ __typename?: 'Asset', width?: number | null | undefined, size?: number | null | undefined, height?: number | null | undefined, url: string }>, techs: Array<{ __typename?: 'Tech', name: string, color: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }>, typeOfApp?: { __typename?: 'TypeOfApp', name: TypesOfApp, displayColor: { __typename?: 'Color', hex: any }, textColor: { __typename?: 'Color', hex: any }, icon: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } } | null | undefined, mainImage: { __typename?: 'Asset', height?: number | null | undefined, size?: number | null | undefined, width?: number | null | undefined, url: string } }> };
@@ -6623,12 +6613,12 @@ export type PageQueryHookResult = ReturnType<typeof usePageQuery>;
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>;
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>;
 export const ProjectDocument = gql`
-    query Project($slug: String!) {
-  project(where: {slug: $slug}) {
+    query Project($slug: String!, $locale: [Locale!]!) {
+  project(where: {slug: $slug}, locales: $locale) {
     id
     slug
     description
-    additionalDescription
+    fullDescription
     resource
     name
     additionalImages {
@@ -6687,6 +6677,7 @@ export const ProjectDocument = gql`
  * const { data, loading, error } = useProjectQuery({
  *   variables: {
  *      slug: // value for 'slug'
+ *      locale: // value for 'locale'
  *   },
  * });
  */
@@ -6702,8 +6693,8 @@ export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectsDocument = gql`
-    query Projects {
-  projects {
+    query Projects($locale: [Locale!]!) {
+  projects(locales: $locale) {
     id
     slug
     description
@@ -6764,10 +6755,11 @@ export const ProjectsDocument = gql`
  * @example
  * const { data, loading, error } = useProjectsQuery({
  *   variables: {
+ *      locale: // value for 'locale'
  *   },
  * });
  */
-export function useProjectsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
+export function useProjectsQuery(baseOptions: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, options);
       }

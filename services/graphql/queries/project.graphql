@@ -1,9 +1,9 @@
-query Project($slug: String!) {
-  project(where: {slug: $slug}) {
+query Project($slug: String!, $locale: [Locale!]!) {
+  project(where: {slug: $slug}, locales: $locale) {
     id
     slug
     description
-    additionalDescription
+    fullDescription
     resource
     name
     additionalImages {
