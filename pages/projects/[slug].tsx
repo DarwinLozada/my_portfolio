@@ -17,6 +17,7 @@ import imageMetadata from 'markdown/plugins/image-metadata'
 import Breadcrum from 'components/Breadcrumb'
 import Button from 'components/Button'
 import useTranslation from 'next-translate/useTranslation'
+import { mergeArraysProperties } from 'utils/arrays'
 
 interface Props {
   data: NonNullProjectData
@@ -143,17 +144,29 @@ export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const { data } = await client.query<ProjectsSlugsQuery>({
     query: ProjectsSlugsDocument,
   })
+
+  const alternativeLocales =
+    locales
+      ?.filter((locale) => locale !== 'default')
+      .map((locale) => ({
+        locale,
+      })) || []
 
   const normalizedProjectsSlugs = data.projects.map((project) => ({
     params: { slug: project.slug },
   }))
 
+  const pathsWithLocales = mergeArraysProperties(
+    alternativeLocales,
+    normalizedProjectsSlugs
+  )
+
   return {
-    paths: normalizedProjectsSlugs,
+    paths: pathsWithLocales,
     fallback: false,
   }
 }
