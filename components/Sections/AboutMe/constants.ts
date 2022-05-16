@@ -1,6 +1,7 @@
 const HobbyBubbleAnimation = {
-  randomPosition: 'randomPosition',
+  goOutside: 'goOutside',
   moveAround: 'moveAround',
+  hide: 'hide',
 } as const
 
 export { HobbyBubbleAnimation }

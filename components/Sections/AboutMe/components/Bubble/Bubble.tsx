@@ -50,7 +50,7 @@ const HobbyBubble: FC<Props> = ({
     <m.div
       className="absolute"
       variants={{
-        [HobbyBubbleAnimation.randomPosition]: {
+        [HobbyBubbleAnimation.goOutside]: {
           translateY: initialYPosition.current,
           translateX: initialXPosition.current,
 
@@ -73,6 +73,14 @@ const HobbyBubble: FC<Props> = ({
             duration: randomDuration.current,
             delayChildren: randomDelay.current,
             repeatType: 'reverse',
+          },
+        },
+        [HobbyBubbleAnimation.hide]: {
+          translateY: 180,
+          translateX: -10,
+          transition: {
+            duration: 2,
+            type: 'tween',
           },
         },
       }}

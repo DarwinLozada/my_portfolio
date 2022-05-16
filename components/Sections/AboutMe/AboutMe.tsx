@@ -31,16 +31,9 @@ const AboutMeSection: FC = () => {
       dispatch(Actions.TOGGLE_ANIMATING)
 
       if (animationState.isActive) {
-        await hobbyBubblesControl.start({
-          translateY: 180,
-          translateX: -10,
-          transition: {
-            duration: 2,
-            type: 'tween',
-          },
-        })
+        await hobbyBubblesControl.start(HobbyBubbleAnimation.hide)
       } else {
-        await hobbyBubblesControl.start(HobbyBubbleAnimation.randomPosition)
+        await hobbyBubblesControl.start(HobbyBubbleAnimation.goOutside)
 
         hobbyBubblesControl.start(HobbyBubbleAnimation.moveAround)
       }
@@ -120,7 +113,7 @@ const AboutMeSection: FC = () => {
         >
           <Image src={catEars} alt="brand-cat-ears" />
         </m.div>
-        <Image src={catBody} alt="brand-cat-body" />
+        <Image src={catBody} alt="brand-cat-body" priority />
       </div>
     </div>
   )
