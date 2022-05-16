@@ -1,4 +1,4 @@
-import HamburguerMenu from 'components/Header/Components/HamburguerMenu'
+import HamburgerMenu from 'components/Header/Components/HamburgerMenu'
 import { HOME_ROUTE } from 'constants/routes'
 import Image from 'next/image'
 import Link from 'components/Link'
@@ -16,7 +16,7 @@ const Header: FC = () => {
       </Link>
       <div className="flex items-center gap-8">
         <LanguageSelector />
-        <HamburguerMenu />
+        <HamburgerMenu />
       </div>
     </header>
   )

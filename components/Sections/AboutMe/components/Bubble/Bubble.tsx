@@ -1,7 +1,7 @@
 import { AnimationControls, m } from 'framer-motion'
 import { FC, useEffect, useRef } from 'react'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
-import { HobbieBubbleAnimation } from '../../constants'
+import { HobbyBubbleAnimation } from '../../constants'
 
 interface Props {
   midOfHobbiesArray: number
@@ -9,7 +9,7 @@ interface Props {
   index: number
 }
 
-const HobbieBubble: FC<Props> = ({
+const HobbyBubble: FC<Props> = ({
   children,
   index,
   midOfHobbiesArray,
@@ -39,18 +39,18 @@ const HobbieBubble: FC<Props> = ({
       (Math.random() + 0.5) * 13 * randomNegativePositive.current
   )
 
-  const randomDuration = useRef((Math.random() + 0.5) * 15)
+  const randomDuration = useRef((Math.random() + 0.5) * 10)
   const randomDelay = useRef(Math.random() * 0.6)
 
   useEffect(() => {
-    animationControl.start(HobbieBubbleAnimation.moveAround)
+    animationControl.start(HobbyBubbleAnimation.moveAround)
   }, [animationControl])
 
   return (
     <m.div
       className="absolute"
       variants={{
-        initial: {
+        [HobbyBubbleAnimation.randomPosition]: {
           translateY: initialYPosition.current,
           translateX: initialXPosition.current,
 
@@ -60,7 +60,7 @@ const HobbieBubble: FC<Props> = ({
           },
         },
 
-        [HobbieBubbleAnimation.moveAround]: {
+        [HobbyBubbleAnimation.moveAround]: {
           translateY: [
             initialYPosition.current,
             randomYMovement.current,
@@ -69,15 +69,13 @@ const HobbieBubble: FC<Props> = ({
           translateX: randomXMovement.current,
 
           transition: {
-            type: 'spring',
             repeat: Infinity,
             duration: randomDuration.current,
             delayChildren: randomDelay.current,
-            repeatType: 'mirror',
+            repeatType: 'reverse',
           },
         },
       }}
-      initial="inital"
       animate={animationControl}
     >
       <div className="h-14 w-14 overflow-hidden rounded-full shadow-md shadow-brandBg">
@@ -87,4 +85,4 @@ const HobbieBubble: FC<Props> = ({
   )
 }
 
-export default HobbieBubble
+export default HobbyBubble

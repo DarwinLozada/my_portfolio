@@ -2,14 +2,17 @@ import * as Dialog from '@radix-ui/react-dialog'
 import DialogAnimationWrapper from 'components/AnimationWrappers/Dialog'
 import { CloseIcon } from 'components/Icons'
 import { EaseOutSine } from 'constants/animations'
-import { NavRoutes } from 'constants/routes'
+import { getNavRoutes } from 'constants/routes'
 import { m } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FC, useState } from 'react'
+import useTranslation from 'next-translate/useTranslation'
 
-const HamburguerMenu: FC = () => {
+const HamburgerMenu: FC = () => {
   const [isActive, setActive] = useState(false)
+
+  const { t } = useTranslation()
 
   return (
     <Dialog.Root
@@ -53,14 +56,14 @@ const HamburguerMenu: FC = () => {
           </div>
 
           <ul className="z-[60] mb-20 flex w-full flex-grow flex-col items-center justify-center gap-4 ">
-            {NavRoutes.map((route) => (
+            {getNavRoutes().map((route) => (
               <m.li
                 key={route.route}
                 onClick={() => setActive(false)}
                 className="font-montserrat text-3xl font-medium text-white duration-300 hover:scale-110 active:scale-95"
               >
                 <Link href={route.route}>
-                  <a>{route.name}</a>
+                  <a>{t(route.name)}</a>
                 </Link>
               </m.li>
             ))}
@@ -127,4 +130,4 @@ const HamburguerMenu: FC = () => {
     </Dialog.Root>
   )
 }
-export default HamburguerMenu
+export default HamburgerMenu

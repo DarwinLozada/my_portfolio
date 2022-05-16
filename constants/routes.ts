@@ -2,14 +2,14 @@ export const HOME_ROUTE = '/'
 export const PROJECTS_ROUTE = '/projects'
 export const ABOUT_ROUTE = '/about'
 
-export const NavRoutes = [
+export const getNavRoutes = () => [
   {
     route: HOME_ROUTE,
-    name: 'Home',
+    name: 'common:nav.links.home',
   },
   {
     route: PROJECTS_ROUTE,
-    name: 'Projects',
+    name: 'common:nav.links.projects',
   },
-  { route: ABOUT_ROUTE, name: 'About Me' },
+  { route: ABOUT_ROUTE, name: 'common:nav.links.about-me' },
 ]

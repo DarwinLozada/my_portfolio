@@ -14,7 +14,7 @@ import Badge from 'components/Badge'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import imageMetadata from 'markdown/plugins/image-metadata'
-import Breadcrum from 'components/Breadcrumb'
+import Breadcrumb from 'components/Breadcrumb'
 import Button from 'components/Button'
 import useTranslation from 'next-translate/useTranslation'
 import { mergeArraysProperties } from 'utils/arrays'
@@ -37,10 +37,10 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
     <MainLayout>
       <article className="mt-28 flex flex-col items-center justify-center px-4 pb-20">
         <div className="flex w-full justify-start">
-          <Breadcrum
+          <Breadcrumb
             items={[
               {
-                text: t('project:breadcrum.projects-page'),
+                text: t('project:breadcrumb.projects-page'),
                 url: '/projects',
               },
               { text: name, url: `/projects/${slug}` },

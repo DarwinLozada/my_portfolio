@@ -10,7 +10,7 @@ interface Props {
 
 const Breadcrumb: FC<Props> = ({ items }) => {
   return (
-    <span className="inline-flex gap-3 text-sm">
+    <span className="inline-flex gap-2 text-sm">
       {items.map((item) => (
         <span key={item.url} className="inline-flex gap-1 text-white">
           <span className="">/</span>

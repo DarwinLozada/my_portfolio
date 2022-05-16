@@ -6,5 +6,12 @@
 			"projects": "Proyectos",
 			"about-me": "Acerca de Mí"
 		}
+	},
+	"nav": {
+		"links": {
+			"home": "Home",
+			"projects": "Proyectos",
+			"about-me": "Acerca de Mí"
+		}
 	}
 }

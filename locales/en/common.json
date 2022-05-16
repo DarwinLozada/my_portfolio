@@ -6,5 +6,12 @@
 			"projects": "Projects",
 			"about-me": "About Me"
 		}
+	}, 
+	"nav": {
+		"links": {
+			"home": "Home",
+			"projects": "Projects",
+			"about-me": "About Me"
+		}
 	}
 }

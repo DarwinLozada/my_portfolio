@@ -1,56 +1,72 @@
 import { useHobbiesQuery } from 'generated'
-import { FC, useCallback, useEffect, useState } from 'react'
-import HobbieBubble from './components/Bubble/Bubble'
+import { FC, useCallback, useEffect, useReducer } from 'react'
+import HobbyBubble from './components/Bubble/Bubble'
 import Image from 'next/image'
 import { AnimatePresence, m, useAnimation } from 'framer-motion'
 
 import catBody from 'public/images/cat_body.png'
 import catEars from 'public/images/cat_ears.png'
-import { HobbieBubbleAnimation } from './constants'
+import { HobbyBubbleAnimation } from './constants'
+import { Actions, initialState, TwoStateAnimationReducer } from 'animation/state'
 
-const DEFAULT_HOBBIE_SIZE = 50
+const DEFAULT_HOBBY_SIZE = 50
 
 const AboutMeSection: FC = () => {
   const { data } = useHobbiesQuery()
 
-  const [areEarsOpen, setAreEarsOpen] = useState(false)
+  const [animationState, dispatch] = useReducer(
+    TwoStateAnimationReducer,
+    initialState
+  )
 
   const midOfArray = Math.floor((data?.hobbies.length || 0) / 2)
 
   const catEarsControl = useAnimation()
-  const hobbieBubblesControl = useAnimation()
-
-  const handleEars = () => {
-    setAreEarsOpen(!areEarsOpen)
-  }
+  const hobbyBubblesControl = useAnimation()
 
   const handleAnimationChange = useCallback(async () => {
-    catEarsControl.start(areEarsOpen ? 'open' : 'close')
+    if (!animationState.isAnimating && data) {
+      catEarsControl.start('open')
 
-    await hobbieBubblesControl.start(
-      areEarsOpen
-        ? {
-            translateY: 180,
-            translateX: -10,
-            transition: {
-              duration: 2,
-              type: 'tween',
-            },
-          }
-        : HobbieBubbleAnimation.moveAround
-    )
+      dispatch(Actions.TOGGLE_ANIMATING)
 
-    await catEarsControl.start('close')
-    await catEarsControl.start('open')
-    await hobbieBubblesControl.start('initial')
-    await catEarsControl.start('close')
+      if (animationState.isActive) {
+        await hobbyBubblesControl.start({
+          translateY: 180,
+          translateX: -10,
+          transition: {
+            duration: 2,
+            type: 'tween',
+          },
+        })
+      } else {
+        await hobbyBubblesControl.start(HobbyBubbleAnimation.randomPosition)
 
-    hobbieBubblesControl.start(HobbieBubbleAnimation.moveAround)
-  }, [areEarsOpen, catEarsControl, hobbieBubblesControl])
+        hobbyBubblesControl.start(HobbyBubbleAnimation.moveAround)
+      }
+
+      catEarsControl.start('close')
+
+      dispatch(Actions.TOGGLE_ANIMATING)
+      dispatch(Actions.TOGGLE_STATE)
+    }
+  }, [
+    animationState.isActive,
+    animationState.isAnimating,
+    catEarsControl,
+    hobbyBubblesControl,
+    data,
+  ])
 
   useEffect(() => {
-    handleAnimationChange()
-  }, [areEarsOpen, handleAnimationChange])
+    if (data) {
+      hobbyBubblesControl.start({
+        translateY: 180,
+        translateX: -10,
+        transition: { duration: 0 },
+      })
+    }
+  }, [hobbyBubblesControl, data])
 
   return (
     <div className="mt-80 flex min-h-[6rem] flex-col items-center">
@@ -62,24 +78,24 @@ const AboutMeSection: FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            {data.hobbies.map((hobbie, index) => {
+            {data.hobbies.map((hobby, index) => {
               return (
-                <HobbieBubble
+                <HobbyBubble
                   midOfHobbiesArray={midOfArray}
                   index={index}
-                  key={hobbie.id}
-                  animationControl={hobbieBubblesControl}
+                  key={hobby.id}
+                  animationControl={hobbyBubblesControl}
                 >
-                  {hobbie.image ? (
+                  {hobby.image ? (
                     <Image
-                      src={hobbie.image?.url}
-                      width={hobbie.image?.width || DEFAULT_HOBBIE_SIZE}
-                      height={hobbie.image?.width || DEFAULT_HOBBIE_SIZE}
-                      alt={hobbie.imageAlt}
+                      src={hobby.image?.url}
+                      width={hobby.image?.width || DEFAULT_HOBBY_SIZE}
+                      height={hobby.image?.width || DEFAULT_HOBBY_SIZE}
+                      alt={hobby.imageAlt}
                       objectFit="cover"
                     />
                   ) : null}
-                </HobbieBubble>
+                </HobbyBubble>
               )
             })}
           </m.div>
@@ -87,7 +103,7 @@ const AboutMeSection: FC = () => {
       </AnimatePresence>
       <div
         className="mt-32 flex w-56 flex-col items-center drop-shadow-md"
-        onClick={handleEars}
+        onClick={handleAnimationChange}
       >
         <m.div
           variants={{

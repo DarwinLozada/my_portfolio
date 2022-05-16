@@ -1,5 +1,6 @@
-const HobbieBubbleAnimation = {
+const HobbyBubbleAnimation = {
+  randomPosition: 'randomPosition',
   moveAround: 'moveAround',
 } as const
 
-export { HobbieBubbleAnimation }
+export { HobbyBubbleAnimation }
