@@ -4,10 +4,10 @@ import { m } from 'framer-motion'
 import Footer from 'components/Footer'
 
 interface Props {
-  bluredBackground?: boolean
+  blurredBackground?: boolean
 }
 
-const MainLayout: FC<Props> = ({ children, bluredBackground }) => {
+const MainLayout: FC<Props> = ({ children, blurredBackground }) => {
   return (
     <m.div
       className="flex min-h-screen flex-col justify-between"
@@ -36,8 +36,9 @@ const MainLayout: FC<Props> = ({ children, bluredBackground }) => {
       <Header />
       <main
         className={`relative z-10 flex flex-grow flex-col items-center justify-center overflow-hidden ${
-          bluredBackground && 'backdrop-blur-sm'
-        }`}
+          blurredBackground && 'backdrop-blur-sm'
+        }
+        `}
       >
         {children}
       </main>

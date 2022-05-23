@@ -35,7 +35,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
 
   return (
     <MainLayout>
-      <article className="mt-28 flex flex-col items-center justify-center px-4 pb-20">
+      <article className="mt-28 flex max-w-2xl flex-col items-center justify-center px-4 pb-20">
         <div className="flex w-full justify-start">
           <Breadcrumb
             items={[

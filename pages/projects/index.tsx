@@ -14,14 +14,14 @@ const ProjectsPage: NextPage<PageProps> = ({ projects }) => {
 
   return (
     <MainLayout>
-      <h1 className="mt-32 mb-16 text-center font-montserrat text-4xl font-semibold text-white">
+      <h1 className="mt-32 mb-16 text-center font-montserrat text-4xl font-semibold text-white md:mb-24">
         {t('projects:title')}
       </h1>
-      <section className="mb-12 grid grid-cols-1 gap-12 px-4">
+      <article className="mb-12 grid max-w-4xl grid-cols-1 gap-12 px-4 sm:grid-cols-2">
         {projects.projects.map((projectData) => (
           <ProjectCard projectData={projectData} key={projectData.name} />
         ))}
-      </section>
+      </article>
     </MainLayout>
   )
 }

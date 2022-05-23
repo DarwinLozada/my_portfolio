@@ -59,16 +59,18 @@ const LanguageSelector: FC = () => {
               await setLanguage(language)
             }}
           >
-            <figure className="w-10">
-              <Image
-                src={image.src}
-                width={image.width}
-                height={image.height}
-                alt={alt}
-              />
-            </figure>
+            <button className="flex items-center justify-center gap-3">
+              <figure className="w-10">
+                <Image
+                  src={image.src}
+                  width={image.width}
+                  height={image.height}
+                  alt={alt}
+                />
+              </figure>
 
-            <span className="text-white">{text}</span>
+              <span className="text-white">{text}</span>
+            </button>
           </Dropdown.Item>
         ))}
       </Dropdown.Content>
