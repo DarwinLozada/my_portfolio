@@ -28,11 +28,11 @@ const Projects: FC = () => {
             <div className="w-64">
               <Image src={DogCatcherLogo} alt="dogcatcher-project-logo" />
             </div>
-            <div className="p-6 drop-shadow-lg md:w-[40rem]">
+            <div className="p-6 drop-shadow-lg md:w-[40vw]">
               <Image src={DogCatcherDevices} alt="dogcatcher-devices-example" />
             </div>
           </div>
-          <div className="mx-8 flex max-w-sm flex-col md:mr-32">
+          <div className="mx-8 flex max-w-sm flex-col items-center md:mr-32 md:items-start">
             <Tag leftIcon={<Planet className="w-6" />}>WEB APP</Tag>
             <h3 className="mt-16 text-center text-4xl font-semibold text-dogcatcherRed md:text-left">
               {t('home:projects.my-projects.dogcatcher.title')}
@@ -70,11 +70,11 @@ const Projects: FC = () => {
           <div className="w-64">
             <Image src={OurUniverseLogo} alt="ouruniverse-logo" />
           </div>
-          <div className="p-6 drop-shadow-lg md:w-[40rem]">
+          <div className="p-6 drop-shadow-lg md:w-[40vw]">
             <Image src={OurUniverseDevices} alt="ouruniverse-devices" />
           </div>
         </div>
-        <div className="mx-8 flex max-w-sm flex-col md:ml-32">
+        <div className="mx-8 flex max-w-sm flex-col items-center md:ml-32 md:items-start">
           <Tag leftIcon={<Planet className="w-6" />}>WEB APP</Tag>
           <div className="mx-8 flex flex-col md:m-0">
             <h3 className="mt-8 text-center text-4xl font-semibold text-brandWhite md:text-left">

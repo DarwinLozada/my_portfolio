@@ -18,7 +18,7 @@ const HeroSection: FC = () => {
   return (
     <section className="relative flex min-h-screen w-full justify-center overflow-hidden tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
       <section>
-        <h1 className="relative z-10 mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite">
+        <h1 className="relative z-10 mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite md:mt-24">
           <div className="flex flex-col md:flex-row md:gap-4">
             DARWIN
             <div className="flex flex-col items-center">

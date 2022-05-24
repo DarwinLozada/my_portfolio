@@ -10,7 +10,7 @@ interface Props {
 const MainLayout: FC<Props> = ({ children, blurredBackground }) => {
   return (
     <m.div
-      className="flex min-h-screen flex-col justify-between"
+      className="flex flex-col justify-between"
       transition={{
         duration: 2,
       }}

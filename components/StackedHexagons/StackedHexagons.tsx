@@ -1,7 +1,8 @@
 import { FC, useRef } from 'react'
 import { m as motion } from 'framer-motion'
+import useWindowWidth from 'hooks/useWindowWidth/useWindowWidth'
 
-type HexagonSizes = 'default' | 'large'
+type HexagonSizes = 'default' | 'large' | 'xl'
 
 interface Props {
   color: 'pinky' | 'bluish'
@@ -21,44 +22,40 @@ const colorsMap = {
   bluish: ['#B468DB', '#916AE7', '#896BEA', '#776CEF', '#6E6DF3'],
 }
 
-const hexagonsSizes = {
-  default: {
-    size: '16rem',
-    spacing: 4.9,
-    translateY: 1,
-  },
-  large: {
-    size: '19rem',
-    spacing: 8,
-    translateY: 1.2,
-  },
-}
-
 const StackedCubes: FC<Props> = ({
   color,
   className,
   hexagonsClassname,
   hexagonSize = 'default',
 } = defaultProps) => {
-  const randomDelay = useRef(Math.random() * 4)
-  const randomAnimationDuration = useRef(() => {
-    const randomDuration = Math.random() * 8
-    return randomDuration < 7 ? 7 : randomDuration
-  })
+  const windowWidth = useWindowWidth()
+
+  const hexagonsSizes = {
+    default: {
+      size: '16rem',
+      translateY: 80,
+      separation: 1,
+    },
+    large: {
+      size: '20rem',
+      translateY: 140,
+      separation: 1.2,
+    },
+
+    xl: {
+      size: '30vw',
+      translateY: windowWidth * 0.1,
+      separation: 1.6,
+    },
+  }
+
+  const randomDelay = useRef(Math.random() * 9)
 
   return (
-    <motion.div
-      className={`relative min-h-[80px] min-w-[60px] ${className}`}
-      variants={{
-        static: {
-          transition: {
-            staggerChildren: 0.3,
-          },
-        },
-      }}
-    >
+    <motion.div className={`relative min-h-[80px] min-w-[60px] ${className}`}>
       {colorsMap[color].map((color, index) => {
-        const bottomMargin = hexagonsSizes[hexagonSize].spacing * index
+        const hexagonYTranslate = hexagonsSizes[hexagonSize].translateY
+        const initialY = 70 * index * hexagonsSizes[hexagonSize].separation
 
         return (
           <motion.svg
@@ -66,7 +63,6 @@ const StackedCubes: FC<Props> = ({
             viewBox="0 0 223 96"
             fill="none"
             style={{
-              transform: `translate(0, -${bottomMargin}rem)`,
               width: hexagonsSizes[hexagonSize].size,
               zIndex: index * -1,
             }}
@@ -75,17 +71,17 @@ const StackedCubes: FC<Props> = ({
             animate="move"
             transition={{
               type: 'tween',
-              duration: randomAnimationDuration.current(),
-              delay: randomDelay.current,
+              duration: 13,
+              delay: index * 0.4 + randomDelay.current,
               repeat: Infinity,
               repeatType: 'mirror',
             }}
             variants={{
               initial: {
-                translateY: 70 * index * hexagonsSizes[hexagonSize].translateY,
+                translateY: initialY,
               },
               move: {
-                translateY: 90 * index * hexagonsSizes[hexagonSize].translateY,
+                translateY: hexagonYTranslate + initialY,
               },
             }}
           >

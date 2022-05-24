@@ -5,7 +5,9 @@ import { AnimatePresence, LazyMotion } from 'framer-motion'
 import { ApolloProvider } from '@apollo/client'
 import client from 'services/client'
 import useLocaleCookie from 'hooks/useLocaleCookie'
-import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
+
+import useWindowWidth from 'hooks/useWindowWidth'
+import IsClient from 'components/IsClient/IsClient'
 
 const markdownComponents = {
   p: dynamic(() => import('components/Markdown/paragraph')),
@@ -21,44 +23,47 @@ const animationFeatures = () =>
   import('../../animation/features').then((features) => features.default)
 
 const AppLayout: FC = ({ children }) => {
-  useLocaleCookie()
+  const windowWidth = useWindowWidth()
 
-  const { isSmall } = useScreenBreakpoint()
+  const isSmall = windowWidth < 768
 
   return (
     <LazyMotion features={animationFeatures}>
       <ApolloProvider client={client}>
         <MDXProvider components={markdownComponents}>
-          <div className="relative min-h-screen overflow-hidden bg-brandBg">
-            {isSmall ? (
-              <>
-                <div className="absolute -top-44 -left-8 flex w-28">
-                  <DynamicStackedHexagons color="pinky" className="opacity-20" />
-                </div>
-                <div className="absolute bottom-64 top-[28rem] right-8 flex w-28">
-                  <DynamicStackedHexagons color="pinky" className="opacity-30" />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="absolute top-0 left-32 flex w-28">
-                  <DynamicStackedHexagons color="pinky" className="opacity-20" />
-                </div>
-                <div className="absolute top-[26rem] -left-8 flex w-28">
-                  <DynamicStackedHexagons
-                    color="bluish"
-                    className=" brightness-50"
-                  />
-                </div>
-                <div className="absolute bottom-64 top-[16rem] right-56 flex w-28">
-                  <DynamicStackedHexagons
-                    color="pinky"
-                    className="opacity-60"
-                    hexagonSize="large"
-                  />
-                </div>
-              </>
-            )}
+          <div className="relative overflow-hidden bg-brandBg">
+            <IsClient>
+              {isSmall ? (
+                <>
+                  <div className="absolute -top-44 -left-8 flex w-28">
+                    <DynamicStackedHexagons color="pinky" className="opacity-20" />
+                  </div>
+                  <div className="absolute bottom-64 top-[28rem] right-8 flex w-28">
+                    <DynamicStackedHexagons color="pinky" className="opacity-30" />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="absolute top-0 left-32 flex w-28">
+                    <DynamicStackedHexagons color="pinky" className="opacity-20" />
+                  </div>
+                  <div className="absolute top-[26rem] -left-8 flex w-28">
+                    <DynamicStackedHexagons
+                      color="bluish"
+                      className="brightness-50"
+                      hexagonSize="large"
+                    />
+                  </div>
+                  <div className="absolute bottom-64 top-[3%] right-[16%] flex w-28">
+                    <DynamicStackedHexagons
+                      color="pinky"
+                      className="opacity-60"
+                      hexagonSize="xl"
+                    />
+                  </div>
+                </>
+              )}
+            </IsClient>
 
             <AnimatePresence
               initial={false}
