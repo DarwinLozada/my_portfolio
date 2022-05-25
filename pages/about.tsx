@@ -16,7 +16,7 @@ const AboutPage: NextPage<Props> = ({ mdxSource }) => {
       <h1 className="mt-32 mb-16 text-center font-montserrat text-4xl font-semibold text-white">
         About Me
       </h1>
-      <section className="flex max-w-[90%] flex-col gap-1">
+      <section className="flex max-w-2xl flex-col gap-1">
         <MDXRemote {...mdxSource} />
       </section>
     </MainLayout>

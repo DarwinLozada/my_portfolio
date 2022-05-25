@@ -76,7 +76,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
               <Button
                 size="small"
                 inline
-                colorScheme="ghost"
+                colorScheme="secondary"
                 type="anchor"
                 href={resource}
                 openTab

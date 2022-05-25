@@ -30,7 +30,7 @@ const COLORS = {
   dark: 'bg-brandBg text-brandWhite ring-brandWhite',
   dogcatcher: 'bg-dogcatcherRed text-brandWhite ring-brandBg',
   ouruniverse: 'bg-ouruniverseWhite text-brandBg font-medium',
-  ghost: 'text-white ring-white bg-brandPink/75',
+  ghost: 'text-white ring-white bg-brandPink/75 bg-transparent',
 }
 const SIZES = {
   small: 'text-base px-5 py-2',

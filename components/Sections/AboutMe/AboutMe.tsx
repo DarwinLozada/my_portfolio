@@ -1,5 +1,5 @@
 import { useHobbiesQuery } from 'generated'
-import { FC, useCallback, useEffect, useReducer } from 'react'
+import { FC, useCallback, useReducer } from 'react'
 import HobbyBubble from './components/Bubble/Bubble'
 import Image from 'next/image'
 import { AnimatePresence, m, useAnimation } from 'framer-motion'
@@ -12,7 +12,15 @@ import { Actions, initialState, TwoStateAnimationReducer } from 'animation/state
 const DEFAULT_HOBBY_SIZE = 50
 
 const AboutMeSection: FC = () => {
-  const { data } = useHobbiesQuery()
+  const { data } = useHobbiesQuery({
+    onCompleted(data) {
+      hobbyBubblesControl.start({
+        translateY: 180,
+        translateX: -10,
+        transition: { duration: 0 },
+      })
+    },
+  })
 
   const [animationState, dispatch] = useReducer(
     TwoStateAnimationReducer,
@@ -50,16 +58,6 @@ const AboutMeSection: FC = () => {
     hobbyBubblesControl,
     data,
   ])
-
-  useEffect(() => {
-    if (data) {
-      hobbyBubblesControl.start({
-        translateY: 180,
-        translateX: -10,
-        transition: { duration: 0 },
-      })
-    }
-  }, [hobbyBubblesControl, data])
 
   return (
     <div className="mt-80 flex min-h-[6rem] flex-col items-center">

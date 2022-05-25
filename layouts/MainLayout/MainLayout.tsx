@@ -10,7 +10,6 @@ interface Props {
 const MainLayout: FC<Props> = ({ children, blurredBackground }) => {
   return (
     <m.div
-      className="flex flex-col justify-between"
       transition={{
         duration: 2,
       }}
@@ -35,8 +34,8 @@ const MainLayout: FC<Props> = ({ children, blurredBackground }) => {
     >
       <Header />
       <main
-        className={`relative z-10 flex flex-grow flex-col items-center justify-center overflow-hidden ${
-          blurredBackground && 'backdrop-blur-sm'
+        className={`relative z-10 flex min-h-screen flex-grow flex-col items-center justify-center overflow-hidden ${
+          blurredBackground ? 'backdrop-blur-sm' : ''
         }
         `}
       >

@@ -4,9 +4,12 @@ import Image from 'next/image'
 import Link from 'components/Link'
 import brandLogo from 'public/images/logo_developer_cat.png'
 import { FC } from 'react'
+import { Download, GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
+
 import LanguageSelector from './Components/LanguageSelector'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 import useTranslation from 'next-translate/useTranslation'
+import Button from 'components/Button'
 
 const Header: FC = () => {
   const { isLarge, isExtraLarge } = useScreenBreakpoint()

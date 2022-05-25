@@ -8,6 +8,8 @@ import useLocaleCookie from 'hooks/useLocaleCookie'
 
 import useWindowWidth from 'hooks/useWindowWidth'
 import IsClient from 'components/IsClient/IsClient'
+import { useRouter } from 'next/router'
+import { HOME_ROUTE } from 'constants/routes'
 
 const markdownComponents = {
   p: dynamic(() => import('components/Markdown/paragraph')),
@@ -50,14 +52,14 @@ const AppLayout: FC = ({ children }) => {
                   <div className="absolute top-[26rem] -left-8 flex w-28">
                     <DynamicStackedHexagons
                       color="bluish"
-                      className="brightness-50"
+                      className="opacity-20"
                       hexagonSize="large"
                     />
                   </div>
-                  <div className="absolute bottom-64 top-[3%] right-[16%] flex w-28">
+                  <div className="absolute bottom-64 top-0 mt-[10%] ml-[80%] flex w-28">
                     <DynamicStackedHexagons
                       color="pinky"
-                      className="opacity-60"
+                      className="opacity-30"
                       hexagonSize="xl"
                     />
                   </div>

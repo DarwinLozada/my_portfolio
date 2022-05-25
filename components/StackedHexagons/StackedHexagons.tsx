@@ -37,22 +37,22 @@ const StackedCubes: FC<Props> = ({
       separation: 1,
     },
     large: {
-      size: '20rem',
-      translateY: 140,
-      separation: 1.2,
+      size: '24rem',
+      translateY: 170,
+      separation: 1.5,
     },
 
     xl: {
       size: '30vw',
       translateY: windowWidth * 0.1,
-      separation: 1.6,
+      separation: windowWidth <= 1200 ? 1.4 : 1.8,
     },
   }
 
-  const randomDelay = useRef(Math.random() * 9)
+  const randomDelay = useRef(Math.random() * 2.5)
 
   return (
-    <motion.div className={`relative min-h-[80px] min-w-[60px] ${className}`}>
+    <motion.div className={`relative ${className}`}>
       {colorsMap[color].map((color, index) => {
         const hexagonYTranslate = hexagonsSizes[hexagonSize].translateY
         const initialY = 70 * index * hexagonsSizes[hexagonSize].separation
@@ -66,12 +66,12 @@ const StackedCubes: FC<Props> = ({
               width: hexagonsSizes[hexagonSize].size,
               zIndex: index * -1,
             }}
-            className={`absolute transform drop-shadow-2xl ${hexagonsClassname}`}
+            className={`absolute transform drop-shadow-2xl transition-opacity duration-200 ${hexagonsClassname}`}
             initial="initial"
             animate="move"
             transition={{
               type: 'tween',
-              duration: 13,
+              duration: 10,
               delay: index * 0.4 + randomDelay.current,
               repeat: Infinity,
               repeatType: 'mirror',
