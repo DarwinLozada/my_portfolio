@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pre-commit": "yarn lint",
+    "pre-commit": "yarn lint && yarn build",
     "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
