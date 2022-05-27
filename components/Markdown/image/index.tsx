@@ -33,7 +33,7 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
       </Dialog.Trigger>
 
       <DialogAnimationWrapper active={openImage}>
-        <figure className="relative">
+        <figure className="relative max-h-[60%] md:max-w-[60%]">
           <NextImage
             src={src}
             layout="intrinsic"

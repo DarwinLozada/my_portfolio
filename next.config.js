@@ -9,7 +9,7 @@ const nextTranslate = require('next-translate')
 module.exports = withBundleAnalyzer(
   nextTranslate({
     images: {
-      domains: ['media.graphcms.com', 'media.graphassets.com'],
+      domains: ['media.graphcms.com', 'media.graphassets.com', 'i.natgeofe.com'],
     },
   })
 )
