@@ -4,10 +4,10 @@ import * as Dialog from '@radix-ui/react-dialog'
 import DialogAnimationWrapper from 'components/AnimationWrappers/Dialog'
 
 interface Props {
-  src: string
-  alt: string
-  width: string
-  height: string
+  src?: string | undefined
+  alt?: string | undefined
+  width?: string | number | undefined
+  height?: string | number | undefined
 }
 
 const Image: FC<Props> = ({ src, alt, width, height }) => {
@@ -23,7 +23,7 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
       <Dialog.Trigger>
         <figure className="relative">
           <NextImage
-            src={src}
+            src={src || ''}
             layout="intrinsic"
             alt={alt}
             width={width}
@@ -35,7 +35,7 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
       <DialogAnimationWrapper active={openImage}>
         <figure className="relative max-h-[60%] md:max-w-[60%]">
           <NextImage
-            src={src}
+            src={src || ''}
             layout="intrinsic"
             alt={alt}
             width={width}

@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic'
 const LinkComponent = dynamic(() => import('components/Link'))
 
 interface Props {
+  children?: ReactNode
   size?: 'small' | 'medium' | 'large'
   type?: 'button' | 'anchor' | 'download'
   colorScheme?:

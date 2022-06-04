@@ -85,7 +85,7 @@ const AboutMeSection: FC = () => {
                       alt={hobby.imageAlt}
                       objectFit="cover"
                     />
-                  ) : null}
+                  ) : undefined}
                 </HobbyBubble>
               )
             })}

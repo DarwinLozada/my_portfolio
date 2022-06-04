@@ -1,10 +1,11 @@
 import Header from 'components/Header'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { m } from 'framer-motion'
 import Footer from 'components/Footer'
 
 interface Props {
   blurredBackground?: boolean
+  children?: ReactNode
 }
 
 const MainLayout: FC<Props> = ({ children, blurredBackground }) => {

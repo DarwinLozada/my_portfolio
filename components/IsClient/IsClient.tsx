@@ -1,7 +1,11 @@
 import useIsClient from 'hooks/useIsClient'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 
-const IsClient: FC = ({ children }) => {
+interface Props {
+  children?: ReactNode
+}
+
+const IsClient: FC<Props> = ({ children }) => {
   const isClient = useIsClient()
 
   return isClient ? <>{children}</> : <></>

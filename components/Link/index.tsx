@@ -1,7 +1,12 @@
 import NextLink, { LinkProps } from 'next/link'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 
-const Link: FC<LinkProps> = ({ children, ...linkProps }) => {
+
+interface Props extends LinkProps {
+  children?: ReactNode
+}
+
+const Link: FC<Props> = ({ children, ...linkProps }) => {
   return (
     <NextLink passHref scroll={false} {...linkProps}>
       {children}

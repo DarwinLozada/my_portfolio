@@ -3,6 +3,7 @@ import { FC, ReactNode } from 'react'
 interface Props {
   leftIcon?: ReactNode
   colorScheme?: 'primary' | 'secondary'
+  children?: ReactNode
 }
 
 const COLORS = {

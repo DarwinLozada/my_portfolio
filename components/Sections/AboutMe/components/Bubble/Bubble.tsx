@@ -1,9 +1,10 @@
 import { AnimationControls, m } from 'framer-motion'
-import { FC, useEffect, useRef } from 'react'
+import { FC, ReactNode, useEffect, useRef } from 'react'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 import { HobbyBubbleAnimation } from '../../constants'
 
 interface Props {
+  children?: ReactNode
   midOfHobbiesArray: number
   animationControl: AnimationControls
   index: number

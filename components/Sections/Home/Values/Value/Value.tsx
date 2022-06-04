@@ -3,6 +3,7 @@ import { ReactNode, FC } from 'react'
 interface Props {
   icon: ReactNode
   title: ReactNode
+  children?: ReactNode
 }
 
 const Value: FC<Props> = ({ icon: Icon, title: Title, children }) => {
