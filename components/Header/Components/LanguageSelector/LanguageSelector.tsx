@@ -34,15 +34,15 @@ const LanguageSelector: FC = () => {
   return (
     <Dropdown.Root
       open={open}
-      onOpenChange={() => {
-        setOpen((state) => !state)
-      }}
     >
       <Dropdown.Trigger asChild>
         <Button
           className="w-[4.5rem] opacity-70 hover:opacity-100 active:opacity-100"
           size="small"
           colorScheme="dark"
+          onClick={() => {
+            setOpen((state) => !state)
+          }}
         >
           <Image src={currentLanguageItem.image} alt={currentLanguageItem.alt} />
         </Button>
@@ -56,6 +56,7 @@ const LanguageSelector: FC = () => {
             className="flex items-center gap-2"
             key={image.src}
             onClick={async () => {
+              setOpen((state) => !state)
               await setLanguage(language)
             }}
           >
