@@ -7,6 +7,7 @@ import { FC } from 'react'
 import LanguageSelector from './Components/LanguageSelector'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 import useTranslation from 'next-translate/useTranslation'
+import IsClient from 'components/IsClient/IsClient'
 
 const Header: FC = () => {
   const { isLarge, isExtraLarge } = useScreenBreakpoint()
@@ -20,26 +21,28 @@ const Header: FC = () => {
         </a>
       </Link>
       <div className="flex items-center gap-8">
-        {isLarge || isExtraLarge ? (
-          <>
-            <ul className="flex items-center gap-4">
-              {getNavRoutes().map((nav) => (
-                <li
-                  key={nav.route}
-                  className="font-normal text-white transition-opacity duration-200 hover:opacity-75"
-                >
-                  <Link href={nav.route}>{t(nav.name)}</Link>
-                </li>
-              ))}
-            </ul>
-            <LanguageSelector />
-          </>
-        ) : (
-          <>
-            <LanguageSelector />
-            <HamburgerMenu />
-          </>
-        )}
+        <IsClient>
+          {isLarge || isExtraLarge ? (
+            <>
+              <ul className="flex items-center gap-4">
+                {getNavRoutes().map((nav) => (
+                  <li
+                    key={nav.route}
+                    className="font-normal text-white transition-opacity duration-200 hover:opacity-75"
+                  >
+                    <Link href={nav.route}>{t(nav.name)}</Link>
+                  </li>
+                ))}
+              </ul>
+              <LanguageSelector />
+            </>
+          ) : (
+            <>
+              <LanguageSelector />
+              <HamburgerMenu />
+            </>
+          )}
+        </IsClient>
       </div>
     </header>
   )

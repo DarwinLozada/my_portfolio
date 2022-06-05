@@ -5,6 +5,7 @@ import { ABOUT_ROUTE } from 'constants/routes'
 import useTranslation from 'next-translate/useTranslation'
 import { RESUME_LINK } from 'constants/links'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
+import IsClient from 'components/IsClient/IsClient'
 
 const HeroSection: FC = () => {
   const { t } = useTranslation()
@@ -24,14 +25,18 @@ const HeroSection: FC = () => {
             <div className="flex flex-col items-center">
               <span className="text-[3.3rem] leading-tight md:text-[3.7rem]">
                 LOZADA
-                {!isDesktop && (
-                  <hr className="h-2 w-full rounded-xl border-0 bg-gradient-to-r from-brandPink to-brandViolet text-transparent" />
-                )}
+                <IsClient>
+                  {!isDesktop && (
+                    <hr className="h-2 w-full rounded-xl border-0 bg-gradient-to-r from-brandPink to-brandViolet text-transparent" />
+                  )}
+                </IsClient>
               </span>
             </div>
           </div>
           {isDesktop && (
-            <hr className="h-2 w-full rounded-xl border-0 bg-gradient-to-r from-brandPink to-brandViolet text-transparent md:h-[6px]" />
+            <IsClient>
+              <hr className="h-2 w-full rounded-xl border-0 bg-gradient-to-r from-brandPink to-brandViolet text-transparent md:h-[6px]" />
+            </IsClient>
           )}
         </h1>
         <p className="mt-4 px-10 text-center text-base font-medium tracking-normal text-brandWhite md:p-0 md:text-left">

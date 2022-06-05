@@ -8,7 +8,7 @@ interface Props {
 const IsClient: FC<Props> = ({ children }) => {
   const isClient = useIsClient()
 
-  return isClient ? <>{children}</> : <></>
+  return isClient ? <>{children}</> : null
 }
 
 export default IsClient
