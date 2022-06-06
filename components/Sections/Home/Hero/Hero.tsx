@@ -6,6 +6,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { RESUME_LINK } from 'constants/links'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 import IsClient from 'components/IsClient/IsClient'
+import Saturn from './Saturn'
 
 const HeroSection: FC = () => {
   const { t } = useTranslation()
@@ -66,6 +67,7 @@ const HeroSection: FC = () => {
           >
             <GitHubIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
           </Button>
+
           <Button
             type="anchor"
             openTab
@@ -85,6 +87,11 @@ const HeroSection: FC = () => {
             <LinkedinIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
           </Button>
         </nav>
+      </section>
+      <section className="flex grow items-center justify-center">
+        <IsClient>
+          <Saturn />
+        </IsClient>
       </section>
     </section>
   )
