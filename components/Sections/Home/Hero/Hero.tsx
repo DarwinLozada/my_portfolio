@@ -19,8 +19,13 @@ const HeroSection: FC = () => {
 
   return (
     <section className="relative flex min-h-screen w-full justify-center overflow-hidden tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
-      <section>
-        <h1 className="relative z-10 mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite md:mt-40 lg:mt-52">
+      <section className="absolute top-0 flex h-[calc(100vh+10rem)] w-screen grow items-center justify-center overflow-visible">
+        <IsClient>
+          <Saturn />
+        </IsClient>
+      </section>
+      <section className="z-10">
+        <h1 className="relative mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite md:mt-40 lg:mt-52">
           <div className="flex flex-col md:flex-row md:gap-4">
             DARWIN
             <div className="flex flex-col items-center">
@@ -87,11 +92,6 @@ const HeroSection: FC = () => {
             <LinkedinIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
           </Button>
         </nav>
-      </section>
-      <section className="flex grow items-center justify-center">
-        <IsClient>
-          <Saturn />
-        </IsClient>
       </section>
     </section>
   )
