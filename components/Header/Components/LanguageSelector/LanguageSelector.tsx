@@ -32,9 +32,7 @@ const LanguageSelector: FC = () => {
   }, [lang])
 
   return (
-    <Dropdown.Root
-      open={open}
-    >
+    <Dropdown.Root open={open}>
       <Dropdown.Trigger asChild>
         <Button
           className="w-[4.5rem] opacity-70 hover:opacity-100 active:opacity-100"
