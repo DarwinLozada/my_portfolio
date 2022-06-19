@@ -53,7 +53,7 @@ const Button: FC<Props> = forwardRef<any, Props>(
       children,
       onClick,
     },
-    ref
+    ref,
   ) => {
     if ((type === 'anchor' || type === 'download') && !href) {
       console.warn('You need to pass a href as prop in order to use an anchor')
@@ -109,7 +109,7 @@ const Button: FC<Props> = forwardRef<any, Props>(
           </button>
         )
     }
-  }
+  },
 )
 
 export default Button

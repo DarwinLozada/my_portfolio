@@ -120,10 +120,7 @@ export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async
   locale,
 }) => {
   // Redirect to 404 page if there are not Params
-  if (!params)
-    return {
-      notFound: true,
-    }
+  if (!params) return { notFound: true }
 
   const { data } = await client.query<ProjectQuery>({
     query: ProjectDocument,
@@ -162,7 +159,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   const pathsWithLocales = mergeArraysProperties(
     alternativeLocales,
-    normalizedProjectsSlugs
+    normalizedProjectsSlugs,
   )
 
   return {

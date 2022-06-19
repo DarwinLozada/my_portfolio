@@ -24,7 +24,7 @@ const AboutMeSection: FC = () => {
 
   const [animationState, dispatch] = useReducer(
     TwoStateAnimationReducer,
-    initialState
+    initialState,
   )
 
   const midOfArray = Math.floor((data?.hobbies.length || 0) / 2)

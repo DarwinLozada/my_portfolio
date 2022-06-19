@@ -1,23 +1,19 @@
 import { Canvas, useLoader } from '@react-three/fiber'
 import { motion } from 'framer-motion-3d'
-import { OrbitControls, useFBX } from '@react-three/drei'
-import { FC, Suspense, useEffect } from 'react'
+import { OrbitControls, useFBX, PerspectiveCamera } from '@react-three/drei'
+import { FC, Suspense, useRef } from 'react'
+import type { Camera } from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 const Scene: FC = () => {
-  const gltf = useFBX('./models/saturn/scene.fbx')
+  const planet = useFBX('./models/saturn/planet.fbx')
+  const asteroidsOne = useFBX('./models/saturn/asteroids1.fbx')
+  const asteroidsTwo = useFBX('./models/saturn/asteroids2.fbx')
+
   const texture = useLoader(TextureLoader, './models/saturn/textures.png')
 
-  console.log(gltf)
+  const cameraRef = useRef<Camera>()
 
-  useEffect(() => {
-    gltf.onLoad(() => {
-      gltf.children.map((child) => {
-        child.material.map = texture
-        child.material.needsUpdate = true
-      })
-    })
-  }, [gltf, texture])
   return (
     <>
       <ambientLight intensity={0.1} />
@@ -25,27 +21,59 @@ const Scene: FC = () => {
       {/* <meshStandardMaterial map={texture} /> */}
 
       <Suspense fallback={<p>LOADING</p>}>
-        <axesHelper args={[10]} />
+        <>
+          <axesHelper args={[10]} />
 
-        <motion.primitive
-          object={gltf}
-          scale={[0.0004, 0.0004, 0.0004]}
-          initial={{ rotateY: 0 }}
-          animate={{ rotateY: Math.PI * 2 }}
-          transition={{
-            type: 'tween',
-            ease: 'linear',
-            duration: 20,
-            repeat: Infinity,
-            repeatType: 'loop'
-          }}
-        />
+          <motion.primitive
+            object={planet}
+            scale={[0.0004, 0.0004, 0.0004]}
+            initial={{ rotateY: 0, rotateX: Math.PI / 5 }}
+            animate={{ rotateY: Math.PI * 2 }}
+            transition={{
+              type: 'tween',
+              ease: 'linear',
+              duration: 40,
+              repeat: Infinity,
+              repeatType: 'loop',
+            }}
+          />
 
-        <meshStandardMaterial map={texture} />
+          <motion.primitive
+            object={asteroidsOne}
+            scale={[0.0004, 0.0004, 0.0004]}
+            initial={{ rotateY: 0, rotateX: Math.PI / 5 }}
+            animate={{ rotateY: Math.PI * 2 }}
+            transition={{
+              type: 'tween',
+              ease: 'linear',
+              duration: 60,
+              repeat: Infinity,
+              repeatType: 'loop',
+            }}
+          />
 
-        <OrbitControls
-          position={[1.8015924207932403, -0.439419393818959, 4.355156449342727]}
-        />
+          <motion.primitive
+            object={asteroidsTwo}
+            scale={[0.00045, 0.00045, 0.00045]}
+            initial={{ rotateY: 0, rotateX: Math.PI / 5 }}
+            animate={{ rotateY: Math.PI * 2 }}
+            transition={{
+              type: 'tween',
+              ease: 'linear',
+              duration: 150,
+              repeat: Infinity,
+              repeatType: 'loop',
+            }}
+          />
+
+          <meshStandardMaterial map={texture} />
+
+          <PerspectiveCamera ref={cameraRef} position={[0, 0, 5]} />
+          <OrbitControls
+            camera={cameraRef.current}
+            // onChange={(state) => console.log(state.target)}
+          />
+        </>
       </Suspense>
     </>
   )

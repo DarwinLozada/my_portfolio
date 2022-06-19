@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import HamburgerMenu from 'components/Header/Components/HamburgerMenu'
 import { getNavRoutes, HOME_ROUTE } from 'constants/routes'
 import Image from 'next/image'

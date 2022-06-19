@@ -49,7 +49,7 @@ const DialogAnimationWrapper = forwardRef<HTMLDivElement, Props>(
         )}
       </AnimatePresence>
     )
-  }
+  },
 )
 
 export default DialogAnimationWrapper

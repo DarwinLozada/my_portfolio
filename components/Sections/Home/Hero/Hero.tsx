@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 import Button from 'components/Button/Button'
 import { Download, GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
 import { ABOUT_ROUTE } from 'constants/routes'
@@ -6,7 +6,9 @@ import useTranslation from 'next-translate/useTranslation'
 import { RESUME_LINK } from 'constants/links'
 import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 import IsClient from 'components/IsClient/IsClient'
-import Saturn from './Saturn'
+import dynamic from 'next/dynamic'
+
+const DynamicSaturn = dynamic(() => import('./Saturn'))
 
 const HeroSection: FC = () => {
   const { t } = useTranslation()
@@ -20,9 +22,9 @@ const HeroSection: FC = () => {
   return (
     <section className="relative flex min-h-screen w-full justify-center overflow-hidden tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
       <section className="absolute top-0 flex h-[calc(100vh+10rem)] w-screen grow items-center justify-center overflow-visible">
-        <IsClient>
-          <Saturn />
-        </IsClient>
+        <Suspense>
+          <DynamicSaturn />
+        </Suspense>
       </section>
       <section className="z-10">
         <h1 className="relative mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite md:mt-40 lg:mt-52">
