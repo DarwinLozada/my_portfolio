@@ -20,8 +20,8 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
         setOpenImage(open)
       }}
     >
-      <Dialog.Trigger>
-        <figure className="relative">
+      <Dialog.Trigger asChild>
+        <figure className="relative flex items-center justify-center">
           <NextImage
             src={src || ''}
             layout="intrinsic"
