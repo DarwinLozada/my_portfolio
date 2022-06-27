@@ -20,8 +20,8 @@ const HeroSection: FC = () => {
   const isDesktop = isLarge || isExtraLarge
 
   return (
-    <section className="relative flex min-h-screen w-full justify-center overflow-hidden tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
-      <section className="absolute top-0 flex h-[calc(100vh+20rem)] w-screen grow items-center justify-center overflow-visible">
+    <section className="relative flex min-h-screen w-full justify-center overflow-visible tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
+      <section className="absolute top-0 flex h-[calc(100vh+20rem)] w-[80rem] grow items-center justify-center overflow-visible">
         <Suspense>
           <DynamicSaturn />
         </Suspense>

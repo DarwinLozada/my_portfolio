@@ -15,7 +15,7 @@ const Projects: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="relative mt-48 flex flex-col items-center bg-transparent">
+    <section className="relative mt-80 flex flex-col items-center bg-transparent md:mt-48">
       <h2 className="text-center text-4xl font-bold tracking-widest text-white">
         {t('home:projects.title')}
       </h2>

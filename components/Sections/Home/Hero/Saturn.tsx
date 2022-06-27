@@ -95,12 +95,12 @@ const Scene: FC = () => {
 
 const Saturn: FC = () => {
   const hasMounted = useIsClient()
-
   return (
     <Canvas
-      className={`relative h-20 w-screen translate-x-[30rem] overflow-visible opacity-0 ${
-        hasMounted ? 'opacity-100' : ''
-      } transition-opacity duration-500`}
+      className={`relative w-[70rem] translate-x-[9rem] translate-y-[27rem] scale-75 overflow-visible ${
+        hasMounted ? 'opacity-80 md:opacity-100' : 'opacity-0'
+      }  transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-[13rem]  md:scale-100 
+      lg:translate-y-0 lg:translate-x-[30rem]`}
       camera={{ position: [-12.49, 3.54, 8.53] }}
     >
       <Scene />
