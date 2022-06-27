@@ -2,8 +2,8 @@ import { Canvas, useLoader } from '@react-three/fiber'
 import { motion } from 'framer-motion-3d'
 import { OrbitControls, useFBX, PerspectiveCamera } from '@react-three/drei'
 import { FC, Suspense, useEffect, useRef } from 'react'
-import type { Camera } from 'three'
-import { MeshStandardMaterial } from 'three'
+import { Camera, Mesh, MeshStandardMaterial } from 'three'
+
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import useIsClient from 'hooks/useIsClient'
 
@@ -17,8 +17,12 @@ const Scene: FC = () => {
   const cameraRef = useRef<Camera>()
 
   useEffect(() => {
-    planet.children[0].material = new MeshStandardMaterial({
-      map: texture,
+    planet.children.forEach((child) => {
+      if (child instanceof Mesh) {
+        child.material = new MeshStandardMaterial({
+          map: texture,
+        })
+      }
     })
   }, [planet, texture])
 
