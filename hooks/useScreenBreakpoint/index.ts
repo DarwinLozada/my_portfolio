@@ -13,7 +13,7 @@ const calcBreakpoint = (width: number) => {
 
   // Check which breakpoint is being meet
   const meetBreakpoint = Object.entries(breakpoints).find(
-    (breakpoint) => breakpoint[1]
+    (breakpoint) => breakpoint[1],
   ) as [string, boolean]
 
   return meetBreakpoint[0]
@@ -21,7 +21,7 @@ const calcBreakpoint = (width: number) => {
 
 export default function useScreenBreakpoint() {
   const [currentBreakpoint, setCurrentBreakpoint] = useState<string>(
-    !isServer ? calcBreakpoint(window.innerWidth) : ''
+    !isServer ? calcBreakpoint(window.innerWidth) : '',
   )
 
   useEffect(() => {
@@ -29,8 +29,9 @@ export default function useScreenBreakpoint() {
       const currentWidth = entries[0].contentRect.width
       const calculatedBreakpoint = calcBreakpoint(currentWidth)
 
-      if (calculatedBreakpoint !== currentBreakpoint)
+      if (calculatedBreakpoint !== currentBreakpoint) {
         setCurrentBreakpoint(calculatedBreakpoint)
+      }
     })
 
     const body = document.querySelector('body') as Element

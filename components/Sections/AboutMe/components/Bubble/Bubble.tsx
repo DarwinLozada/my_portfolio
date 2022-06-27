@@ -23,21 +23,21 @@ const HobbyBubble: FC<Props> = ({
   const randomNegativePositive = useRef(Math.random() < 0.5 ? 1 : -1)
 
   const initialYPosition = useRef(
-    -(goesUp ? index : midOfHobbiesArray * 2 - index) * ((Math.random() + 1.2) * 20)
+    -(goesUp ? index : midOfHobbiesArray * 2 - index) * ((Math.random() + 1.2) * 20),
   )
 
   const initialXPosition = useRef(
-    randomNegativePositive.current * Math.random() * (isMini ? 150 : 200)
+    randomNegativePositive.current * Math.random() * (isMini ? 150 : 200),
   )
 
   const randomYMovement = useRef(
     initialYPosition.current +
-      (Math.random() + 0.4) * 18 * randomNegativePositive.current
+      (Math.random() + 0.4) * 18 * randomNegativePositive.current,
   )
 
   const randomXMovement = useRef(
     initialXPosition.current +
-      (Math.random() + 0.5) * 13 * randomNegativePositive.current
+      (Math.random() + 0.5) * 13 * randomNegativePositive.current,
   )
 
   const randomDuration = useRef((Math.random() + 0.5) * 10)
