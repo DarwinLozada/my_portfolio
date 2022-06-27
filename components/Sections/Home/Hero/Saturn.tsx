@@ -100,7 +100,7 @@ const Saturn: FC = () => {
       className={`relative w-[70rem] translate-x-[9rem] translate-y-[27rem] scale-75 overflow-visible ${
         hasMounted ? 'opacity-80 md:opacity-100' : 'opacity-0'
       }  transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-[13rem]  md:scale-100 
-      lg:translate-y-0 lg:translate-x-[30rem]`}
+      lg:translate-y-0 lg:translate-x-[40vw]`}
       camera={{ position: [-12.49, 3.54, 8.53] }}
     >
       <Scene />
