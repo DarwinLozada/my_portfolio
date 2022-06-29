@@ -1,7 +1,7 @@
 import { Canvas, useLoader } from '@react-three/fiber'
 import { motion } from 'framer-motion-3d'
 import { OrbitControls, useFBX, PerspectiveCamera } from '@react-three/drei'
-import { FC, Suspense, useEffect, useRef } from 'react'
+import { FC, memo, Suspense, useEffect, useRef } from 'react'
 import { Camera, Mesh, MeshStandardMaterial } from 'three'
 
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -28,7 +28,7 @@ const Scene: FC = () => {
 
   return (
     <>
-      <ambientLight intensity={0.1} />
+      <ambientLight intensity={0.07} />
       <directionalLight color="white" position={[0, 0, 5]} />
 
       <Suspense fallback={<p>LOADING</p>}>
@@ -95,17 +95,20 @@ const Scene: FC = () => {
 
 const Saturn: FC = () => {
   const hasMounted = useIsClient()
+
   return (
-    <Canvas
-      className={`relative w-[70rem] translate-x-[9rem] translate-y-[27rem] scale-75 overflow-visible ${
-        hasMounted ? 'opacity-80 md:opacity-100' : 'opacity-0'
-      }  transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-[13rem]  md:scale-100 
+    <section className="absolute top-0 flex h-[calc(100vh+20rem)] w-[80rem] grow items-center justify-center overflow-visible">
+      <Canvas
+        className={`relative w-[70rem] translate-x-[9rem] translate-y-[27rem] scale-75 overflow-visible ${
+          hasMounted ? 'opacity-80 md:opacity-100' : 'opacity-0'
+        }  transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-[13rem]  md:scale-100 
       lg:translate-y-0 lg:translate-x-[40vw]`}
-      camera={{ position: [-12.49, 3.54, 8.53] }}
-    >
-      <Scene />
-    </Canvas>
+        camera={{ position: [-12.49, 3.54, 8.53] }}
+      >
+        <Scene />
+      </Canvas>
+    </section>
   )
 }
 
-export default Saturn
+export default memo(Saturn)

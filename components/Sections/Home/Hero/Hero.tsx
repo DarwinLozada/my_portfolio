@@ -21,11 +21,9 @@ const HeroSection: FC = () => {
 
   return (
     <section className="relative flex min-h-screen w-full justify-center overflow-visible tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
-      <section className="absolute top-0 flex h-[calc(100vh+20rem)] w-[80rem] grow items-center justify-center overflow-visible">
-        <Suspense>
-          <DynamicSaturn />
-        </Suspense>
-      </section>
+      <Suspense>
+        <DynamicSaturn />
+      </Suspense>
       <section className="z-10">
         <h1 className="relative mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite md:mt-40 lg:mt-52">
           <div className="flex flex-col md:flex-row md:gap-4">
