@@ -8,7 +8,7 @@ import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 import IsClient from 'components/IsClient/IsClient'
 import dynamic from 'next/dynamic'
 
-const DynamicSaturn = dynamic(() => import('./Saturn'))
+const DynamicSaturn = dynamic(() => import('./Saturn'), { ssr: false })
 
 const HeroSection: FC = () => {
   const { t } = useTranslation()
