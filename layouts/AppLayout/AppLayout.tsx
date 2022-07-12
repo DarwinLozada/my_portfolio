@@ -21,7 +21,7 @@ interface Props {
 
 const AppLayout: FC<Props> = ({ children }) => {
   return (
-    <LazyMotion features={animationFeatures}>
+    <LazyMotion features={animationFeatures} strict>
       <ApolloProvider client={client}>
         <MDXProvider components={markdownComponents}>
           <div className="relative overflow-hidden bg-brandBg">
