@@ -32,7 +32,7 @@ const LanguageSelector: FC = () => {
   }, [lang])
 
   return (
-    <Dropdown.Root open={open}>
+    <Dropdown.Root open={open} modal={false}>
       <Dropdown.Trigger asChild>
         <Button
           className="w-[4.5rem] opacity-70 hover:opacity-100 active:opacity-100"
@@ -46,12 +46,19 @@ const LanguageSelector: FC = () => {
         </Button>
       </Dropdown.Trigger>
       <Dropdown.Content
-        className="flex flex-col justify-start gap-4 rounded-lg bg-brandBg p-3 shadow-md"
+        portalled={false}
+        onEscapeKeyDown={() => {
+          setOpen(false)
+        }}
+        onInteractOutside={() => {
+          setOpen(!open)
+        }}
+        className="mt-12 mr-5 flex w-full max-w-[10rem] flex-col justify-start gap-2 rounded-lg bg-brandBg p-3 shadow-md"
         sideOffset={10}
       >
         {supportedLanguages.map(({ text, image, alt, language }) => (
           <Dropdown.Item
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 focus:ring-2"
             key={image.src}
             onClick={async () => {
               setOpen((state) => !state)

@@ -26,14 +26,14 @@ const HeroSection: FC = () => {
       </Suspense>
       <section className="z-10">
         <h1 className="relative mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite md:mt-40 lg:mt-52">
-          <div className="flex flex-col md:flex-row md:gap-4">
+          <div className="flex flex-col drop-shadow-md md:flex-row md:gap-4">
             DARWIN
             <div className="flex flex-col items-center">
               <span className="text-[3.3rem] leading-tight md:text-[3.7rem]">
                 LOZADA
                 <IsClient>
                   {!isDesktop && (
-                    <hr className="h-2 w-full rounded-xl border-0 bg-gradient-to-r from-brandPink to-brandViolet text-transparent" />
+                    <hr className="h-2 w-full rounded-xl border-0 bg-gradient-to-r from-brandPink to-brandViolet text-transparent drop-shadow-md" />
                   )}
                 </IsClient>
               </span>
@@ -49,12 +49,18 @@ const HeroSection: FC = () => {
           {t('home:hero.subtitle')}
         </p>
         <div className="mt-10 flex flex-col items-center gap-6 md:mt-6 md:flex-row md:justify-start">
-          <Button size="medium" type="anchor" href={ABOUT_ROUTE}>
+          <Button
+            size="medium"
+            className="shadow-lg shadow-brandBg/50"
+            type="anchor"
+            href={ABOUT_ROUTE}
+          >
             {textAboutMe}
           </Button>
           <Button
             type="download"
             href={RESUME_LINK}
+            className="shadow-lg shadow-brandBg/50"
             size="medium"
             colorScheme="secondary"
             rightIcon={<Download className="w-6 stroke-2 text-brandWhite" />}
@@ -67,7 +73,7 @@ const HeroSection: FC = () => {
             type="anchor"
             openTab
             size="small"
-            className="px-2"
+            className="px-2 shadow-lg shadow-brandBg/50"
             href="https://github.com/DarwinLozada"
           >
             <GitHubIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />
@@ -76,7 +82,7 @@ const HeroSection: FC = () => {
           <Button
             type="anchor"
             openTab
-            className="px-2"
+            className="px-2 shadow-lg shadow-brandBg/50"
             size="small"
             href="https://twitter.com/_DarwinLozada_"
           >
@@ -86,7 +92,7 @@ const HeroSection: FC = () => {
             type="anchor"
             openTab
             size="small"
-            className="px-2"
+            className="px-2 shadow-lg shadow-brandBg/50"
             href="https://www.linkedin.com/in/darwin-lozada-41443b194/"
           >
             <LinkedinIcon className="w-6 fill-white stroke-white stroke-0 text-brandWhite" />

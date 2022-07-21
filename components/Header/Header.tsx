@@ -15,13 +15,13 @@ const Header: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-brandBg bg-opacity-25 py-2 px-6 shadow-md backdrop-blur transition-all">
+    <header className="fixed max-w-full top-0 z-50 flex w-full items-center justify-between bg-brandBg bg-opacity-25 py-2 px-6 shadow-md backdrop-blur transition-all">
       <Link href={HOME_ROUTE}>
         <a className="flex w-10">
           <Image src={brandLogo} alt="brand-logo" />
         </a>
       </Link>
-      <div className="flex items-center gap-8">
+      <div className="flex relative items-center gap-8">
         <IsClient>
           {isLarge || isExtraLarge ? (
             <>

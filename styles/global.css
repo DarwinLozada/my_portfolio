@@ -104,3 +104,11 @@ body {
   border-radius: 20px;
   border: 3px solid #042044;
 }
+
+header [data-radix-popper-content-wrapper] {
+  transform: none !important;
+  right: 0;
+  top: 3rem;
+  display: flex;
+  justify-content: flex-end;
+}
