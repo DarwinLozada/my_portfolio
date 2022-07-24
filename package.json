@@ -23,13 +23,11 @@
     "next": "^12.1.6",
     "next-mdx-remote": "4.0.3",
     "next-translate": "1.4.0",
-    "preact": "^10.7.3",
     "probe-image-size": "^7.2.3",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-intersection-observer": "^9.2.2",
-    "sharp": "^0.30.6",
-    "three": "^0.141.0"
+    "sharp": "0.30.6",
+    "three": "0.141.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.6.2",

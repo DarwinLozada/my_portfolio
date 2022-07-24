@@ -12,7 +12,6 @@ import { FC, memo, Suspense, useEffect, useRef, useMemo } from 'react'
 import { Camera, Group, Mesh, MeshStandardMaterial } from 'three'
 
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import useIsClient from 'hooks/useIsClient'
 import {
   EffectComposer,
   Selection,
