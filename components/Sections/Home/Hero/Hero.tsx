@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react'
+import { FC, Suspense, useEffect, useState } from 'react'
 import Button from 'components/Button/Button'
 import { Download, GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
 import { ABOUT_ROUTE } from 'constants/routes'
@@ -10,8 +10,23 @@ import dynamic from 'next/dynamic'
 
 const DynamicSaturn = dynamic(() => import('./Saturn'), { ssr: false })
 
+interface LoaderProps {
+  onLoad: () => void
+}
+
+const Loader: FC<LoaderProps> = ({ onLoad }) => {
+  useEffect(() => {
+    return () => {
+      onLoad()
+    }
+  })
+  return <></>
+}
+
 const HeroSection: FC = () => {
   const { t } = useTranslation()
+
+  const [loading, setLoading] = useState(true)
 
   const textAboutMe = t('home:hero.CTAs.about-me')
 
@@ -21,9 +36,24 @@ const HeroSection: FC = () => {
 
   return (
     <section className="relative flex min-h-screen w-full justify-center overflow-visible tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
-      <Suspense>
-        <DynamicSaturn />
-      </Suspense>
+      <div
+        className={`bg-brandBg opacity-0 transition-opacity duration-[2000ms] ${
+          !loading && 'opacity-100'
+        }`}
+      >
+        <Suspense
+          fallback={
+            <Loader
+              onLoad={() => {
+                setLoading(false)
+              }}
+            />
+          }
+        >
+          <DynamicSaturn />
+        </Suspense>
+      </div>
+
       <section className="z-10">
         <h1 className="relative mt-40 flex flex-col text-center text-[3.7rem] font-bold leading-tight text-brandWhite md:mt-40 lg:mt-52">
           <div className="flex flex-col drop-shadow-md md:flex-row md:gap-4">

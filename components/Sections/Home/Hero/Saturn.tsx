@@ -1,6 +1,13 @@
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { motion } from 'framer-motion-3d'
-import { OrbitControls, useFBX, PerspectiveCamera, Stars } from '@react-three/drei'
+import {
+  OrbitControls,
+  useFBX,
+  PerspectiveCamera,
+  Stars,
+  useProgress,
+  Html,
+} from '@react-three/drei'
 import { FC, memo, Suspense, useEffect, useRef, useMemo } from 'react'
 import { Camera, Group, Mesh, MeshStandardMaterial } from 'three'
 
@@ -23,6 +30,15 @@ const STELAR_SYSTEM_CENTER = {
   x: -3,
   y: 0,
   z: -50,
+}
+
+const Loader: FC = () => {
+  const { progress } = useProgress()
+  return (
+    <Html>
+      <h1>HOLISSS {progress}</h1>{' '}
+    </Html>
+  )
 }
 
 const Scene: FC = () => {
@@ -103,9 +119,9 @@ const Scene: FC = () => {
       </EffectComposer>
       <scene>
         <ambientLight intensity={0.07} />
-        <Stars count={2500} />
+        <Stars count={1500} />
 
-        <Suspense fallback={<p>LOADING</p>}>
+        <Suspense fallback={<></>}>
           <group ref={planetsGroupRef}>
             <Select enabled>
               <pointLight position={[0, 4, 0]} intensity={1} color="#79d4f7" />
@@ -225,18 +241,15 @@ const Scene: FC = () => {
 }
 
 const Saturn: FC = () => {
-  const hasMounted = useIsClient()
-
   return (
     <section className="absolute top-0 flex h-[calc(100vh+30rem)] w-[calc(100%*2)] grow items-center justify-center overflow-visible">
       <Canvas
-        className={`relative w-[calc(100%*2)] translate-x-[9rem] translate-y-[27rem] scale-75 overflow-visible ${
-          hasMounted ? 'opacity-80 md:opacity-100' : 'opacity-0'
-        }  transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-[13rem]  md:scale-100 
+        className={`relative w-[calc(100%*2)] translate-x-[9rem] translate-y-[27rem] scale-75 overflow-visible opacity-80 transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-[13rem] md:scale-100  md:opacity-100 
       lg:translate-y-0 lg:translate-x-[-10vw]`}
         camera={{ position: [-12.49, 3.54, 8.53] }}
       >
         <Scene />
+        <Loader />
       </Canvas>
     </section>
   )
