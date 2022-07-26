@@ -1,3 +1,4 @@
+import ArticleWrapper from 'components/ArticleWrapper'
 import { PageDocument, PageQuery, PageQueryVariables, Pages } from 'generated'
 import MainLayout from 'layouts/MainLayout'
 import imageMetadata from 'markdown/plugins/image-metadata'
@@ -13,12 +14,14 @@ interface Props {
 const AboutPage: NextPage<Props> = ({ mdxSource }) => {
   return (
     <MainLayout>
-      <h1 className="mt-32 mb-16 text-center font-montserrat text-4xl font-semibold text-white">
-        About Me
-      </h1>
-      <section className="flex max-w-2xl flex-col gap-1">
-        <MDXRemote {...mdxSource} />
-      </section>
+      <ArticleWrapper>
+        <h1 className="mt-32 mb-16 text-center font-montserrat text-4xl font-semibold text-white">
+          About Me
+        </h1>
+        <section className="flex max-w-2xl flex-col gap-1">
+          <MDXRemote {...mdxSource} />
+        </section>
+      </ArticleWrapper>
     </MainLayout>
   )
 }

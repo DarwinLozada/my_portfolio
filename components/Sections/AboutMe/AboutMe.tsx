@@ -12,13 +12,18 @@ import { Actions, initialState, TwoStateAnimationReducer } from 'animation/state
 const DEFAULT_HOBBY_SIZE = 50
 
 const AboutMeSection: FC = () => {
+  const catEarsControl = useAnimation()
+  const hobbyBubblesControl = useAnimation()
+
   const { data } = useHobbiesQuery({
-    onCompleted(data) {
-      hobbyBubblesControl.start({
-        translateY: 180,
-        translateX: -10,
-        transition: { duration: 0 },
-      })
+    onCompleted() {
+      if (hobbyBubblesControl) {
+        hobbyBubblesControl.start({
+          translateY: 180,
+          translateX: -10,
+          transition: { duration: 0 },
+        })
+      }
     },
   })
 
@@ -28,9 +33,6 @@ const AboutMeSection: FC = () => {
   )
 
   const midOfArray = Math.floor((data?.hobbies.length || 0) / 2)
-
-  const catEarsControl = useAnimation()
-  const hobbyBubblesControl = useAnimation()
 
   const handleAnimationChange = useCallback(async () => {
     if (!animationState.isAnimating && data) {

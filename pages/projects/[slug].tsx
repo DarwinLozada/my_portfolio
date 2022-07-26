@@ -18,6 +18,7 @@ import Breadcrumb from 'components/Breadcrumb'
 import Button from 'components/Button'
 import useTranslation from 'next-translate/useTranslation'
 import { mergeArraysProperties } from 'utils/arrays'
+import ArticleWrapper from 'components/ArticleWrapper'
 
 interface Props {
   data: NonNullProjectData
@@ -35,7 +36,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
 
   return (
     <MainLayout>
-      <article className="mt-28 flex max-w-2xl flex-col items-center justify-center px-4 pb-20">
+      <ArticleWrapper>
         <div className="flex w-full justify-start">
           <Breadcrumb
             items={[
@@ -108,7 +109,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
 
           <MDXRemote {...mdxSource} />
         </div>
-      </article>
+      </ArticleWrapper>
     </MainLayout>
   )
 }

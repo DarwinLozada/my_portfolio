@@ -1,13 +1,6 @@
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { motion } from 'framer-motion-3d'
-import {
-  OrbitControls,
-  useFBX,
-  PerspectiveCamera,
-  Stars,
-  useProgress,
-  Html,
-} from '@react-three/drei'
+import { OrbitControls, useFBX, PerspectiveCamera, Stars } from '@react-three/drei'
 import { FC, memo, Suspense, useEffect, useRef, useMemo } from 'react'
 import { Camera, Group, Mesh, MeshStandardMaterial } from 'three'
 
@@ -18,6 +11,7 @@ import {
   SelectiveBloom,
   Select,
 } from '@react-three/postprocessing'
+import useScreenBreakpoint from 'hooks/useScreenBreakpoint'
 
 const PLANETS_POS_TO_SUN = [
   { distance: 7, posIndex: 1.34 },
@@ -25,21 +19,24 @@ const PLANETS_POS_TO_SUN = [
   { distance: 24, posIndex: 0.19 },
 ]
 
+const SATURN_SCALES = {
+  small: {
+    saturn: [0.00022, 0.00022, 0.00022],
+    asteroids1: [0.00024, 0.00024, 0.00024],
+    asteroids2: [0.00026, 0.00026, 0.00026],
+  },
+  normal: {
+    saturn: [0.0004, 0.0004, 0.0004],
+    asteroids1: [0.0004, 0.0004, 0.0004],
+    asteroids2: [0.00045, 0.00045, 0.00045],
+  },
+}
+
 const STELAR_SYSTEM_CENTER = {
   x: -3,
   y: 0,
   z: -50,
 }
-
-const Loader: FC = () => {
-  const { progress } = useProgress()
-  return (
-    <Html>
-      <h1>HOLISSS {progress}</h1>{' '}
-    </Html>
-  )
-}
-
 const Scene: FC = () => {
   const saturn = useFBX('./models/saturn/planet.fbx')
   const asteroidsOne = useFBX('./models/saturn/asteroids1.fbx')
@@ -59,6 +56,10 @@ const Scene: FC = () => {
     () => [cutePlanet1, waterPlanet1],
     [cutePlanet1, waterPlanet1],
   )
+
+  const { isSmall, isMini } = useScreenBreakpoint()
+
+  const isPhone = useMemo(() => isSmall || isMini, [isSmall, isMini])
 
   useEffect(() => {
     saturn.children.forEach((child) => {
@@ -95,16 +96,19 @@ const Scene: FC = () => {
   }, [saturn, texture, sun, extraPlanets])
 
   useFrame(() => {
-    const date = Date.now() * 0.0001
-    extraPlanets.forEach((planet, index) => {
-      planet.position.x =
-        Math.cos(date * PLANETS_POS_TO_SUN[index].posIndex) *
-        PLANETS_POS_TO_SUN[index].distance
+    if (!isPhone) {
+      const date = Date.now() * 0.0001
 
-      planet.position.z =
-        Math.sin(date * PLANETS_POS_TO_SUN[index].posIndex) *
-        PLANETS_POS_TO_SUN[index].distance
-    })
+      extraPlanets.forEach((planet, index) => {
+        planet.position.x =
+          Math.cos(date * PLANETS_POS_TO_SUN[index].posIndex) *
+          PLANETS_POS_TO_SUN[index].distance
+
+        planet.position.z =
+          Math.sin(date * PLANETS_POS_TO_SUN[index].posIndex) *
+          PLANETS_POS_TO_SUN[index].distance
+      })
+    }
   })
 
   return (
@@ -118,16 +122,31 @@ const Scene: FC = () => {
       </EffectComposer>
       <scene>
         <ambientLight intensity={0.07} />
-        <Stars count={1500} />
-
+        <Stars count={isPhone ? 500 : 1500} />
         <Suspense fallback={<></>}>
-          <group ref={planetsGroupRef}>
-            <Select enabled>
-              <pointLight position={[0, 4, 0]} intensity={1} color="#79d4f7" />
+          {!isPhone && (
+            <group ref={planetsGroupRef}>
+              <Select enabled>
+                <pointLight position={[0, 4, 0]} intensity={1} color="#79d4f7" />
+                <motion.primitive
+                  object={sun}
+                  scale={[0.0003, 0.0003, 0.0003]}
+                  initial={{ y: 4, x: 0, z: 0 }}
+                  animate={{ rotateY: Math.PI * 2 }}
+                  transition={{
+                    type: 'tween',
+                    ease: 'linear',
+                    duration: 30,
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                  }}
+                />
+              </Select>
+
               <motion.primitive
-                object={sun}
-                scale={[0.0003, 0.0003, 0.0003]}
-                initial={{ y: 4, x: 0, z: 0 }}
+                object={cutePlanet1}
+                scale={[0.00013, 0.00013, 0.00013]}
+                initial={{ y: 4, x: -5, z: -50 }}
                 animate={{ rotateY: Math.PI * 2 }}
                 transition={{
                   type: 'tween',
@@ -137,55 +156,46 @@ const Scene: FC = () => {
                   repeatType: 'loop',
                 }}
               />
-            </Select>
 
-            <motion.primitive
-              object={cutePlanet1}
-              scale={[0.00013, 0.00013, 0.00013]}
-              initial={{ y: 4, x: -5, z: -50 }}
-              animate={{ rotateY: Math.PI * 2 }}
-              transition={{
-                type: 'tween',
-                ease: 'linear',
-                duration: 30,
-                repeat: Infinity,
-                repeatType: 'loop',
-              }}
-            />
+              <motion.primitive
+                object={cutePlanet1}
+                scale={[0.00013, 0.00013, 0.00013]}
+                initial={{ y: 4, x: -5, z: -50 }}
+                animate={{ rotateY: Math.PI * 2 }}
+                transition={{
+                  type: 'tween',
+                  ease: 'linear',
+                  duration: 30,
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                }}
+              />
 
-            <motion.primitive
-              object={cutePlanet1}
-              scale={[0.00013, 0.00013, 0.00013]}
-              initial={{ y: 4, x: -5, z: -50 }}
-              animate={{ rotateY: Math.PI * 2 }}
-              transition={{
-                type: 'tween',
-                ease: 'linear',
-                duration: 30,
-                repeat: Infinity,
-                repeatType: 'loop',
-              }}
-            />
-
-            <motion.primitive
-              object={waterPlanet1}
-              scale={[0.00013, 0.00013, 0.00013]}
-              initial={{ y: 4, x: -5, z: -50 }}
-              animate={{ rotateY: Math.PI * 2 }}
-              transition={{
-                type: 'tween',
-                ease: 'linear',
-                duration: 30,
-                repeat: Infinity,
-                repeatType: 'loop',
-              }}
-            />
-          </group>
+              <motion.primitive
+                object={waterPlanet1}
+                scale={[0.00013, 0.00013, 0.00013]}
+                initial={{ y: 4, x: -5, z: -50 }}
+                animate={{ rotateY: Math.PI * 2 }}
+                transition={{
+                  type: 'tween',
+                  ease: 'linear',
+                  duration: 30,
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                }}
+              />
+            </group>
+          )}
 
           <Select enabled>
+            {isPhone && (
+              <pointLight position={[0, 15, 0]} intensity={1} color="#79d4f7" />
+            )}
             <motion.primitive
               object={saturn}
-              scale={[0.0004, 0.0004, 0.0004]}
+              scale={
+                isPhone ? SATURN_SCALES.small.saturn : SATURN_SCALES.normal.saturn
+              }
               initial={{ rotateY: 0, rotateX: Math.PI / 7, y: 3 }}
               animate={{ rotateY: Math.PI * 2 }}
               transition={{
@@ -200,7 +210,9 @@ const Scene: FC = () => {
 
           <motion.primitive
             object={asteroidsOne}
-            scale={[0.0004, 0.0004, 0.0004]}
+            scale={
+              isPhone ? SATURN_SCALES.small.asteroids1 : SATURN_SCALES.normal.asteroids1
+            }
             initial={{ rotateY: 0, rotateX: Math.PI / 7, y: 3 }}
             animate={{ rotateY: Math.PI * 2 }}
             transition={{
@@ -214,7 +226,11 @@ const Scene: FC = () => {
 
           <motion.primitive
             object={asteroidsTwo}
-            scale={[0.00045, 0.00045, 0.00045]}
+            scale={
+              isPhone
+                ? SATURN_SCALES.small.asteroids2
+                : SATURN_SCALES.normal.asteroids2
+            }
             initial={{ rotateY: 0, rotateX: Math.PI / 7, y: 3 }}
             animate={{ rotateY: Math.PI * 2 }}
             transition={{
@@ -241,14 +257,13 @@ const Scene: FC = () => {
 
 const Saturn: FC = () => {
   return (
-    <section className="absolute top-0 flex h-[calc(100vh+30rem)] w-[calc(100%*2)] grow items-center justify-center overflow-visible">
+    <section className="absolute top-0 flex h-[calc(100vh+20rem)] w-[calc(100%*2)] grow items-center justify-center overflow-visible lg:h-[calc(100vh+30rem)]">
       <Canvas
-        className={`relative w-[calc(100%*2)] translate-x-[9rem] translate-y-[27rem] scale-75 overflow-visible opacity-80 transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-[13rem] md:scale-100  md:opacity-100 
-      lg:translate-y-0 lg:translate-x-[-10vw]`}
+        className={`relative w-[calc(100%*2)] -translate-x-48 translate-y-[27rem] scale-100 overflow-visible opacity-80 transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-0
+      md:scale-100 md:opacity-100`}
         camera={{ position: [-12.49, 3.54, 8.53] }}
       >
         <Scene />
-        <Loader />
       </Canvas>
     </section>
   )
