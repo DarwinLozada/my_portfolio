@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { motion } from 'framer-motion-3d'
 import { OrbitControls, useFBX, PerspectiveCamera, Stars } from '@react-three/drei'
@@ -211,7 +212,9 @@ const Scene: FC = () => {
           <motion.primitive
             object={asteroidsOne}
             scale={
-              isPhone ? SATURN_SCALES.small.asteroids1 : SATURN_SCALES.normal.asteroids1
+              isPhone
+                ? SATURN_SCALES.small.asteroids1
+                : SATURN_SCALES.normal.asteroids1
             }
             initial={{ rotateY: 0, rotateX: Math.PI / 7, y: 3 }}
             animate={{ rotateY: Math.PI * 2 }}
