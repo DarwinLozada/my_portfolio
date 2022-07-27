@@ -15,7 +15,7 @@ const AboutPage: NextPage<Props> = ({ mdxSource }) => {
   return (
     <MainLayout>
       <ArticleWrapper>
-        <h1 className="mt-32 mb-16 text-center font-montserrat text-4xl font-semibold text-white">
+        <h1 className="mb-16 text-center font-montserrat text-4xl font-semibold text-white">
           About Me
         </h1>
         <section className="flex max-w-2xl flex-col gap-1">

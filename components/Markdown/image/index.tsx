@@ -21,19 +21,21 @@ const Image: FC<Props> = ({ src, alt, width, height }) => {
       }}
     >
       <Dialog.Trigger asChild>
-        <figure className="relative flex items-center justify-center">
-          <NextImage
-            src={src || ''}
-            layout="intrinsic"
-            alt={alt}
-            width={width}
-            height={height}
-          />
-        </figure>
+        <button className="flex w-full items-center justify-center">
+          <figure className="relative flex items-center justify-center">
+            <NextImage
+              src={src || ''}
+              layout="intrinsic"
+              alt={alt}
+              width={width}
+              height={height}
+            />
+          </figure>
+        </button>
       </Dialog.Trigger>
 
       <DialogAnimationWrapper active={openImage}>
-        <figure className="relative max-h-[60%] md:max-w-[60%]">
+        <figure className="relative py-12 md:max-w-[40rem]">
           <NextImage
             src={src || ''}
             layout="intrinsic"

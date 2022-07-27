@@ -22,14 +22,14 @@ const PLANETS_POS_TO_SUN = [
 
 const SATURN_SCALES = {
   small: {
-    saturn: [0.00022, 0.00022, 0.00022],
-    asteroids1: [0.00024, 0.00024, 0.00024],
-    asteroids2: [0.00026, 0.00026, 0.00026],
+    saturn: [0.08, 0.08, 0.08],
+    asteroids1: [0.08, 0.08, 0.08],
+    asteroids2: [0.09, 0.09, 0.09],
   },
   normal: {
-    saturn: [0.0004, 0.0004, 0.0004],
-    asteroids1: [0.0004, 0.0004, 0.0004],
-    asteroids2: [0.00045, 0.00045, 0.00045],
+    saturn: [0.13, 0.13, 0.13],
+    asteroids1: [0.13, 0.13, 0.13],
+    asteroids2: [0.15, 0.15, 0.15],
   },
 }
 
@@ -39,7 +39,7 @@ const STELAR_SYSTEM_CENTER = {
   z: -50,
 }
 const Scene: FC = () => {
-  const saturn = useFBX('./models/saturn/planet.fbx')
+  const saturn = useFBX('./models/saturn/saturn.fbx')
   const asteroidsOne = useFBX('./models/saturn/asteroids1.fbx')
   const asteroidsTwo = useFBX('./models/saturn/asteroids2.fbx')
 
@@ -123,7 +123,7 @@ const Scene: FC = () => {
       </EffectComposer>
       <scene>
         <ambientLight intensity={0.07} />
-        <Stars count={isPhone ? 500 : 1500} />
+        {!isPhone && <Stars count={1250} />}
         <Suspense fallback={<></>}>
           {!isPhone && (
             <group ref={planetsGroupRef}>
@@ -131,7 +131,7 @@ const Scene: FC = () => {
                 <pointLight position={[0, 4, 0]} intensity={1} color="#79d4f7" />
                 <motion.primitive
                   object={sun}
-                  scale={[0.0003, 0.0003, 0.0003]}
+                  scale={[0.13, 0.13, 0.13]}
                   initial={{ y: 4, x: 0, z: 0 }}
                   animate={{ rotateY: Math.PI * 2 }}
                   transition={{
@@ -146,21 +146,7 @@ const Scene: FC = () => {
 
               <motion.primitive
                 object={cutePlanet1}
-                scale={[0.00013, 0.00013, 0.00013]}
-                initial={{ y: 4, x: -5, z: -50 }}
-                animate={{ rotateY: Math.PI * 2 }}
-                transition={{
-                  type: 'tween',
-                  ease: 'linear',
-                  duration: 30,
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                }}
-              />
-
-              <motion.primitive
-                object={cutePlanet1}
-                scale={[0.00013, 0.00013, 0.00013]}
+                scale={[0.05, 0.05, 0.05]}
                 initial={{ y: 4, x: -5, z: -50 }}
                 animate={{ rotateY: Math.PI * 2 }}
                 transition={{
@@ -174,7 +160,7 @@ const Scene: FC = () => {
 
               <motion.primitive
                 object={waterPlanet1}
-                scale={[0.00013, 0.00013, 0.00013]}
+                scale={[0.04, 0.04, 0.04]}
                 initial={{ y: 4, x: -5, z: -50 }}
                 animate={{ rotateY: Math.PI * 2 }}
                 transition={{
@@ -262,8 +248,8 @@ const Saturn: FC = () => {
   return (
     <section className="absolute top-0 flex h-[calc(100vh+20rem)] w-[calc(100%*2)] grow items-center justify-center overflow-visible lg:h-[calc(100vh+30rem)]">
       <Canvas
-        className={`relative w-[calc(100%*2)] -translate-x-48 translate-y-[27rem] scale-100 overflow-visible opacity-80 transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-0
-      md:scale-100 md:opacity-100`}
+        className={`relative w-[calc(100%*2)] -translate-x-48 translate-y-[27rem] scale-100 overflow-visible opacity-80 transition-opacity duration-500 md:translate-x-[7rem] md:translate-y-0 md:scale-100
+      md:opacity-100 lg:-translate-x-24`}
         camera={{ position: [-12.49, 3.54, 8.53] }}
       >
         <Scene />
