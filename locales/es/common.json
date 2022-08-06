@@ -1,4 +1,10 @@
 {
+	"preposition": {
+		"at": "en"
+	},
+	"time": {
+		"present": "Presente"
+	},
 	"footer": {
 		"links": {
 			"home": "Home",

@@ -4,7 +4,7 @@ import { FC } from 'react'
 const WhoAmI: FC = () => {
   return (
     <section className="flex w-full flex-col items-center justify-center px-24">
-      <h2 className="mb-24 text-center text-4xl font-bold tracking-widest text-white">
+      <h2 className="mb-4 text-center text-4xl font-bold tracking-widest text-white">
         WHO AM I
       </h2>
 

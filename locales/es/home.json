@@ -1,9 +1,20 @@
 {
-  "hero": {
+  	"hero": {
 		"subtitle": "Resuelvo problemas usando tecnología.",
 		"CTAs": {
 			"about-me": "Acerca de mí",
 			"resume": "Mi currículum"
+		}
+	},
+	"experience": {
+		"title": "EXPERIENCIA",
+		"jobs": {
+			"qcode": {
+				"description": "Implementación de un sistema eficiente de administración de trabajadores hecho con ReactJs, Material-UI, GraphQL y Apollo Client. Gestión de sesiones de usuario con roles y permisos. Seguimiento y control de la ubicación de los trabajadores a través de una aplicación móvil."
+			},
+			"codemera": {
+				"description": "Creación de nuevas funciones e implementaciones UI usando Server Side React y Django templates en un entorno de producción. Trabajar con UI designers y QA testers con el objetivo de brindar la mejor experiencia a los usuarios finales."
+			}
 		}
 	},
 	"projects": {

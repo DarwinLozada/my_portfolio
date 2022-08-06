@@ -1,5 +1,11 @@
 {
-  "footer": {
+	"preposition": {
+		"at": "at"
+	},
+	"time": {
+		"present": "Present"
+	},
+  	"footer": {
 		"links": {
 			"home": "Home",
 			"resume": "Resume",

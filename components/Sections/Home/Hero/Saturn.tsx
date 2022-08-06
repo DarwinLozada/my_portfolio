@@ -146,7 +146,7 @@ const Scene: FC = () => {
 
               <motion.primitive
                 object={cutePlanet1}
-                scale={[0.05, 0.05, 0.05]}
+                scale={[0.03, 0.03, 0.03]}
                 initial={{ y: 4, x: -5, z: -50 }}
                 animate={{ rotateY: Math.PI * 2 }}
                 transition={{
@@ -160,7 +160,7 @@ const Scene: FC = () => {
 
               <motion.primitive
                 object={waterPlanet1}
-                scale={[0.04, 0.04, 0.04]}
+                scale={[0.035, 0.035, 0.035]}
                 initial={{ y: 4, x: -5, z: -50 }}
                 animate={{ rotateY: Math.PI * 2 }}
                 transition={{
