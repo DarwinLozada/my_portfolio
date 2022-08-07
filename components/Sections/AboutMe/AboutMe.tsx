@@ -62,7 +62,7 @@ const AboutMeSection: FC = () => {
   ])
 
   return (
-    <div className="flex min-h-[6rem] flex-col items-center">
+    <div className="mt-72 flex min-h-[6rem] flex-col items-center">
       <AnimatePresence>
         {data && (
           <m.div

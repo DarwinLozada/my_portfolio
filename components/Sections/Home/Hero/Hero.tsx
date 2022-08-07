@@ -34,6 +34,7 @@ const HeroSection: FC = () => {
 
   const isDesktop = isLarge || isExtraLarge
 
+  const { isSmall, isMini } = useScreenBreakpoint()
   return (
     <section className="relative flex min-h-screen w-full justify-center overflow-visible tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
       <div
@@ -41,17 +42,19 @@ const HeroSection: FC = () => {
           !loading && 'opacity-100'
         }`}
       >
-        <Suspense
-          fallback={
-            <Loader
-              onLoad={() => {
-                setLoading(false)
-              }}
-            />
-          }
-        >
-          <DynamicSaturn />
-        </Suspense>
+        {!isSmall && !isMini && (
+          <Suspense
+            fallback={
+              <Loader
+                onLoad={() => {
+                  setLoading(false)
+                }}
+              />
+            }
+          >
+            <DynamicSaturn />
+          </Suspense>
+        )}
       </div>
 
       <section className="z-10">
