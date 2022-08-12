@@ -15,12 +15,12 @@ const Projects: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="relative mt-80 flex flex-col items-center bg-transparent md:mt-48">
+    <section className="relative mt-56 flex flex-col items-center bg-transparent md:mt-48 lg:mt-80">
       <h2 className="text-center text-4xl font-bold tracking-widest text-white">
         {t('home:projects.title')}
       </h2>
       <div
-        className="mt-56 w-full bg-[#E5D8D8] pt-36 pb-64"
+        className="mt-32 w-full bg-[#E5D8D8] pt-36 pb-64 lg:mt-52"
         style={{ clipPath: 'polygon(0 0, 100% 6%, 100% 93%, 0% 100%)' }}
       >
         <div className="flex flex-col items-center md:flex-row">

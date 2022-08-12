@@ -23,8 +23,8 @@ const WorkExperience: FC = () => {
   ]
 
   return (
-    <section className="z-10 mt-40 mb-24 flex w-full flex-col items-center justify-center px-10 text-center md:mt-24 md:px-24 md:text-left lg:mt-80">
-      <h2 className="mb-12 text-center text-4xl font-bold tracking-widest text-white">
+    <section className="z-10 mt-56 flex w-full flex-col items-center justify-center px-10 text-center md:mt-24 md:px-24 md:text-left lg:mb-24 lg:mt-80">
+      <h2 className="mb-20 text-center text-4xl font-bold tracking-widest text-white">
         {t('home:experience.title')}
       </h2>
       <ul className="flex max-w-sm flex-col">
