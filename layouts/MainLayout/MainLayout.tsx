@@ -34,6 +34,8 @@ const MainLayout: FC<Props> = ({ children, blurredBackground }) => {
       }}
     >
       <Header />
+      <div className="brand-bg-gradient absolute top-0 w-screen" />
+
       <main
         className={`relative z-10 flex min-h-screen flex-grow flex-col items-center justify-center overflow-hidden ${
           blurredBackground ? 'backdrop-blur-sm' : ''

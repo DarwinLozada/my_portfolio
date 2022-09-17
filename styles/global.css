@@ -112,3 +112,15 @@ header [data-radix-popper-content-wrapper] {
   display: flex;
   justify-content: flex-end;
 }
+
+.brand-bg-gradient {
+  background: #2e2a99;
+  background: radial-gradient(circle, #2e2a99 0%, #040a3d 80%);
+  height: 6000px
+}
+
+@media (max-width: 460px) {
+  .brand-bg-gradient {
+    background: radial-gradient(circle, #221e79 0%, #040a3d 80%);
+  }
+}

@@ -13,7 +13,7 @@ const JobItem: FC<Job> = ({
   const { t } = useTranslation()
 
   return (
-    <li className="rounded-xl border-2 border-solid border-[#072852] bg-[#051c3b] p-8 shadow-inner">
+    <li className="rounded-xl border-2 border-solid border-[#221e79] bg-brandBg p-8 shadow-inner">
       <h3 className="font-bold text-white">
         {jobName} <span className="font-normal">{t('common:preposition.at')} </span>
         <span className="text-brandPink">
