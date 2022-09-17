@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { createClient } from 'urql'
 
 const graphqlServerURL = process.env.NEXT_PUBLIC_GRAPHCMS_URL
 
@@ -8,9 +8,8 @@ if (!graphqlServerURL) {
   )
 }
 
-const client = new ApolloClient({
-  uri: graphqlServerURL,
-  cache: new InMemoryCache(),
+const client = createClient({
+  url: graphqlServerURL,
 })
 
 export default client

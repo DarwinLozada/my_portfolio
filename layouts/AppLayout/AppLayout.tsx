@@ -3,7 +3,7 @@ import { MDXProvider } from '@mdx-js/react'
 
 import dynamic from 'next/dynamic'
 import { AnimatePresence, LazyMotion } from 'framer-motion'
-import { ApolloProvider } from '@apollo/client'
+import { Provider as GraphQLClientProvider } from 'urql'
 import client from 'services/client'
 
 const markdownComponents = {
@@ -22,7 +22,7 @@ interface Props {
 const AppLayout: FC<Props> = ({ children }) => {
   return (
     <LazyMotion features={animationFeatures} strict>
-      <ApolloProvider client={client}>
+      <GraphQLClientProvider value={client}>
         <MDXProvider components={markdownComponents}>
           <div className="relative overflow-hidden bg-brandBg">
             <AnimatePresence
@@ -36,7 +36,7 @@ const AppLayout: FC<Props> = ({ children }) => {
             </AnimatePresence>
           </div>
         </MDXProvider>
-      </ApolloProvider>
+      </GraphQLClientProvider>
     </LazyMotion>
   )
 }
