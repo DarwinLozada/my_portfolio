@@ -123,10 +123,18 @@ export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async
   // Redirect to 404 page if there are not Params
   if (!params) return { notFound: true }
 
-  const { data } = await client.query<ProjectQuery>({
-    query: ProjectDocument,
-    variables: { slug: params.slug, locale: [locale] },
-  })
+  const { data } = await client
+    .query<ProjectQuery>(ProjectDocument, {
+      slug: params.slug,
+      locale: [locale],
+    })
+    .toPromise()
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
   const mdxSource = await serialize(data.project?.fullDescription as string, {
     mdxOptions: {
@@ -143,9 +151,9 @@ export const getStaticProps: GetStaticProps<Props, GetStaticPropsParams> = async
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const { data } = await client.query<ProjectsSlugsQuery>({
-    query: ProjectsSlugsDocument,
-  })
+  const { data } = (await client
+    .query<ProjectsSlugsQuery>(ProjectsSlugsDocument, {})
+    .toPromise()) as { data: ProjectsSlugsQuery }
 
   const alternativeLocales =
     locales

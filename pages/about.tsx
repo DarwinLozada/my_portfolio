@@ -27,12 +27,17 @@ const AboutPage: NextPage<Props> = ({ mdxSource }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { data } = await client.query<PageQuery, PageQueryVariables>({
-    query: PageDocument,
-    variables: {
+  const { data } = await client
+    .query<PageQuery, PageQueryVariables>(PageDocument, {
       slug: Pages.AboutMe,
-    },
-  })
+    })
+    .toPromise()
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
   const mdxSource = await serialize(data.page?.content as string, {
     mdxOptions: {

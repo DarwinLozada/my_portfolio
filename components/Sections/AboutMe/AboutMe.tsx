@@ -1,5 +1,5 @@
 import { useHobbiesQuery } from 'generated'
-import { FC, useCallback, useReducer } from 'react'
+import { FC, useCallback, useEffect, useReducer } from 'react'
 import HobbyBubble from './components/Bubble/Bubble'
 import Image from 'next/image'
 import { AnimatePresence, m, useAnimation } from 'framer-motion'
@@ -15,8 +15,11 @@ const AboutMeSection: FC = () => {
   const catEarsControl = useAnimation()
   const hobbyBubblesControl = useAnimation()
 
-  const { data } = useHobbiesQuery({
-    onCompleted() {
+  const [result] = useHobbiesQuery()
+  const { data } = result
+
+  useEffect(() => {
+    if (result.data) {
       if (hobbyBubblesControl) {
         hobbyBubblesControl.start({
           translateY: 180,
@@ -24,8 +27,8 @@ const AboutMeSection: FC = () => {
           transition: { duration: 0 },
         })
       }
-    },
-  })
+    }
+  }, [result, hobbyBubblesControl])
 
   const [animationState, dispatch] = useReducer(
     TwoStateAnimationReducer,
