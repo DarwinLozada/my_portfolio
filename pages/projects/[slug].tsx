@@ -35,7 +35,7 @@ const ProjectPage: NextPage<Props> = ({ data, mdxSource }) => {
   const { t } = useTranslation()
 
   return (
-    <MainLayout>
+    <MainLayout title={`${name}`}>
       <ArticleWrapper>
         <div className="flex w-full justify-start">
           <Breadcrumb

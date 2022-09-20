@@ -2,13 +2,16 @@ import Header from 'components/Header'
 import { FC, ReactNode } from 'react'
 import { m } from 'framer-motion'
 import Footer from 'components/Footer'
+import Head from 'next/head'
+import { pageTitleBase } from 'constants/seo'
 
 interface Props {
   blurredBackground?: boolean
   children?: ReactNode
+  title?: string
 }
 
-const MainLayout: FC<Props> = ({ children, blurredBackground }) => {
+const MainLayout: FC<Props> = ({ children, blurredBackground, title }) => {
   return (
     <m.div
       transition={{
@@ -33,6 +36,9 @@ const MainLayout: FC<Props> = ({ children, blurredBackground }) => {
         },
       }}
     >
+      <Head>
+        <title>{title || `${pageTitleBase} Problem Solving with Tech`}</title>
+      </Head>
       <Header />
       <div className="brand-bg-gradient absolute top-0 w-screen" />
 

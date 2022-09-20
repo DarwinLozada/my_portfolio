@@ -16,7 +16,7 @@ export const initialState: State = {
 
 export const TwoStateAnimationReducer = (
   prevState: State,
-  action: Actions
+  action: Actions,
 ): State => {
   switch (action) {
     case Actions.TOGGLE_STATE:
