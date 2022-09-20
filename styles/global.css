@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Thin.ttf');
+  src: url('/fonts/poppins/Poppins-Thin.woff2');
   font-style: normal;
   font-weight: 100;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Regular.ttf');
+  src: url('/fonts/poppins/Poppins-Regular.woff2');
   font-style: regular;
   font-weight: 400;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Medium.ttf');
+  src: url('/fonts/poppins/Poppins-Medium.woff2');
   font-style: medium;
   font-weight: 500;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-SemiBold.ttf');
+  src: url('/fonts/poppins/Poppins-SemiBold.woff2');
   font-style: bold;
   font-weight: 600;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Bold.ttf');
+  src: url('/fonts/poppins/Poppins-Bold.woff2');
   font-style: bold;
   font-weight: 700;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Thin.ttf');
+  src: url('/fonts/montserrat/Montserrat-Thin.woff2');
   font-style: normal;
   font-weight: 100;
   font-display: swap;
@@ -48,7 +48,7 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Regular.ttf');
+  src: url('/fonts/montserrat/Montserrat-Regular.woff2');
   font-style: regular;
   font-weight: 400;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Medium.ttf');
+  src: url('/fonts/montserrat/Montserrat-Medium.woff2');
   font-style: medium;
   font-weight: 500;
   font-display: swap;
@@ -64,7 +64,7 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-SemiBold.ttf');
+  src: url('/fonts/montserrat/Montserrat-SemiBold.woff2');
   font-style: semibold;
   font-weight: 600;
   font-display: swap;
@@ -72,7 +72,7 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Bold.ttf');
+  src: url('/fonts/montserrat/Montserrat-Bold.woff2');
   font-style: bold;
   font-weight: 700;
   font-display: swap;
