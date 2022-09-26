@@ -19,5 +19,9 @@
 			"projects": "Projects",
 			"about-me": "About Me"
 		}
+	},
+	"head": {
+		"title": "Darwin Lozada | Frontend Developer",
+		"description": "I'm Darwin Lozada, a technology enthusiast that likes creating delightful and scalable web experiences."
 	}
 }
