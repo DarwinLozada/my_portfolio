@@ -47,6 +47,7 @@ const MainLayout: FC<Props> = ({ children, blurredBackground, title }) => {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>{title || `${pageTitleBase} Frontend Developer`}</title>
         <meta name="description" content={t('common:head.description')} />
+        <meta name="author" content="Darwin Lozada" />
         <meta content="index,follow" name="robots" />
         <meta content="index,follow" name="googlebot" />
         <link href="https://www.darwinlozada.com" rel="canonical" />
@@ -56,7 +57,7 @@ const MainLayout: FC<Props> = ({ children, blurredBackground, title }) => {
 
         {/* Facebook tags */}
         <meta property="og:title" content="Darwin Lozada | Frontend Developer" />
-        <meta property="og:site_name" content="Darwin Lozada | Frontend Developer" />
+        <meta property="og:site_name" content="Darwin Lozada" />
         <meta property="og:url" content="https://www.darwinlozada.com" />
         <meta property="og:description" content={t('common:head.description')} />
         <meta property="og:type" content="website" />
@@ -70,6 +71,7 @@ const MainLayout: FC<Props> = ({ children, blurredBackground, title }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="darwinlozada.com" />
         <meta property="twitter:url" content="https://www.darwinlozada.com" />
+        <meta name="twitter:site" content="Darwin Lozada" />
         <meta name="twitter:title" content="Darwin Lozada | Frontend Developer" />
         <meta name="twitter:description" content={t('common:head.description')} />
         <meta name="twitter:image" content={OGImage.src} />
