@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { AnimatePresence, LazyMotion } from 'framer-motion'
 import { Provider as GraphQLClientProvider } from 'urql'
 import client from 'services/client'
+import Header from 'components/Header'
 
 const markdownComponents = {
   p: dynamic(() => import('components/Markdown/paragraph')),
@@ -25,6 +26,7 @@ const AppLayout: FC<Props> = ({ children }) => {
       <GraphQLClientProvider value={client}>
         <MDXProvider components={markdownComponents}>
           <div className="relative overflow-hidden bg-brandBg">
+            <Header />
             <AnimatePresence
               initial={false}
               exitBeforeEnter

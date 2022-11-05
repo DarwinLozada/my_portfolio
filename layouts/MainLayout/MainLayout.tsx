@@ -1,4 +1,3 @@
-import Header from 'components/Header'
 import { FC, ReactNode } from 'react'
 import { m } from 'framer-motion'
 import Footer from 'components/Footer'
@@ -89,7 +88,6 @@ const MainLayout: FC<Props> = ({ children, blurredBackground, title }) => {
         defer
         strategy="afterInteractive"
       />
-      <Header />
       <div className="brand-bg-gradient absolute top-0 w-screen" />
 
       <main
