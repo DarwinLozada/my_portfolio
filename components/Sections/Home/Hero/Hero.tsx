@@ -25,16 +25,13 @@ const Loader: FC<LoaderProps> = ({ onLoad }) => {
 
 const HeroSection: FC = () => {
   const { t } = useTranslation()
-
+  const { isMini, isSmall, isLarge, isExtraLarge } = useScreenBreakpoint()
   const [loading, setLoading] = useState(true)
 
   const textAboutMe = t('home:hero.CTAs.about-me')
 
-  const { isLarge, isExtraLarge } = useScreenBreakpoint()
-
   const isDesktop = isLarge || isExtraLarge
 
-  const { isSmall, isMini } = useScreenBreakpoint()
   return (
     <section className="relative flex min-h-screen w-full justify-center overflow-visible tracking-[0.3em] md:ml-24 md:mt-8 md:justify-start">
       <div
@@ -92,7 +89,7 @@ const HeroSection: FC = () => {
           </Button>
           <Button
             type="download"
-            href={RESUME_LINK}
+            href={t('home:hero.resume-url')}
             className="shadow-lg shadow-brandBg/50"
             size="medium"
             colorScheme="secondary"

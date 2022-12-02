@@ -1,10 +1,11 @@
 {
-  	"hero": {
+	"hero": {
 		"subtitle": "I solve problems using technology.",
 		"CTAs": {
 			"about-me": "More about me",
 			"resume": "Check my resume"
-		}
+		},
+		"resume-url": "https://media.graphassets.com/oZFQTZYXRKFsEMCGiIkA?_gl=1*1jbntzj*_ga*NjgwNzkwMTE4LjE2NzAwMDg2MDg.*_ga_G6FYGSYGZ4*MTY3MDAxODM0My4yLjEuMTY3MDAxODM3MC4zMy4wLjA."
 	},
 	"experience": {
 		"title": "EXPERIENCE",
