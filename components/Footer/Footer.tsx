@@ -4,7 +4,6 @@ import { ABOUT_ROUTE, HOME_ROUTE, PROJECTS_ROUTE } from 'constants/routes'
 import Button from 'components/Button'
 import { GitHubIcon, LinkedinIcon, TwitterIcon } from 'components/Icons'
 import useTranslation from 'next-translate/useTranslation'
-import { RESUME_LINK } from 'constants/links'
 
 const Footer: FC = () => {
   const { t } = useTranslation()
@@ -22,7 +21,12 @@ const Footer: FC = () => {
             </Link>
           </li>
           <li>
-            <a download href={RESUME_LINK} target="_blank" rel="noreferrer">
+            <a
+              download
+              href={t('home:hero.resume-url')}
+              target="_blank"
+              rel="noreferrer"
+            >
               {t('common:footer.links.resume')}
             </a>
           </li>
