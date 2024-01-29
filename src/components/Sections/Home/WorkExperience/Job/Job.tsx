@@ -23,7 +23,9 @@ const JobItem: FC<Job> = ({
         </span>
       </h3>
       <p className="text-gray-200">{jobDurationText}</p>
-      <p className="mt-4 mb-2 text-lg text-white">Achievements:</p>
+      <p className="mt-4 mb-2 text-lg text-white">
+        {t('home:experience.achievements')}:
+      </p>
       <ul className="list-disc">
         {achievements.map((text) => (
           <li className="text-gray-400 ml-5 mb-3" key={`${text} item`}>
