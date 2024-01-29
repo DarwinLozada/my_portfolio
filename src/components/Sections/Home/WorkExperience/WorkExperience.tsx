@@ -33,7 +33,7 @@ const WorkExperience: FC = () => {
   ]
 
   return (
-    <section className="z-10 mt-64 flex w-full flex-col items-center justify-center px-10 md:mt-24 md:px-24 text-left lg:mb-24 lg:mt-80">
+    <section className="z-10 mt-32 flex w-full flex-col items-center justify-center px-6 md:mt-24 md:px-24 text-left lg:mb-24 lg:mt-80">
       <h2 className="mb-16 text-center text-4xl font-bold tracking-widest text-white">
         {t('home:experience.title')}
       </h2>
