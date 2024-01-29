@@ -4,4 +4,5 @@ export interface Job {
   companyName: string
   companyPage: string
   description: string
+  achievements: string[]
 }

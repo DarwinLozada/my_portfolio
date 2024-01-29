@@ -9,12 +9,23 @@
 	},
 	"experience": {
 		"title": "EXPERIENCIA",
+		"achievements": "Logros",
 		"jobs": {
 			"qcode": {
-				"description": "Implementación de un sistema eficiente de administración de trabajadores hecho con ReactJs, Material-UI, GraphQL y Apollo Client. Gestión de sesiones de usuario con roles y permisos. Seguimiento y control de la ubicación de los trabajadores a través de una aplicación móvil."
+				"description": "Implementación de un sistema eficiente de administración de trabajadores hecho con ReactJs, Material-UI, GraphQL y Apollo Client. Gestión de sesiones de usuario con roles y permisos. Seguimiento y control de la ubicación de los trabajadores a través de una aplicación móvil.",
+				"achievements": {
+					"development": "Desarrollo de un software de administración in-house con gestión de usuarios, roles y permisos utilizando Next.js, Apollo Client y MaterialUI, facilitando el trabajo de los departamentos de ventas y recursos humanos.",
+					"colaboration": "Colaboración con un equipo de 3 desarrolladores para diseñar y crear features de monitoreo y geolocalización utilizando una aplicación móvil, integrada con la API de Google Maps y un servicio de backend, demostrando habilidades de trabajo en equipo y solución de problemas complejos."
+				}
 			},
 			"codemera": {
-				"description": "Creación de nuevas funciones e implementaciones UI usando Server Side React y Django templates en un entorno de producción. Trabajar con UI designers y QA testers con el objetivo de brindar la mejor experiencia a los usuarios finales."
+				"description": "Creación de nuevas funciones e implementaciones UI usando Server Side React y Django templates en un entorno de producción. Trabajar con UI designers y QA testers con el objetivo de brindar la mejor experiencia a los usuarios finales.",
+				"achievements": {
+					"landing": "Implementación de múltiples landing pages en colaboración con el equipo de diseño lo cuál llevó a aumentar el conversion rate del website.",
+					"migration": "Migración exitosa del código base a NextJS para implementar sitios estáticos y renderizado en el servidor (SSR), mejorando el SEO, las métricas web y el rendimiento del sitio en más de 35%.",
+					"personalized": "Desarrollo de secciones personalizadas y modales que muestran información personalizada a los usuarios según sus respuestas a un cuestionario especializado.",
+					"maintainability": "Mejora de la mantenibilidad del código mediante code reviews con el equipo de desarrollo para cada nueva feature, refactors, unit tests y la creación de Git Hooks."
+				}
 			}
 		}
 	},

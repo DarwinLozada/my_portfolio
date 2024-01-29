@@ -12,6 +12,12 @@ const WorkExperience: FC = () => {
       jobDurationText: `Nov 2021 - ${t('common:time.present')}`,
       companyPage: 'https://codemera.com/',
       description: `${t('home:experience.jobs.codemera.description')}`,
+      achievements: [
+        t('home:experience.jobs.codemera.achievements.landing'),
+        t('home:experience.jobs.codemera.achievements.migration'),
+        t('home:experience.jobs.codemera.achievements.personalized'),
+        t('home:experience.jobs.codemera.achievements.maintainability'),
+      ],
     },
     {
       companyName: 'QCode',
@@ -19,18 +25,29 @@ const WorkExperience: FC = () => {
       jobDurationText: 'May 2021 - Aug 2022',
       companyPage: 'https://www.qcode.co/',
       description: `${t('home:experience.jobs.qcode.description')}`,
+      achievements: [
+        t('home:experience.jobs.qcode.achievements.development'),
+        t('home:experience.jobs.qcode.achievements.colaboration'),
+      ],
     },
   ]
 
   return (
-    <section className="z-10 mt-56 flex w-full flex-col items-center justify-center px-10 text-center md:mt-24 md:px-24 md:text-left lg:mb-24 lg:mt-80">
-      <h2 className="mb-20 text-center text-4xl font-bold tracking-widest text-white">
+    <section className="z-10 mt-64 flex w-full flex-col items-center justify-center px-10 text-center md:mt-24 md:px-24 md:text-left lg:mb-24 lg:mt-80">
+      <h2 className="mb-16 text-center text-4xl font-bold tracking-widest text-white">
         {t('home:experience.title')}
       </h2>
-      <ul className="flex max-w-sm flex-col">
+      <ul className="flex max-w-lg flex-col">
         {jobs.map(
           (
-            { companyName, jobName, jobDurationText, companyPage, description },
+            {
+              companyName,
+              jobName,
+              jobDurationText,
+              companyPage,
+              description,
+              achievements,
+            },
             index,
           ) => (
             <div
@@ -44,6 +61,7 @@ const WorkExperience: FC = () => {
                 jobDurationText={jobDurationText}
                 companyPage={companyPage}
                 description={description}
+                achievements={achievements}
               />
               {index !== jobs.length - 1 && (
                 <div className="my-2 h-12 w-1 rounded-full bg-brandPink"></div>

@@ -9,12 +9,23 @@
 	},
 	"experience": {
 		"title": "EXPERIENCE",
+		"achievements": "Achievements",
 		"jobs": {
 			"qcode": {
-				"description": "Implementation of an efficient and responsive workers administration system made with ReactJs, Material-UI, GraphQL and ApolloClient. User session management with roles and permissions. Monitoring and control of workers location provided by a mobile app."
+				"description": "Implementation of an efficient and responsive workers administration system made with ReactJs, Material-UI, GraphQL and ApolloClient. User session management with roles and permissions. Monitoring and control of workers location provided by a mobile app.",
+				"achievements": {
+					"development": "Developed an admin system with user session management, roles, and permissions using Next.js, Apollo Client, and MaterialUI, showcasing proficiency in frontend technologies and UI/UX design.",
+					"colaboration": "Collaborated with a team of 3 developers to design and create a workers monitoring and location tracking feature using a mobile app, integrated with the Google Maps API and a backend service, demonstrating teamwork and problem-solving skills."
+				}
 			},
 			"codemera": {
-				"description": "Creation of new features and UI implementations using Server Side React and Django templates on a production environment. Work with UI designers and QA testers to deliver the best experience to end users."
+				"description": "Creation of new features and UI implementations using Server Side React and Django templates on a production environment. Work with UI designers and QA testers to deliver the best experience to end users.",
+				"achievements": {
+					"landing": "Implementation of multiple landing pages in collaboration with the design team, which led to an increase in the website's conversion rate.",
+					"migration": "Successfully migrated a 3-year-old React codebase to the Next.js framework, implementing Static Site Generation and Server Side Rendering (SSR) to enhance SEO, web vitals, and site performance by over 35%.",
+					"personalized": "Developed personalized page sections and modals, delivering tailored information to customers based on their responses to a specialized quiz.",
+					"maintainability": "Enhanced codebase maintainability by conducting code reviews with the development team for every new feature, performing refactors, writing unit tests, and creating Git hooks."
+				}
 			}
 		}
 	},

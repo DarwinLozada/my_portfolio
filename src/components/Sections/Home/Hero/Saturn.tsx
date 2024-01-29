@@ -49,6 +49,7 @@ const Scene: FC = () => {
   const sun = useFBX('./models/extra_planets/sun.fbx')
 
   const planetsGroupRef = useRef<Group | null>(null)
+  const bloomLightRef = useRef<any>(null)
 
   const texture = useLoader(TextureLoader, './models/saturn/textures.png')
 
@@ -125,6 +126,7 @@ const Scene: FC = () => {
     <Selection>
       <EffectComposer>
         <SelectiveBloom
+          lights={[bloomLightRef]}
           luminanceThreshold={0}
           luminanceSmoothing={0.9}
           height={300}
@@ -137,7 +139,12 @@ const Scene: FC = () => {
           {!isPhone ? (
             <group ref={planetsGroupRef}>
               <Select enabled>
-                <pointLight position={[0, 4, 0]} intensity={1} color="#79d4f7" />
+                <pointLight
+                  position={[0, 4, 0]}
+                  ref={bloomLightRef}
+                  intensity={1}
+                  color="#79d4f7"
+                />
                 <motion.primitive
                   object={sun}
                   scale={[0.13, 0.13, 0.13]}
