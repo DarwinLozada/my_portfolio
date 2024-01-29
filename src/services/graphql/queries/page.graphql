@@ -1,6 +1,7 @@
-query Page($slug: Pages!) {
-  page(where: {slug: $slug}) {
+query Page($slug: Pages!, $locale: [Locale!]!) {
+  page(where: {slug: $slug}, locales: $locale) {
     content
     createdAt
+    locale
   }
 }
