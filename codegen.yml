@@ -1,6 +1,6 @@
 overwrite: true
 schema: "https://api-ca-central-1.graphcms.com/v2/ckvcmz0t5165j01widh4tb6fi/master"
-documents: "services/graphql/**/*.graphql"
+documents: "src/services/graphql/**/*.graphql"
 generates:
   generated/index.ts:
     plugins:

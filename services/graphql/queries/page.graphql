@@ -1,6 +1,0 @@
-query Page($slug: Pages!) {
-  page(where: {slug: $slug}) {
-    content
-    createdAt
-  }
-}
