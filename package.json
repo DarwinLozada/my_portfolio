@@ -3,7 +3,7 @@
   "private": true,
   "engines" : { 
     "npm" : "8.3.0",
-    "node" : "20.9.0"
+    "node" : "20.18.3"
   },
   "scripts": {
     "dev": "next dev",
